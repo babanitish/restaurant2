@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\UpdateProfileRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,5 +30,26 @@ class ClientController extends Controller
         else{
             return view('client.home');
         }
+    }
+
+
+    public function profileUpdate(Request $request){
+
+        $request->validate([
+            'name' =>'required|min:4|string|max:255',
+            'email'=>'required|email|string|max:255',
+            'password'=>'required|confirmed'
+
+        ]);
+
+        auth()->user()->update($request->only('name', 'email'));
+
+        if ($request->input('password')) {
+            auth()->user()->update([
+                'password' => bcrypt($request->input('password'))
+            ]);
+        }
+
+        return redirect()->route('profile')->with('message', 'Profile saved successfully');
     }
 }
