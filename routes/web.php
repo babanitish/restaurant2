@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +13,11 @@ use App\Http\Controllers\ClientController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/',[Clientcontroller::class, 'home']);
 Route::get('/menu',[Clientcontroller::class, 'menu']);
 Route::get('/about',[Clientcontroller::class, 'about']);
@@ -19,8 +25,15 @@ Route::get('/book',[Clientcontroller::class, 'book']);
 
 Route::get('/redirects',[Clientcontroller::class, 'redirects']);
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::put('/profile',[Clientcontroller::class, 'profileUpdate'])->name('profile.update');
 
+Route::group(['>middleware' => 'auth'],function(){
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
+    Route::get('/profile', function () {
+        return view('profile');
+    })->name('profile');
+});
+require __DIR__.'/auth.php';
