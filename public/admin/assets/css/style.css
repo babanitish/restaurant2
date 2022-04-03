@@ -106,6 +106,10 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+ul li.active a{
+  background-color: #ffbe33;
+  color: #fff;
+}
 @-moz-keyframes flash {
   0% {
     opacity: 1; }

@@ -61,38 +61,34 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav  mx-auto ">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home <span
-                                        class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{ url('/') }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="menu.html">Menu</a>
+                                <a class="nav-link" href="{{ url('/menu') }}">Menu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">About</a>
+                                <a class="nav-link" href="{{ url('/about') }}">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="book.html">Book Table</a>
+                                <a class="nav-link" href="{{ url('/book') }}">Book Table</a>
                             </li>
-                            <li class="nav-item">
-                                @if (Route::has('login'))
-                                    {{-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> --}}
-                                    @auth
-                                <li> <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a></li>
-                            @else
-                                <li><a href="{{ route('login') }}" class="nav-link">Log in</a></li>
-
-                                @if (Route::has('register'))
-                                    <li><a href="{{ route('register') }}" class="nav-link">Register</a></li>
-                                @endif
-                            @endauth
-                            {{-- </div> --}}
-                            @endif
-                            </li>
+                         
                         </ul>
                         <div class="user_option">
-                            <a href="" class="user_link">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </a>
+                            @if (Route::has('login'))
+                            {{-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> --}}
+                            @auth
+                                <a href="{{ url('/profile') }}" class="user_link">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </a>
+                            @else
+                            <a href="{{ route('register') }}" class="user_link">
+                              <i class="fa fa-user" aria-hidden="true"></i>
+                          </a>                   
+                            @endauth
+                            {{-- </div> --}}
+                        @endif
+                            
                             <a class="cart_link" href="#">
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -1431,7 +1427,11 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
     </script>
     <!-- End Google Map -->
-
+ {{-- <script>
+        $(document).on('click', 'ul li', function() {
+            $(this).addClass('active').siblings.removeClass('active')
+        })
+    </script> --}}
 </body>
 
 </html>
