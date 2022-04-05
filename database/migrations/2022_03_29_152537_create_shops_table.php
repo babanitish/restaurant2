@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity');
-            $table->decimal('total');
 
            
         });

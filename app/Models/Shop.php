@@ -31,9 +31,10 @@ class Shop extends Model
      */
     public $timestamps = false;
 
-    public function products()
+    public function user()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(User::class);
     }
+
 
 }

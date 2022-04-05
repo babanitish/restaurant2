@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class AddPrice extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('shops', function (Blueprint $table) {
-             $table->foreignId('product_id');
-             $table->foreign('product_id')->references('id')->on('products')
-            ->onDelete('restrict')->onUpdate('cascade');
+            $table->decimal('price',8,2);
+
         });
     }
 
@@ -28,9 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('shops', function (Blueprint $table) {
-            Schema::disableForeignKeyConstraints();
-            $table->dropForeign(['product_id']);
-
+            $table->dropColumn('price');
         });
     }
-};
+}

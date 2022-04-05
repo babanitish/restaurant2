@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUsertype extends Migration
+class AddAddressAndUsertypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ class AddUsertype extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('usertype')->default(0);
+            $table->string('address');
         });
     }
 
@@ -26,7 +27,8 @@ class AddUsertype extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('usertype');
+            $table->dropColumn('address');
         });
     }
 }

@@ -2,22 +2,29 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
- */
 class ProductFactory extends Factory
 {
+
+    protected $model = Product::class;
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array
      */
     public function definition()
     {
+
+        // $title = $this->faker->unique()->sentence(2, true);
         return [
-            //
+            'name' => $this->faker->word(3, true),
+            'shop_id' => rand(1, 3),
+            'category_id' =>  Category::all()->random()->id,
+            'poster_url' => 'default.jpg',
+            'created_at' => $this->faker->dateTimeBetween('-1 year', '-10 days')
         ];
     }
 }
