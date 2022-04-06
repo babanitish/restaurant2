@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
-
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +26,11 @@ Route::get('/book',[Clientcontroller::class, 'book']);
 Route::get('/redirects',[Clientcontroller::class, 'redirects']);
 
 Route::put('/profile',[Clientcontroller::class, 'profileUpdate'])->name('profile.update');
+
+Route::get('/users',[Admincontroller::class, 'user']);
+Route::get('/deleteuser/{id}',[Admincontroller::class, 'deleteuser']);
+
+
 
 Route::group(['>middleware' => 'auth'],function(){
     Route::get('/dashboard', function () {

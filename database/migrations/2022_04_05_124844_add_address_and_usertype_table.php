@@ -15,7 +15,6 @@ class AddAddressAndUsertypeTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('usertype')->default(0);
-            $table->string('address');
         });
     }
 
@@ -28,7 +27,6 @@ class AddAddressAndUsertypeTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('usertype');
-            $table->dropColumn('address');
         });
     }
 }
