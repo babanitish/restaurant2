@@ -52,4 +52,17 @@ class ClientController extends Controller
 
         return redirect()->route('profile')->with('message', 'Profile saved successfully');
     }
+    
+    public function UserLogout()
+    {
+        Auth::logout();
+
+        $notifications = array(
+            'message' => 'User logout SuccessFuly !',
+            'alert-type' => 'success'
+        );
+
+
+        return redirect()->route('login')->with($notifications);
+    }
 }
