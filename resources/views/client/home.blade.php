@@ -82,7 +82,7 @@
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </a>
                             @else
-                            <a href="{{ route('register') }}" class="user_link">
+                            <a href="{{ route('login') }}" class="user_link">
                               <i class="fa fa-user" aria-hidden="true"></i>
                           </a>                   
                             @endauth
