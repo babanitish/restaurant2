@@ -30,6 +30,7 @@ Route::put('/profile',[Clientcontroller::class, 'profileUpdate'])->name('profile
 Route::get('/users',[Admincontroller::class, 'user']);
 Route::get('/deleteuser/{id}',[Admincontroller::class, 'deleteuser']);
 
+Route::get('/user/logout', [ClientController::class, 'UserLogout'])->name('user.logout');
 
 
 Route::group(['>middleware' => 'auth'],function(){
