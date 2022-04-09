@@ -57,7 +57,7 @@
       <span class="nav-link">Navigation</span>
     </li>
     <li class="nav-item menu-items">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="{{url('redirects')}}">
         <span class="menu-icon">
           <i class="mdi mdi-speedometer"></i>
         </span>
@@ -74,13 +74,19 @@
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Add product</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{url('addproduct')}}">Add product</a></li>
+          
+        </ul>
+      </div>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{url('products')}}"> products</a></li>
           
         </ul>
       </div>
     </li>
     <li class="nav-item menu-items">
-      <a class="nav-link" href="pages/forms/basic_elements.html">
+      <a class="nav-link" href="{{url('users')}}">
         <span class="menu-icon">
           <i class="mdi mdi-playlist-play"></i>
         </span>
@@ -97,14 +103,20 @@
       </a>
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Add Categories </a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{url('addcategory')}}"> Add category </a></li>
+          
+        </ul>
+      </div>
+      <div class="collapse" id="auth">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{url('categories')}}">  Categories </a></li>
           
         </ul>
       </div>
     </li>
    
     <li class="nav-item menu-items">
-      <a class="nav-link" href="pages/charts/chartjs.html">
+      <a class="nav-link" href="{{url('reservations')}}">
         <span class="menu-icon">
           <i class="mdi mdi-chart-bar"></i>
         </span>
@@ -112,7 +124,7 @@
       </a>
     </li>
     <li class="nav-item menu-items">
-      <a class="nav-link" href="pages/icons/mdi.html">
+      <a class="nav-link" href="{{url('orders')}}">
         <span class="menu-icon">
           <i class="mdi mdi-contacts"></i>
         </span>
@@ -120,7 +132,7 @@
       </a>
     </li>
     <li class="nav-item menu-items">
-      <a class="nav-link" href="pages/tables/basic-table.html">
+      <a class="nav-link" href="{{url('events')}}">
         <span class="menu-icon">
           <i class="mdi mdi-table-large"></i>
         </span>
