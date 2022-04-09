@@ -16,3 +16,5 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="admin/assets/js/dashboard.js"></script>
+
+    <script src="asset/js/bootstrap.js"></script>
