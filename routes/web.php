@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +25,7 @@ Route::get('/menu',[Clientcontroller::class, 'menu']);
 Route::get('/about',[Clientcontroller::class, 'about']);
 Route::get('/book',[Clientcontroller::class, 'book']);
 
+
 Route::get('/redirects',[Clientcontroller::class, 'redirects']);
 
 Route::put('/profile',[Clientcontroller::class, 'profileUpdate'])->name('profile.update');
@@ -34,8 +35,18 @@ Route::get('/deleteuser/{id}',[Admincontroller::class, 'deleteuser']);
 
 Route::get('/user/logout', [ClientController::class, 'UserLogout'])->name('user.logout');
 
+//CATEGORIES
 Route::get('/categories', [CategoryController::class, 'categories'])->name('categories');
-Route::get('/addcategory', [CategoryController::class, 'addcategory']);
+Route::get('/addcategory', [CategoryController::class, 'addcategory'])->name('addcategory');
+Route::post('/savecategory', [CategoryController::class, 'store'])->name('savecategory');
+Route::get('/edit_category/{id}', [CategoryController::class, 'edit'])->name('edit_category');
+Route::post('/update_category/{id}', [CategoryController::class, 'update'])->name('update_category');
+Route::get('/delete_category/{id}', [CategoryController::class, 'delete'])->name('delete_category');
+
+
+//PRODUCTS
+Route::get('/products', [ProductController::class, 'product']);
+
 
 Route::group(['>middleware' => 'auth'],function(){
     Route::get('/dashboard', function () {

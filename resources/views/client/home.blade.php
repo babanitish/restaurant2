@@ -37,7 +37,9 @@
 </head>
 
 <body>
-
+    {{-- @php
+    dd($products);
+@endphp --}}
     <div class="hero_area">
         <div class="bg-box">
             <img src="asset/images/hero-bg.jpg" alt="">
@@ -410,6 +412,9 @@
     <!-- food section -->
 
     <section class="food_section layout_padding-bottom">
+        {{-- @php
+    dd($products)
+@endphp --}}
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
@@ -427,23 +432,29 @@
 
             <div class="filters-content">
                 <div class="row grid">
+                    @foreach ($products as $i)
                     <div class="col-sm-6 col-lg-4 all pizza">
+                       
+                            
+                     
                         <div class="box">
                             <div>
                                 <div class="img-box">
-                                    <img src="asset/images/f1.png" alt="">
+                                    {{-- <div style="background-image: url('/product_posters/{{$i->poster_url}}')">
+
+                                    </div> --}}
+                                    <img src="{{asset('images/'.$i->poster_url)}}" alt="">
                                 </div>
                                 <div class="detail-box">
                                     <h5>
-                                        Delicious Pizza
+                                        {{$i->name}}
                                     </h5>
                                     <p>
-                                        Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam
-                                        voluptatem repellendus sed eaque
+                                        {{$i->description}}
                                     </p>
                                     <div class="options">
                                         <h6>
-                                            $20
+                                            {{$i->price}}
                                         </h6>
                                         <a href="">
                                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
@@ -471,44 +482,17 @@
                          c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                                                     </g>
                                                 </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
+                                                
                                             </svg>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                       
                     </div>
-                    <div class="col-sm-6 col-lg-4 all burger">
+                    @endforeach
+                    {{-- <div class="col-sm-6 col-lg-4 all burger">
                         <div class="box">
                             <div>
                                 <div class="img-box">
@@ -1155,7 +1139,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="btn-box">

@@ -15,17 +15,20 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('shop_id');
-            $table->foreignId('category_id');
+            $table->string('name', 255);
+            $table->string('slug', 60)->unique();
+            $table->decimal('price',10,2)->nullable();
+            $table->text('description')->nullable();
+            // $table->foreignId('shop_id');
+            // $table->foreignId('category_id');
             $table->string('poster_url',255);
             $table->timestamps();
 
-            $table->foreign('shop_id')->references('id')->on('shops')
-            ->onDelete('restrict')->onUpdate('cascade');
+            // $table->foreign('shop_id')->references('id')->on('shops')
+            // ->onDelete('restrict')->onUpdate('cascade');
             
-            $table->foreign('category_id')->references('id')->on('categories')
-            ->onDelete('restrict')->onUpdate('cascade');
+            // $table->foreign('category_id')->references('id')->on('categories')
+            // ->onDelete('restrict')->onUpdate('cascade');
         });
     }
 

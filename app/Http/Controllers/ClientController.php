@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\UpdateProfileRequest;
+use App\Models\Product;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,7 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class ClientController extends Controller
 {
     public function home(){
-        return view('client.home');
+        $products = Product::all(); 
+        return view('client.home',[
+            'products' => $products
+        ]);
     }
 
     public function menu(){
@@ -22,13 +26,19 @@ class ClientController extends Controller
         return view('client.about');
     }
     function redirects(){
+        $products = Product::all(); 
+       
+            
+        
         $usertype = Auth::user()->usertype;
         //dd($usertype);
         if($usertype == '1'){
             return view('admin.admin_home');
         }
         else{
-            return view('client.home');
+            return view('client.home',[
+                'products' => $products
+            ]);
         }
     }
 
@@ -65,4 +75,5 @@ class ClientController extends Controller
 
         return redirect()->route('login')->with($notifications);
     }
+    
 }
