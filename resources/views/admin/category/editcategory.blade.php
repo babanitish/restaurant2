@@ -26,14 +26,15 @@
                     {{Session::get('status')}}
                 </div>
             @endif
-            <form action="{{route('savecategory')}}" method="POST">
+            <form action="{{route('update_category',$category->id)}}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="">Add category</label>
-                    <input type="text" class="form-control" id="name" name="name"
+                    <label for="">Edit category</label>
+                    {{-- <input type="hidden" name="id" value="{{$category->id}}"> --}}
+                    <input type="text" class="form-control" id="name" name="name" value="{{$category->name}}"
                         aria-describedby="category name" placeholder="category name">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">update</button>
             </form>
         </div>
     </div>
