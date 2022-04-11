@@ -45,7 +45,9 @@ Route::get('/delete_category/{id}', [CategoryController::class, 'delete'])->name
 
 
 //PRODUCTS
-Route::get('/products', [ProductController::class, 'product']);
+Route::get('/products', [ProductController::class, 'product'])->name('products');
+Route::get('/addproduct', [ProductController::class, 'addproduct'])->name('addproduct');
+Route::post('/saveproduct', [ProductController::class, 'store'])->name('saveproduct');
 
 
 Route::group(['>middleware' => 'auth'],function(){

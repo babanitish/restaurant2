@@ -28,6 +28,8 @@ class ProductSeeder extends Seeder
                     . 'et surtout prouver qu\'il est haïtien – qu\'est-ce qu\'être haïtien ?',
                 'poster_url'=>'client1.jpg',
                 'price'=>8.50,
+                'category'=>'test1',
+
             ],
            [
                 'slug'=>null,
@@ -36,6 +38,7 @@ class ProductSeeder extends Seeder
                     . 'et véhiculer une crainte féroce envers les enfants âgés entre 10 et 12 ans.',
                 'poster_url'=>'client2.jpg',
                 'price'=>9.00,
+                'category'=>'test2',
             ],
         ];
 

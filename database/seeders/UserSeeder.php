@@ -25,9 +25,16 @@ class UserSeeder extends Seeder
         //Define data
         $users = [
             [
+                'name'=>'admin',
+                'email'=>'admin@sull.com',
+                'password'=>'123',
+                'usertype' => '1'
+            ],
+            [
                 'name'=>'abou',
                 'email'=>'abou@sull.com',
-                'password'=>'12345678',
+                'password'=>'123',
+                'usertype' => '0'
             ],
         ];
 
@@ -38,6 +45,7 @@ class UserSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'usertype' => $data['usertype'],
                 'password' => Hash::make($data['password']),
             ]);
         }

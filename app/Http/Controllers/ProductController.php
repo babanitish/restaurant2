@@ -16,11 +16,21 @@ class ProductController extends Controller
     public function product()
     {
         $products = Product::all(); 
-        return view('client.test', [
+        return view('admin.product.products', [
             'products' => $products
         ]);
     }
 
+
+    public function addproduct()
+    {
+        $categories = Category::all();
+        $products = Product::all(); 
+        return view('admin.product.addproduct', [
+            'products' => $products,
+            'categories' => $categories
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -39,7 +49,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, ['product_name' => 'required',
+                                    'product_price' => 'required',
+                                    'product_category' => 'required',
+                                                               
+
+    ]);
+
+if($request->hasFile('product_image')){
+
+    $fileNameExt = $request->file('product_image')->getClientOriginalName();
+
+    $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
+
+    $ext = $request->file('product_image')->getClientOriginalExtension();
+
+    $fileNameToStore = $fileName.'_'.time().'.'.$ext;
+
+    $path = $request->file('product_image')->storeAs('public/product_images', $fileNameToStore);
+}
+else{
+    $fileNameToStore = 'default.jpg';
+}
+
+    $product = new product();
+    $product->name = $request->input('product_name');
+    $product->price = $request->input('product_price');
+    $product->category = $request->input('product_category');
+    $product->poster_url = $fileNameToStore ;
+    
+    $product->save();
+    return back()->with('status', 'product created successful');
+
     }
 
     /**
