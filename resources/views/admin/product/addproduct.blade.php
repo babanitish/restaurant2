@@ -45,7 +45,7 @@
                          <select id="inputState" name="product_category" class="form-control"> 
                             <option selected>Choose...</option>
                             @foreach ($categories as $category)
-                            <option>{{$category->name}}</option>                                
+                            <option>{{$category->id}}</option>                                
                             @endforeach
                           </select>
                          {{-- <input type="text" class="form-control" id="product category" placeholder="enter category" value="" required> --}}

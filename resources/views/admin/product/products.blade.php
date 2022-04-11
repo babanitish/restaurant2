@@ -38,7 +38,7 @@
                             <td>{{ $increment }}</td>
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->price }}</td>
-                            <td>{{ $product->category }}</td>
+                            <td>{{ $product->category->name }}</td>
                             <td><img src="{{asset('storage/product_images/'.$product->poster_url)}}" alt=""></td>
 
                             <td>

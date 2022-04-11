@@ -14,7 +14,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','poster_url','price','description','slug'];
+    protected $fillable = ['name','poster_url','price','description','category_id'];
 //'shop_id','category_id'
    /**
      * The table associated with the model.

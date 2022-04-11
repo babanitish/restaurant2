@@ -75,7 +75,7 @@ else{
     $product = new product();
     $product->name = $request->input('product_name');
     $product->price = $request->input('product_price');
-    $product->category = $request->input('product_category');
+    $product->category_id = $request->input('product_category');
     $product->poster_url = $fileNameToStore ;
     
     $product->save();
