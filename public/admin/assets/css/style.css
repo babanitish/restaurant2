@@ -15728,6 +15728,7 @@ html {
   overflow: auto; }
 
 .container-scroller {
+  /* height: 950px; */
   overflow: hidden; }
 
 pre {
@@ -20344,7 +20345,7 @@ div.tagsinput {
 /* Navbar */
 .navbar {
   font-weight: normal;
-  background: #191c24;
+  background: black;
   left: 244px;
   transition: left 0.25s ease;
   -webkit-transition: left 0.25s ease;
@@ -20358,7 +20359,7 @@ div.tagsinput {
     -webkit-transition: width 0.25s ease, background 0.25s ease;
     -moz-transition: width 0.25s ease, background 0.25s ease;
     -ms-transition: width 0.25s ease, background 0.25s ease;
-    background: #191c24;
+    background: black;
     width: 244px;
     height: 70px; }
     @media (max-width: 991px) {
@@ -20627,10 +20628,10 @@ div.tagsinput {
 /* Sidebar */
 .sidebar {
   min-height: calc(100vh - 70px);
-  background: #191c24;
+  background: black;
   font-weight: normal;
   padding: 0;
-  width: 244px;
+  width: 290px;
   z-index: 11;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
@@ -21130,7 +21131,7 @@ div.tagsinput {
       width: 100%; } }
 
 .content-wrapper {
-  background: #000000;
+  background: #001622;
   padding: 1.875rem 1.75rem;
   width: 100%;
   -webkit-flex-grow: 1;

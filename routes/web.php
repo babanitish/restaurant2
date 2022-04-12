@@ -48,6 +48,9 @@ Route::get('/delete_category/{id}', [CategoryController::class, 'delete'])->name
 Route::get('/products', [ProductController::class, 'product'])->name('products');
 Route::get('/addproduct', [ProductController::class, 'addproduct'])->name('addproduct');
 Route::post('/saveproduct', [ProductController::class, 'store'])->name('saveproduct');
+Route::get('/edit_product/{id}', [ProductController::class, 'edit'])->name('edit_product');
+Route::post('/update_product/{id}', [ProductController::class, 'update'])->name('update_product');
+Route::get('/delete_product/{id}', [ProductController::class, 'delete'])->name('delete_product');
 
 
 Route::group(['>middleware' => 'auth'],function(){

@@ -13,7 +13,7 @@
         @include('admin.navbar')
         
         @include('admin.header')
-
+        
 
     </div>
     

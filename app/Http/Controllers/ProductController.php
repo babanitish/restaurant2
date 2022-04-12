@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,7 @@ class ProductController extends Controller
      */
     public function product()
     {
-        $products = Product::all(); 
+        $products = Product::all();
         return view('admin.product.products', [
             'products' => $products
         ]);
@@ -25,7 +26,7 @@ class ProductController extends Controller
     public function addproduct()
     {
         $categories = Category::all();
-        $products = Product::all(); 
+        $products = Product::all();
         return view('admin.product.addproduct', [
             'products' => $products,
             'categories' => $categories
@@ -49,38 +50,37 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['product_name' => 'required',
-                                    'product_price' => 'required',
-                                    'product_category' => 'required',
-                                                               
+        $this->validate($request, [
+            'product_name' => 'required',
+            'product_price' => 'required',
+            'product_category' => 'required',
 
-    ]);
 
-if($request->hasFile('product_image')){
+        ]);
 
-    $fileNameExt = $request->file('product_image')->getClientOriginalName();
+        if ($request->hasFile('product_image')) {
 
-    $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
+            $fileNameExt = $request->file('product_image')->getClientOriginalName();
 
-    $ext = $request->file('product_image')->getClientOriginalExtension();
+            $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
 
-    $fileNameToStore = $fileName.'_'.time().'.'.$ext;
+            $ext = $request->file('product_image')->getClientOriginalExtension();
 
-    $path = $request->file('product_image')->storeAs('public/product_images', $fileNameToStore);
-}
-else{
-    $fileNameToStore = 'default.jpg';
-}
+            $fileNameToStore = $fileName . '_' . time() . '.' . $ext;
 
-    $product = new product();
-    $product->name = $request->input('product_name');
-    $product->price = $request->input('product_price');
-    $product->category_id = $request->input('product_category');
-    $product->poster_url = $fileNameToStore ;
-    
-    $product->save();
-    return back()->with('status', 'product created successful');
+            $path = $request->file('product_image')->storeAs('public/product_images', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'default.png';
+        }
 
+        $product = new product();
+        $product->name = $request->input('product_name');
+        $product->price = $request->input('product_price');
+        $product->category_id = $request->input('product_category');
+        $product->poster_url = $fileNameToStore;
+
+        $product->save();
+        return back()->with('status', 'product created successful');
     }
 
     /**
@@ -102,7 +102,14 @@ else{
      */
     public function edit($id)
     {
-        
+        $product = Product::find($id);
+
+        $categories = Category::all();
+
+        return view('admin.product.editproduct', [
+            'product' => $product,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -114,7 +121,60 @@ else{
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'product_name' => 'required',
+            'product_price' => 'required',
+            'product_category' => 'required',
+        ]);
+
+        $product = Product::find($id);
+
+        $product->name = $request->input('product_name');
+        $product->price = $request->input('product_price');
+        $product->category_id = $request->input('product_category');
+
+        if ($request->hasFile('product_image')) {
+            $fileNameExt = $request->file('product_image')->getClientOriginalName();
+
+            $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
+
+            $ext = $request->file('product_image')->getClientOriginalExtension();
+
+            $fileNameToStore = $fileName . '_' . time() . '.' . $ext;
+
+            $path = $request->file('product_image')->storeAs('public/product_images', $fileNameToStore);
+
+            //supprimer l'ancienne photo si c'est pas le default.png
+            // pck le default.pgn doit être permanent
+            if($product->poster_url != 'default.png'){
+                Storage::delete('public/product_images'.$product->poster_url);
+            }
+
+            $product->poster_url = $fileNameToStore;
+        }
+        $product->update();
+
+        return redirect('/products')->with('status', 'product has been  update successful');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+       
+        $product = Product::find($id);
+
+        if($product->poster_url != 'default.png'){
+            Storage::delete('public/product_images'.$product->poster_url);
+        }
+
+        $product->delete();
+
+        return back()->with('status', 'product has been delete success');
     }
 
     /**
