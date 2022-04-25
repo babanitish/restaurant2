@@ -51,6 +51,9 @@ Route::post('/saveproduct', [ProductController::class, 'store'])->name('saveprod
 Route::get('/edit_product/{id}', [ProductController::class, 'edit'])->name('edit_product');
 Route::post('/update_product/{id}', [ProductController::class, 'update'])->name('update_product');
 Route::get('/delete_product/{id}', [ProductController::class, 'delete'])->name('delete_product');
+Route::get('/desactiver_product/{id}', [ProductController::class, 'desactiver'])->name('desactiver_product');
+Route::get('/activer_product/{id}', [ProductController::class, 'activer'])->name('activer_product');
+Route::get('/select_par_category/{category_name}',[ProductController::class, 'select_par_category']);
 
 
 Route::group(['>middleware' => 'auth'],function(){

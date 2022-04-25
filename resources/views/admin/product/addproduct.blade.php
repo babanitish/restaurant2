@@ -41,6 +41,10 @@
                          <input type="number" name="product_price" class="form-control" id="product price" placeholder="enter product price" >
                      </div>
                      <div class="col-md-6 mb-3">
+                        <label for="product description">product description</label>
+                        <input type="text" name="product_description" class="form-control" id="product_description" placeholder="enter product description" >
+                    </div>
+                     <div class="col-md-6 mb-3">
                          <label for="product_category">product category</label>
                          <select id="inputState" name="product_category" class="form-control"> 
                             <option selected>Choose...</option>
