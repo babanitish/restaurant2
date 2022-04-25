@@ -57,8 +57,11 @@
                                     </a>
                                 </div>
                                 <div class="pt-3">
-                                    <a href="" class="btn btn-warning">activate</a>
-                                    <a href="" class="btn btn-success">unactivate</a>
+                                    @if ($product->status != 0)
+                                    <a href="{{ route('desactiver_product', $product->id) }}" class="btn btn-success">unactivate</a>
+                                    @else
+                                    <a href="{{ route('activer_product', $product->id) }}" class="btn btn-warning">activate</a>                                        
+                                    @endif
                                 </div>
 
                             </td>

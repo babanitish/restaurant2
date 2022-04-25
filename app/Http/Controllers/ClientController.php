@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\UpdateProfileRequest;
+use App\Models\Category;
 use App\Models\Product;
 
 use Illuminate\Http\Request;
@@ -10,9 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class ClientController extends Controller
 {
     public function home(){
-        $products = Product::all(); 
+        $products = Product::all()->where('status',1); 
+        $categories = Category::all();
         return view('client.home',[
-            'products' => $products
+            'products' => $products,
+            'categories' => $categories
+
         ]);
     }
 
@@ -75,5 +79,7 @@ class ClientController extends Controller
 
         return redirect()->route('login')->with($notifications);
     }
+
+    
     
 }

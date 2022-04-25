@@ -76,9 +76,10 @@ class ProductController extends Controller
         $product = new product();
         $product->name = $request->input('product_name');
         $product->price = $request->input('product_price');
+        $product->description = $request->input('product_description');
         $product->category_id = $request->input('product_category');
         $product->poster_url = $fileNameToStore;
-
+        $product->status = 1;
         $product->save();
         return back()->with('status', 'product created successful');
     }
@@ -124,6 +125,7 @@ class ProductController extends Controller
         $this->validate($request, [
             'product_name' => 'required',
             'product_price' => 'required',
+            'product_description' => 'required',
             'product_category' => 'required',
         ]);
 
@@ -131,6 +133,7 @@ class ProductController extends Controller
 
         $product->name = $request->input('product_name');
         $product->price = $request->input('product_price');
+        $product->price = $request->input('product_description');
         $product->category_id = $request->input('product_category');
 
         if ($request->hasFile('product_image')) {
@@ -146,8 +149,8 @@ class ProductController extends Controller
 
             //supprimer l'ancienne photo si c'est pas le default.png
             // pck le default.pgn doit être permanent
-            if($product->poster_url != 'default.png'){
-                Storage::delete('public/product_images'.$product->poster_url);
+            if ($product->poster_url != 'default.png') {
+                Storage::delete('public/product_images' . $product->poster_url);
             }
 
             $product->poster_url = $fileNameToStore;
@@ -165,11 +168,11 @@ class ProductController extends Controller
      */
     public function delete($id)
     {
-       
+
         $product = Product::find($id);
 
-        if($product->poster_url != 'default.png'){
-            Storage::delete('public/product_images'.$product->poster_url);
+        if ($product->poster_url != 'default.png') {
+            Storage::delete('public/product_images' . $product->poster_url);
         }
 
         $product->delete();
@@ -178,13 +181,45 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * active le produit.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function activer($id)
     {
-        //
+        $product = Product::find($id);
+
+        $product->status = 1;
+
+        $product->update();
+
+        return back();
+    }
+
+
+     /**
+     * desactive le produit.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function desactiver($id)
+    {
+        $product = Product::find($id);
+
+        $product->status = 0;
+        $product->update();
+
+        return back();
+    }
+
+    public function select_par_category($id){
+         $products = Product::all()->where('category_id',$id)->where('status',1);
+        $categories = Category::all();
+        return view('client.home', [
+            'products' => $products,
+            'categories' => $categories
+        ]);
     }
 }
