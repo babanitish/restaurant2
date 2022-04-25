@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Category;
 use App\Models\Product;
@@ -10,49 +11,60 @@ use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
-    public function home(){
-        $products = Product::all()->where('status',1); 
+    public function home()
+    {
+        $products = Product::all()->where('status', 1);
         $categories = Category::all();
-        return view('client.home',[
+        return view('client.home', [
             'products' => $products,
             'categories' => $categories
 
         ]);
     }
 
-    public function menu(){
-        return view('client.menu');
+    public function menu()
+    {
+        $products = Product::all()->where('status', 1);
+        $categories = Category::all();
+        return view('client.menu', [
+            'products' => $products,
+            'categories' => $categories
+
+        ]);
     }
-    public function book(){
+    public function book()
+    {
         return view('client.book');
     }
-    public function about(){
+    public function about()
+    {
         return view('client.about');
     }
-    function redirects(){
-        $products = Product::all(); 
-       
-            
-        
+    function redirects()
+    {
+        $products = Product::all();
+
+
+
         $usertype = Auth::user()->usertype;
         //dd($usertype);
-        if($usertype == '1'){
+        if ($usertype == '1') {
             return view('admin.admin_home');
-        }
-        else{
-            return view('client.home',[
+        } else {
+            return view('client.home', [
                 'products' => $products
             ]);
         }
     }
 
 
-    public function profileUpdate(Request $request){
+    public function profileUpdate(Request $request)
+    {
 
         $request->validate([
-            'name' =>'required|min:4|string|max:255',
-            'email'=>'required|email|string|max:255',
-            'password'=>'required|confirmed'
+            'name' => 'required|min:4|string|max:255',
+            'email' => 'required|email|string|max:255',
+            'password' => 'required|confirmed'
 
         ]);
 
@@ -66,7 +78,7 @@ class ClientController extends Controller
 
         return redirect()->route('profile')->with('message', 'Profile saved successfully');
     }
-    
+
     public function UserLogout()
     {
         Auth::logout();
@@ -79,7 +91,4 @@ class ClientController extends Controller
 
         return redirect()->route('login')->with($notifications);
     }
-
-    
-    
 }
