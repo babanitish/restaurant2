@@ -43,8 +43,7 @@ class ClientController extends Controller
     function redirects()
     {
         $products = Product::all();
-
-
+        $categories = Category::all();
 
         $usertype = Auth::user()->usertype;
         //dd($usertype);
@@ -52,7 +51,9 @@ class ClientController extends Controller
             return view('admin.admin_home');
         } else {
             return view('client.home', [
-                'products' => $products
+                'products' => $products,
+                'categories' => $categories
+
             ]);
         }
     }
