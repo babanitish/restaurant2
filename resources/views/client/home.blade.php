@@ -92,7 +92,7 @@
                                 {{-- </div> --}}
                             @endif
 
-                            <a class="cart_link" href="#">
+                            <a class="cart_link" href="{{route('cart_view')}}">
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                     viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
@@ -748,31 +748,7 @@
 
     
     <script>
-        $(document).ready(function() {
-
-            $('.addToCart').click(function(e) {
-                e.preventDefault();
-
-                var product_id = $(this).closest('#product_data').find('.prod_id').val();
-                //alert(product_id);
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    method: "POST",
-                    url: "/add-to-cart",
-                    data: {
-                        'product_id': product_id
-                    },
-                    success: function(response) {
-                        alert(response.status);
-
-                    }
-                });
-            });
-        })
+       
     </script>
 </body>
 

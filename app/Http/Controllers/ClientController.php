@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
+    /**
+     * 
+     */
     public function home()
     {
         $products = Product::all()->where('status', 1);
@@ -22,6 +25,9 @@ class ClientController extends Controller
         ]);
     }
 
+    /**
+     * 
+     */
     public function menu()
     {
         $products = Product::all()->where('status', 1);
@@ -32,14 +38,25 @@ class ClientController extends Controller
 
         ]);
     }
+    /**
+     * 
+     */
     public function book()
     {
         return view('client.book');
     }
+
+    /**
+     * 
+     */
     public function about()
     {
         return view('client.about');
     }
+
+    /**
+     * 
+     */
     function redirects()
     {
         $products = Product::all();
@@ -59,6 +76,9 @@ class ClientController extends Controller
     }
 
 
+    /**
+     * 
+     */
     public function profileUpdate(Request $request)
     {
 
@@ -80,6 +100,9 @@ class ClientController extends Controller
         return redirect()->route('profile')->with('message', 'Profile saved successfully');
     }
 
+    /**
+     * 
+     */
     public function UserLogout()
     {
         Auth::logout();
