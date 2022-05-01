@@ -5,6 +5,8 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,18 +22,18 @@ use App\Http\Controllers\ProductController;
 //     return view('welcome');
 // });
 
-Route::get('/',[Clientcontroller::class, 'home']);
-Route::get('/menu',[Clientcontroller::class, 'menu']);
-Route::get('/about',[Clientcontroller::class, 'about']);
-Route::get('/book',[Clientcontroller::class, 'book']);
+Route::get('/', [Clientcontroller::class, 'home']);
+Route::get('/menu', [Clientcontroller::class, 'menu']);
+Route::get('/about', [Clientcontroller::class, 'about']);
+Route::get('/book', [Clientcontroller::class, 'book']);
 
 
-Route::get('/redirects',[Clientcontroller::class, 'redirects']);
+Route::get('/redirects', [Clientcontroller::class, 'redirects']);
 
-Route::put('/profile',[Clientcontroller::class, 'profileUpdate'])->name('profile.update');
+Route::put('/profile', [Clientcontroller::class, 'profileUpdate'])->name('profile.update');
 
-Route::get('/users',[Admincontroller::class, 'user'])->name('users');
-Route::get('/deleteuser/{id}',[Admincontroller::class, 'deleteuser']);
+Route::get('/users', [Admincontroller::class, 'user'])->name('users');
+Route::get('/deleteuser/{id}', [Admincontroller::class, 'deleteuser']);
 
 Route::get('/user/logout', [ClientController::class, 'UserLogout'])->name('user.logout');
 
@@ -53,10 +55,13 @@ Route::post('/update_product/{id}', [ProductController::class, 'update'])->name(
 Route::get('/delete_product/{id}', [ProductController::class, 'delete'])->name('delete_product');
 Route::get('/desactiver_product/{id}', [ProductController::class, 'desactiver'])->name('desactiver_product');
 Route::get('/activer_product/{id}', [ProductController::class, 'activer'])->name('activer_product');
-Route::get('/select_par_category/{category_name}',[ProductController::class, 'select_par_category']);
+Route::get('/select_par_category/{category_name}', [ProductController::class, 'select_par_category']);
+
+// Route::get('/delete-cart/{id}',[ShopController::class, 'deleteCart']);
 
 
-Route::group(['>middleware' => 'auth'],function(){
+
+Route::group(['>middleware' => 'auth'], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -64,5 +69,10 @@ Route::group(['>middleware' => 'auth'],function(){
     Route::get('/profile', function () {
         return view('profile');
     })->name('profile');
+    Route::post('/add-to-cart', [ShopController::class, 'addProduct']);
+
+    Route::get('/cart_view', [ShopController::class, 'cartView'])->name('cart_view');
+
+    Route::post('/delete-cart', [ShopController::class, 'deleteCart']);
 });
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
