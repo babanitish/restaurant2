@@ -73,6 +73,9 @@ Route::group(['>middleware' => 'auth'], function () {
 
     Route::get('/cart_view', [ShopController::class, 'cartView'])->name('cart_view');
 
+    Route::post('/update-cart', [ShopController::class, 'updateCart']);
+
     Route::post('/delete-cart', [ShopController::class, 'deleteCart']);
+
 });
 require __DIR__ . '/auth.php';

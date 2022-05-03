@@ -107,42 +107,34 @@ $(document).ready(function () {
     $('.increment').click(function (e) {
         e.preventDefault();
 
+        var inc_value = $(this).closest('.product_data').find('.qty-input').val();
+        var value = parseInt(inc_value, 10);
+        value = isNaN(value) ? 0 : value;
 
-        var quantity = parseInt($('#quantity').val());
-        
-        // If is not undefined
-            
-            $('#quantity').val(quantity + 1);
+        if (value < 10) {
+            value += 1;
 
+            // $('.qty-input').val(value);
+            $(this).closest('.product_data').find('.qty-input').val(value);
 
-            
-        // var inc_value = $(this).closest('.product_data').find('#quantity').val();
-        // var value = parseInt(inc_value, 10);
-
-        // value = isNaN(quantity) ? 0 : quantity;
-
-        // if (value < 10) {
-        //     value++;
-
-        //     $(this).closest('.product_data').find('#quantity').val(value);
-
-        // }
+        }
     });
 
     $('.decrement').click(function (e) {
         // Stop acting like a button
         e.preventDefault();
 
-        var dec_value = $(this).closest('.product_data').find('#quantity').val();
+        var dec_value = $(this).closest('.product_data').find('.qty-input').val();
 
         var value = parseInt(dec_value, 10);
 
-        value = isNaN(quantity) ? 0 : quantity;
+        value = isNaN(value) ? 0 : value;
 
         if (value > 1) {
             value--;
 
-            $(this).closest('.product_data').find('#quantity').val(value);
+            $(this).closest('.product_data').find('.qty-input').val(value);
+
         }
     });
 
@@ -173,4 +165,34 @@ $(document).ready(function () {
             }
         });
     });
+
+    /**
+     * 
+     */
+    $('.updateQuantity').click(function (e) {
+        e.preventDefault();
+
+        var product_id = $(this).closest('.product_data').find('.product_id').val();
+        var quantity = $(this).closest('.product_data').find('.qty-input').val();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    
+        $.ajax({
+            type: "POST",
+            url: "update-cart",
+            data: {
+                'product_id':product_id,
+                'quantity':quantity
+            },
+            success: function (response) {
+               window.location.reload();
+            }
+        });
+
+    });
+
 });

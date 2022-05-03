@@ -58,16 +58,6 @@ class ShopController extends Controller
 
     public function deleteCart(Request $request)
     {
-        // $shop = Shop::find($id);
-        // $prod_id = $request->input('prod_id');
-        // dd($prod_id);
-
-       
-        // $shop->delete();
-
-        // return redirect()->back();
-
-
         if (Auth::check()) {
             $product_id = $request->input('product_id');
             if (Shop::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {
@@ -82,4 +72,27 @@ class ShopController extends Controller
             return response()->json(['status' => "login please"]);
         }
     }
+
+    /**
+     * update cart 
+     */
+
+     public function updateCart(Request $request){
+       
+        $product_id = $request->input('product_id');
+        $quantity = $request->input('quantity');
+         if(Auth::check()){
+          
+            if (Shop::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {
+                $shop = Shop::where('product_id', $product_id)->where('user_id', Auth::id())->first();
+                $shop->quantity = $quantity;
+                $shop->update();
+
+                return response()->json(["status" => "updated"]);
+            }
+
+         }else {
+             return response()->json(["status" => "login please"]);
+         }
+     }
 }
