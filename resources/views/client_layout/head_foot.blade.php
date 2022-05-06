@@ -49,7 +49,7 @@
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
                     <a class="navbar-brand" href="index.html">
                         <span>
-                            Le joyaux
+                            Le joyau
                         </span>
                     </a>
 
@@ -148,11 +148,11 @@
                                 </svg>
                             </a>
                             <form class="form-inline">
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                <button class="btn  my-2 my-sm-0 nav_search-btn"  type="submit">
+                                    <i class="fa fa-search"  aria-hidden="true"></i>
                                 </button>
                             </form>
-                            <a href="" class="order_online">
+                            <a href="{{ url('/menu') }}" class="order_online">
                                 Order Online
                             </a>
                         </div>

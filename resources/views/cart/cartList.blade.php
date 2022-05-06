@@ -19,13 +19,14 @@
                                         $total = 0;
                                     @endphp
                                     @foreach ($cartItems as $item)
-                                        <div class="row mb-4 d-flex justify-content-between align-items-center product_data ">
-                                            
+                                        <div
+                                            class="row mb-4 d-flex justify-content-between align-items-center product_data ">
+
                                             <div class="col-md-2 col-lg-2 col-xl-2">
                                                 <img src="{{ asset('storage/product_images/' . $item->product->poster_url) }}"
                                                     class="img-fluid rounded-3" alt="Cotton T-shirt">
                                             </div>
-                                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                            <div class="col-md-3 col-lg-3 col-xl-3 py-2">
                                                 <h6 class="text-muted">{{ $item->product->name }}</h6>
                                                 {{-- <h6 class="text-black mb-0">Cotton T-shirt</h6> --}}
                                             </div>
@@ -33,20 +34,21 @@
                                             <input type="hidden" class="product_id" name="product_id"
                                                 value="{{ $item->product_id }}">
 
-                                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex  ">
-                                                <button class="btn btn-link decrement updateQuantity"><i class="fas fa-minus"></i></button>
+                                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex justify-content-center ">
+                                                <button class="btn btn-link decrement updateQuantity"><i
+                                                        class="fas fa-minus"></i></button>
                                                 <input class="form-control qty-input text-center " name="quantity"
-                                                    id="quantity" type="number" value="{{$item->quantity}}" />
-                                                <button class="btn btn-link px-2 increment updateQuantity" ><i class="fas fa-plus"></i></button>
+                                                    id="quantity" type="text" value="{{ $item->quantity }}" />
+                                                <button class="btn btn-link px-2 increment updateQuantity"><i
+                                                        class="fas fa-plus"></i></button>
                                             </div>
 
-                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1 price py-2">
                                                 <h6 class="mb-0">{{ $item->product->price }}</h6>
                                             </div>
-                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end ">
+                                            <div class="col-md-1 col-lg-1 col-xl-1 py-2 text-end d-flex justify-content-center">
                                                 <button class="btn btn-danger delete-cart"><i
                                                         class="fas fa-trash"></i></button>
-                                                {{-- <a  href="{{ url('delete-cart', $item->product_id) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a> --}}
                                             </div>
                                         </div>
 

@@ -81,6 +81,8 @@ class ShopController extends Controller
        
         $product_id = $request->input('product_id');
         $quantity = $request->input('quantity');
+    
+        echo'hahhhhhhhh';
          if(Auth::check()){
           
             if (Shop::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {

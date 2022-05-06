@@ -59,7 +59,13 @@ Route::get('/select_par_category/{category_name}', [ProductController::class, 's
 
 // Route::get('/delete-cart/{id}',[ShopController::class, 'deleteCart']);
 
+Route::post('/add-to-cart', [ShopController::class, 'addProduct']);
 
+Route::get('/cart_view', [ShopController::class, 'cartView'])->name('cart_view');
+
+Route::post('/update-cart', [ShopController::class, 'updateCart']);
+
+Route::post('/delete-cart', [ShopController::class, 'deleteCart']);
 
 Route::group(['>middleware' => 'auth'], function () {
     Route::get('/dashboard', function () {
@@ -69,13 +75,7 @@ Route::group(['>middleware' => 'auth'], function () {
     Route::get('/profile', function () {
         return view('profile');
     })->name('profile');
-    Route::post('/add-to-cart', [ShopController::class, 'addProduct']);
-
-    Route::get('/cart_view', [ShopController::class, 'cartView'])->name('cart_view');
-
-    Route::post('/update-cart', [ShopController::class, 'updateCart']);
-
-    Route::post('/delete-cart', [ShopController::class, 'deleteCart']);
+   
 
 });
 require __DIR__ . '/auth.php';
