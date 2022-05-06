@@ -91,8 +91,8 @@
                                         <h5>€ {{ $total }}</h5>
                                     </div>
 
-                                    <button type="button" class="btn btn-outline-success btn-block btn-lg"
-                                        data-mdb-ripple-color="dark">checkout</button>
+                                    <a href="{{url('checkout')}}" class="btn btn-outline-success btn-block btn-lg"
+                                        data-mdb-ripple-color="dark">checkout</a>
 
                                 </div>
                             </div>
