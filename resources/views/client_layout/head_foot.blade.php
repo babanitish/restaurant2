@@ -34,6 +34,8 @@
     <link href="{{asset('asset/css/style.css')}}" rel="stylesheet" />
     <!-- responsive style -->
     <link href="{{asset('asset/css/responsive.css')}}" rel="stylesheet" />
+{{-- // stripe --}}
+<script src="https://js.stripe.com/v3/"></script>
 
 </head>
 
@@ -91,7 +93,7 @@
                             @endif
 
                             <a class="cart_link" href="{{route('cart_view')}}">
-                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                {{-- <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                     viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
                                     xml:space="preserve">
@@ -145,7 +147,11 @@
                                     </g>
                                     <g>
                                     </g>
-                                </svg>
+                                </svg> --}}
+                                <span class="price" style="color:rgb(255, 255, 255)">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <b>2</b>
+                                </span>
                             </a>
                             <form class="form-inline">
                                 <button class="btn  my-2 my-sm-0 nav_search-btn"  type="submit">
@@ -272,13 +278,13 @@
     <!-- Google Map -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
     </script>
-    <script src="{{asset('asset/js/custom.js')}}"></script>
     <!-- End Google Map -->
     {{-- <script>
         $(document).on('click', 'ul li', function() {
             $(this).addClass('active').siblings.removeClass('active')
         })
     </script> --}}
+
 </body>
 
 </html>

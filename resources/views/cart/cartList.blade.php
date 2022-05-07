@@ -88,7 +88,7 @@
 
                                     <div class="d-flex justify-content-between mb-5">
                                         <h5 class="text-uppercase">Total price</h5>
-                                        <h5>€ {{ $total }}</h5>
+                                        <h5>€ {{  $total  }}</h5>
                                     </div>
 
                                     <a href="{{url('checkout')}}" class="btn btn-outline-success btn-block btn-lg"

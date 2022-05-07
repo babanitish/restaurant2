@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('phone');
-           // $table->foreignId('user_id');
+            $table->foreignId('user_id');
             // $table->decimal('total',8,2);
             $table->timestamps();
 
-            // $table->foreign('user_id')->references('id')->on('users')
-            // ->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
+            ->onDelete('restrict')->onUpdate('cascade');
         });
     }
 

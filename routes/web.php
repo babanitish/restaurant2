@@ -66,7 +66,9 @@ Route::post('/delete-cart', [ShopController::class, 'deleteCart']);
 
 Route::get('/checkout',[ShopController::class, 'checkout']);
 
-Route::post('/place-order',[ShopController::class, 'place_order']);
+Route::post('/place-order',[ShopController::class, 'place_order'])->name('place-order');
+
+Route::post('/stripe/order',[ShopController::class, 'stripe'])->name('stripe');
 
 
 Route::group(['>middleware' => 'auth'], function () {
