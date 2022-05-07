@@ -81,9 +81,18 @@
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                     </a>
                                 @else
-                                    <a href="{{ route('register') }}" class="user_link">
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                    </a>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a href="{{ url('/profile') }}" class="user_link dropdown-toggle" data-bs-toggle="dropdown">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
+                                                <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
+                                                <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li>
+                                            </ul>
+                                    </li>
+                                </ul>
                                 @endauth
                                 {{-- </div> --}}
                             @endif

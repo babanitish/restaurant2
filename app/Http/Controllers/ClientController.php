@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,8 +44,9 @@ class ClientController extends Controller
     }
     function redirects()
     {
-        $products = Product::all();
+        $products = Product::all()->where('status', 1);
 
+        $categories = Category::all();
 
 
         $usertype = Auth::user()->usertype;
@@ -52,11 +55,35 @@ class ClientController extends Controller
             return view('admin.admin_home');
         } else {
             return view('client.home', [
-                'products' => $products
+                'products' => $products,
+            'categories' => $categories
+
             ]);
         }
     }
 
+
+
+    public function UserLogout()
+    {
+        Auth::logout();
+
+        $notifications = array(
+            'message' => 'User logout SuccessFuly !',
+            'alert-type' => 'success'
+        );
+
+
+        return redirect()->route('login')->with($notifications);
+    }
+
+    public function UserProfile(){
+    	$id = Auth::user()->id;
+    	$user = User::find($id);
+    	return view('client.profile.user_profile',[
+            'user' => $user,
+        ]);
+    }
 
     public function profileUpdate(Request $request)
     {
@@ -76,19 +103,6 @@ class ClientController extends Controller
             ]);
         }
 
-        return redirect()->route('profile')->with('message', 'Profile saved successfully');
-    }
-
-    public function UserLogout()
-    {
-        Auth::logout();
-
-        $notifications = array(
-            'message' => 'User logout SuccessFuly !',
-            'alert-type' => 'success'
-        );
-
-
-        return redirect()->route('login')->with($notifications);
+        return redirect()->route('dashboard')->with('status', 'mot de passe  avec success');
     }
 }

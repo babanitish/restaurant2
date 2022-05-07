@@ -28,12 +28,15 @@ Route::get('/book',[Clientcontroller::class, 'book']);
 
 Route::get('/redirects',[Clientcontroller::class, 'redirects']);
 
-Route::put('/profile',[Clientcontroller::class, 'profileUpdate'])->name('profile.update');
 
 Route::get('/users',[Admincontroller::class, 'user'])->name('users');
 Route::get('/deleteuser/{id}',[Admincontroller::class, 'deleteuser']);
 
 Route::get('/user/logout', [ClientController::class, 'UserLogout'])->name('user.logout');
+Route::get('/user/profil', [ClientController::class, 'UserProfile'])->name('user.profil');
+Route::put('/profile',[Clientcontroller::class, 'profileUpdate'])->name('profile.update');
+
+
 
 //CATEGORIES
 Route::get('/categories', [CategoryController::class, 'categories'])->name('categories');
