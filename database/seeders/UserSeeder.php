@@ -28,13 +28,17 @@ class UserSeeder extends Seeder
                 'name'=>'admin',
                 'email'=>'admin@sull.com',
                 'password'=>'123',
-                'usertype' => '1'
+                'usertype' => '1',
+                'address' => 'churchill',
+                'phone' => '0405667788'
             ],
             [
                 'name'=>'abou',
                 'email'=>'abou@sull.com',
                 'password'=>'123',
-                'usertype' => '0'
+                'usertype' => '0',
+                'address' => 'Brugman',
+                'phone' => '0405967798'
             ],
         ];
 
@@ -46,6 +50,8 @@ class UserSeeder extends Seeder
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'usertype' => $data['usertype'],
+                'address' => $data['address'],
+                'phone' => $data['phone'],
                 'password' => Hash::make($data['password']),
             ]);
         }

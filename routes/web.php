@@ -57,8 +57,18 @@ Route::get('/desactiver_product/{id}', [ProductController::class, 'desactiver'])
 Route::get('/activer_product/{id}', [ProductController::class, 'activer'])->name('activer_product');
 Route::get('/select_par_category/{category_name}', [ProductController::class, 'select_par_category']);
 
-// Route::get('/delete-cart/{id}',[ShopController::class, 'deleteCart']);
 
+Route::post('/add-to-cart', [ShopController::class, 'addProduct']);
+
+Route::post('/update-cart', [ShopController::class, 'updateCart']);
+
+Route::post('/delete-cart', [ShopController::class, 'deleteCart']);
+
+Route::get('/checkout',[ShopController::class, 'checkout']);
+
+Route::post('/place-order',[ShopController::class, 'place_order'])->name('place-order');
+
+Route::post('/stripe/order',[ShopController::class, 'stripe'])->name('stripe');
 
 
 Route::group(['>middleware' => 'auth'], function () {
@@ -69,10 +79,9 @@ Route::group(['>middleware' => 'auth'], function () {
     Route::get('/profile', function () {
         return view('profile');
     })->name('profile');
-    Route::post('/add-to-cart', [ShopController::class, 'addProduct']);
 
-    Route::get('/cart_view', [ShopController::class, 'cartView'])->name('cart_view');
+Route::get('/cart_view', [ShopController::class, 'cartView'])->name('cart_view');
+   
 
-    Route::post('/delete-cart', [ShopController::class, 'deleteCart']);
 });
 require __DIR__ . '/auth.php';

@@ -15,38 +15,51 @@
                                         <h6 class="mb-0 text-muted">3 items</h6>
                                     </div>
                                     <hr class="my-4">
+                                    @php
+                                        $total = 0;
+                                    @endphp
                                     @foreach ($cartItems as $item)
-                                        <div class="row mb-4 d-flex justify-content-between align-items-center  product_data">
+                                        <div
+                                            class="row mb-4 d-flex justify-content-between align-items-center product_data ">
+
                                             <div class="col-md-2 col-lg-2 col-xl-2">
-                                                <img src="{{asset('storage/product_images/' . $item->product->poster_url)}}"
+                                                <img src="{{ asset('storage/product_images/' . $item->product->poster_url) }}"
                                                     class="img-fluid rounded-3" alt="Cotton T-shirt">
                                             </div>
-                                            <div class="col-md-3 col-lg-3 col-xl-3">
-                                                <h6 class="text-muted">{{$item->product->name}}</h6>
+                                            <div class="col-md-3 col-lg-3 col-xl-3 py-2">
+                                                <h6 class="text-muted">{{ $item->product->name }}</h6>
                                                 {{-- <h6 class="text-black mb-0">Cotton T-shirt</h6> --}}
                                             </div>
-                                            
-                                            <input type="hidden" class="product_id" name="product_id" value="{{$item->product_id}}">
-                                            
-                                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex quantity ">
-                                                {{-- <button class="btn btn-link decrement"><i class="fas fa-minus"></i></button> --}}
-                                                <input class="form-control qty-input text-center " name="quantity" id="quantity" type="number" value="{{$item->quantity}}"/>
-                                                {{-- <button class="btn btn-link px-2 increment" ><i class="fas fa-plus"></i></button> --}}
+
+                                            <input type="hidden" class="product_id" name="product_id"
+                                                value="{{ $item->product_id }}">
+
+                                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex justify-content-center ">
+                                                <button class="btn btn-link decrement updateQuantity"><i
+                                                        class="fas fa-minus"></i></button>
+                                                <input class="form-control qty-input text-center " name="quantity"
+                                                    id="quantity" type="text" value="{{ $item->quantity }}" />
+                                                <button class="btn btn-link px-2 increment updateQuantity"><i
+                                                        class="fas fa-plus"></i></button>
                                             </div>
-                                          
-                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                <h6 class="mb-0">{{$item->product->price}}</h6>
+
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1 price py-2">
+                                                <h6 class="mb-0">{{ $item->product->price }}</h6>
                                             </div>
-                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end ">
-                                                <button class="btn btn-danger delete-cart"><i class="fas fa-trash"></i></button>
-                                                {{-- <a  href="{{ url('delete-cart', $item->product_id) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a> --}}
+                                            <div class="col-md-1 col-lg-1 col-xl-1 py-2 text-end d-flex justify-content-center">
+                                                <button class="btn btn-danger delete-cart"><i
+                                                        class="fas fa-trash"></i></button>
                                             </div>
                                         </div>
+
+                                        @php
+                                            $total += $item->product->price * $item->quantity;
+                                        @endphp
                                     @endforeach
                                     <hr class="my-4">
 
                                     <div class="pt-5">
-                                        <h6 class="mb-0"><a href="{{('/menu')}}" class="text-body"><i
+                                        <h6 class="mb-0"><a href="{{ '/menu' }}" class="text-body"><i
                                                     class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
                                     </div>
                                 </div>
@@ -56,21 +69,11 @@
                                     <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
                                     <hr class="my-4">
 
-                                    <div class="d-flex justify-content-between mb-4">
+                                    {{-- <div class="d-flex justify-content-between mb-4">
                                         <h5 class="text-uppercase">items 3</h5>
-                                        <h5>€ 132.00</h5>
-                                    </div>
+                                        <h5></h5>
+                                    </div> --}}
 
-                                    <h5 class="text-uppercase mb-3">Shipping</h5>
-
-                                    <div class="mb-4 pb-2">
-                                        <select class="select">
-                                            <option value="1">Standard-Delivery- €5.00</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                            <option value="4">Four</option>
-                                        </select>
-                                    </div>
 
                                     <h5 class="text-uppercase mb-3">Give code</h5>
 
@@ -85,11 +88,11 @@
 
                                     <div class="d-flex justify-content-between mb-5">
                                         <h5 class="text-uppercase">Total price</h5>
-                                        <h5>€ 137.00</h5>
+                                        <h5>€ {{  $total  }}</h5>
                                     </div>
 
-                                    <button type="button" class="btn btn-dark btn-block btn-lg"
-                                        data-mdb-ripple-color="dark">Register</button>
+                                    <a href="{{url('checkout')}}" class="btn btn-outline-success btn-block btn-lg"
+                                        data-mdb-ripple-color="dark">checkout</a>
 
                                 </div>
                             </div>
