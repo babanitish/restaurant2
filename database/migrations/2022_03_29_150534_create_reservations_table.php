@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('phone');
+            $table->string('email');
+            $table->string('guest');
+            $table->string('time');
+            $table->string('date');
+            $table->string('message');
+
             $table->foreignId('user_id');
             $table->timestamps();
 

@@ -176,11 +176,12 @@
                                             Fast Food Restaurant
                                         </h1>
                                         <p>
-                                            Un jour, au restaurant, Chuck Norris a commandé un steak. Et le steak a obéi.
+                                            Un jour, au restaurant, Chuck Norris a commandé un steak. Et le steak a
+                                            obéi.
                                             Bienvenu chez nous.
                                         </p>
                                         <div class="btn-box">
-                                            <a href="{{route('menu')}}" class="btn1">
+                                            <a href="{{ route('menu') }}" class="btn1">
                                                 Order Now
                                             </a>
                                         </div>
@@ -519,61 +520,64 @@
 
     <!-- book section -->
     <section class="book_section layout_padding">
+            {{-- @if (Session::has('status'))
+                <div class="alert alert-success">
+                    {{Session::get('status')}}
+                </div>
+            @endif --}}
         <div class="container">
-            <div class="heading_container">
-                <h2>
-                    Book A Table
-                </h2>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form_container">
-                        <form action="">
-                            <div>
-                                <input type="text" class="form-control" placeholder="Your Name" />
-                            </div>
-                            <div>
-                                <input type="text" class="form-control" placeholder="Phone Number" />
-                            </div>
-                            <div>
-                                <input type="email" class="form-control" placeholder="Your Email" />
-                            </div>
-                            <div>
-                                <select class="form-control nice-select wide">
-                                    <option value="" disabled selected>
-                                        How many persons?
-                                    </option>
-                                    <option value="">
-                                        2
-                                    </option>
-                                    <option value="">
-                                        3
-                                    </option>
-                                    <option value="">
-                                        4
-                                    </option>
-                                    <option value="">
-                                        5
-                                    </option>
-                                </select>
-                            </div>
-                            <div>
-                                <input type="date" class="form-control">
-                            </div>
-                            <div class="btn_box">
-                                <button>
-                                    Book Now
-                                </button>
-                            </div>
-                        </form>
+            <form action="">
+                <div class="heading_container">
+                    <h2>
+                        Book A Table
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form_container">
+                            <form action="{{ route('reservation') }}" method="post">
+                                @csrf
+                                <div>
+                                    <input type="text" name="name" class="form-control" placeholder="Your Name" required/>
+                                </div>
+                                <div>
+                                    <input type="text" name="phone" class="form-control" placeholder="Phone Number" required/>
+                                </div>
+                                <div>
+                                    <input type="email" name="email" class="form-control" placeholder="Your Email" required/>
+                                </div>
+                                <div>
+                                    <input type="number" name="guest" class="form-control nice-select wide"
+                                        placeholder="number of person" />
+                                </div>
+                                <div>
+                                    <input type="time" name="time" class="form-control"
+                                        class="form-control nice-select wide" />
+                                </div>
+                                <div>
+                                    <input type="date" name="date" class="form-control"
+                                        class="form-control nice-select wide" />
+                                </div>
+                                <div>
+                                   <fieldset>
+                                       <textarea name="message" id="message" cols="57" rows="5" ></textarea>
+                                   </fieldset>
+                                </div>
+                                <div class="btn_box">
+                                    <button type="submit">
+                                        Book Now
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="map_container ">
+                            <div id="googleMap"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="map_container ">
-                        <div id="googleMap"></div>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </section>
     <!-- end book section -->
@@ -623,7 +627,7 @@
                                 </p>
                             </div>
                             <div class="img-box">
-                                
+
                                 <img src="{{ asset('images/client2.jpg') }}" alt="" class="box-img">
                             </div>
                         </div>
@@ -750,7 +754,7 @@
             <div class="modal-content">
                 {{-- @foreach ($products as $product) --}}
                 <div class="modal-header" {{-- id="product_data" --}}>
-                {{-- <input type="hidden" class="prod_id" value="{{ $product->id }}"> --}}
+                    {{-- <input type="hidden" class="prod_id" value="{{ $product->id }}"> --}}
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -830,9 +834,9 @@
                     <input class="form-control qty-input text-center " name="quantity" id="quantity" type="text"
                         value="1" />
                     <button class="btn btn-link px-2 increment updateQuantity">+</i></button>
-                {{-- <input type="hidden" class="prod_id" id="$product_id" value="{{ $product->id }}"> --}}
+                    {{-- <input type="hidden" class="prod_id" id="$product_id" value="{{ $product->id }}"> --}}
 
-                    <button type="button" id="{{$product->id}}" class="btn btn-primary addToCart">Ajouter</button>
+                    <button type="button" id="{{ $product->id }}" class="btn btn-primary addToCart">Ajouter</button>
                 </div>
                 {{-- @endforeach --}}
             </div>
@@ -840,7 +844,6 @@
     </div>
 
     <script>
-
         // function add(id){
         //     var i = $('#product_id').val();
         //     console.log(i);
@@ -857,7 +860,7 @@
         //     });
         // }
 
-            $('.addToCart').click(function(e) {
+        $('.addToCart').click(function(e) {
             e.preventDefault();
             var i = $('#product_id').val();
             console.log(i);
@@ -880,9 +883,9 @@
                 }
             });
         });
-/**
- * 
-*/
+        /**
+         * 
+         */
         $('.increment').click(function(e) {
             e.preventDefault();
 
@@ -918,8 +921,6 @@
             }
 
         });
-
-    
     </script>
 
 

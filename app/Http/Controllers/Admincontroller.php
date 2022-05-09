@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -21,4 +22,18 @@ class Admincontroller extends Controller
         $users->delete();
         return redirect()->back();
     }
+
+
+    /**
+     * view reservation by admin
+     */
+
+     public function viewReservation(){
+
+        $reservations = Reservation::all();
+
+        return view("admin.reservation",[
+            'reservations' => $reservations
+        ]);
+     }
 }
