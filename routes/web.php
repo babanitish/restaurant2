@@ -45,6 +45,13 @@ Route::get('/edit_category/{id}', [CategoryController::class, 'edit'])->name('ed
 Route::post('/update_category/{id}', [CategoryController::class, 'update'])->name('update_category');
 Route::get('/delete_category/{id}', [CategoryController::class, 'delete'])->name('delete_category');
 
+//RESERVATION
+
+Route::post('/reservation', [Clientcontroller::class, 'reservation'])->name('reservation');
+Route::get('admin/view_reservation', [Admincontroller::class, 'viewReservation'])->name('view_reservation');
+
+
+
 
 //PRODUCTS
 Route::get('/products', [ProductController::class, 'product'])->name('products');
