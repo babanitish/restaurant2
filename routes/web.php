@@ -23,7 +23,7 @@ use App\Http\Controllers\ShopController;
 // });
 
 Route::get('/', [Clientcontroller::class, 'home']);
-Route::get('/menu', [Clientcontroller::class, 'menu']);
+Route::get('/menu', [Clientcontroller::class, 'menu'])->name('menu');
 Route::get('/about', [Clientcontroller::class, 'about']);
 Route::get('/book', [Clientcontroller::class, 'book']);
 
@@ -48,7 +48,7 @@ Route::get('/delete_category/{id}', [CategoryController::class, 'delete'])->name
 //RESERVATION
 
 Route::post('/reservation', [Clientcontroller::class, 'reservation'])->name('reservation');
-Route::get('admin/view_reservation', [Admincontroller::class, 'viewReservation'])->name('view_reservation');
+Route::get('reservation', [Admincontroller::class, 'viewReservation'])->name('view_reservation');
 
 
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusToProducts extends Migration
+class AddExtraIdToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class AddStatusToProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('status')->default(1);
+            $table->foreignId('extra_id')->nullable();
+            $table->foreign('extra_id')->references('id')->on('extras')
+            ->onDelete('restrict')->onUpdate('cascade');
         });
     }
 
@@ -26,7 +28,7 @@ class AddStatusToProducts extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('status');
+            $table->dropColumn('extra_id');
         });
     }
 }

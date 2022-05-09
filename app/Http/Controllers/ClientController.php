@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Category;
 use App\Models\Product;
-
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -115,4 +115,37 @@ class ClientController extends Controller
 
         return redirect()->route('login')->with($notifications);
     }
+
+    /**
+     * reservation 
+     */
+
+
+    public function reservation(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'guest' => 'required',
+            'time' => 'required',
+            'date' => 'required',
+        ]);
+
+
+        $reservation = new reservation();
+        $reservation->user_id = Auth::id();
+        $reservation->name = $request->input('name');
+        $reservation->phone = $request->input('phone');
+        $reservation->email = $request->input('email');
+        $reservation->guest = $request->input('guest');
+        // $reservation->date = $request->input('date');
+        $reservation->time = $request->input('time');
+        $reservation->message = $request->input('message');
+        $reservation->save();
+
+        return redirect()->back()->with('status', ' success');
+    }
+
+    
 }

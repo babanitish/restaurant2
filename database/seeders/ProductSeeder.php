@@ -25,29 +25,98 @@ class ProductSeeder extends Seeder
         $products = [
             [
 
-                'name' => 'Ayiti',
-                'description' => "Un homme est bloqué à l’aéroport.\n "
-                    . 'Questionné par les douaniers, il doit alors justifier son identité, '
-                    . 'et surtout prouver qu\'il est haïtien – qu\'est-ce qu\'être haïtien ?',
-                'poster_url' => 'client1.jpg',
-                'price' => 8.50,
-                'category_name' => 'Pizza',
+                'name' => 'Hamburger',
+                'description' => 'Sauce ketchup-moutarde, oignons, cornichons et steak haché.',
+                'poster_url' => 'hamburger.jpg',
+                'price' => 3.90,
+                'category_id' => 1,
+                'status' => 1,
 
             ],
             [
 
-                'name' => 'Cible mouvante',
-                'description' => 'Dans ce « thriller d’anticipation », des adultes semblent alimenter '
-                    . 'et véhiculer une crainte féroce envers les enfants âgés entre 10 et 12 ans.',
-                'poster_url' => 'client2.jpg',
-                'price' => 9.00,
-                'category_name' => 'Burger',
+                'name' => 'Cheeseburger ', 
+                'description' => 'Sauce ketchup-moutarde, oignons, cornichons, steak haché et cheddar.',
+                'poster_url' => 'Cheeseburger.jpg',
+                'price' => 3.80,
+                'category_id' => 1,
+                'status' => 1,
+            ],
+            [
+
+                'name' => 'Double cheese  ', 
+                'description' => 'Sauce ketchup-moutarde, oignons, cornichons, double steak haché et double cheddar.',
+                'poster_url' => 'Double cheese.jpg',
+                'price' => 3.80,
+                'category_id' => 1,
+                'status' => 1,
+            ],
+            [
+
+                'name' => 'Chicken burger  ', 
+                'description' => 'Sauce ketchup-moutarde, oignons, cornichons, double steak haché et double cheddar.',
+                'poster_url' => 'Chicken burger.jpg',
+                'price' => 3.90,
+                'category_id' => 1,
+                'status' => 1,
+            ],
+            [
+
+                'name' => 'Fish burger  ', 
+                'description' => 'Sauce mayonnaise, salade, tomate et steak de poulet.',
+                'poster_url' => 'Fish burger.jpg',
+                'price' => 3.90,
+                'category_id' => 1,
+                'status' => 1,
+            ],
+
+            // Pizza
+            [
+
+                'name' => 'pizza American  ', 
+                'description' => 'Sauce tomate, mozzarella & pepperoni.',
+                'poster_url' => 'american.jpg',
+                'price' => 8.90,
+                'category_id' => 2,
+                'status' => 1,
+            ],  [
+
+                'name' => 'pizza Margherita ', 
+                'description' => 'Sauce tomate, mozzarella, extra mozzarella & origan.',
+                'poster_url' => 'margherita.jpg',
+                'price' => 8.90,
+                'category_id' => 2,
+                'status' => 1,
+            ],  [
+
+                'name' => 'pizza Hot & Spicy ', 
+                'description' => 'Sauce tomate, mozzarella & pepperoni, poulet, oignon, poivron, p...',
+                'poster_url' => 'spicy.jpg',
+                'price' => 8.90,
+                'category_id' => 2,
+                'status' => 1,
+            ],  [
+
+                'name' => 'Pizza BBQ Chicken & Bacon ', 
+                'description' => 'BBQ sauce, mozzarella, poulet grillé et bacon.',
+                'poster_url' => 'bacon.jpg',
+                'price' => 8.90,
+                'category_id' => 2,
+                'status' => 1,
+            ],  [
+
+                'name' => 'Pizza 4 Stagioni ', 
+                'description' => 'Sauce tomate, mozzarella, pepperoni, jambon, poivrons & champignons.',
+                'poster_url' => 'stagioni.jpg',
+                'price' => 8.90,
+                'category_id' => 2,
+                'status' => 1,
             ],
         ];
 
         //Prepare the data
         foreach ($products as &$data) {
-            $category = Category::firstWhere('name',$data['category_name']);
+            $category = Category::firstWhere('id',$data['category_id']);
             DB::table('products')->insert([
                 'name' => $data['name'],
                 'description' => $data['description'],
