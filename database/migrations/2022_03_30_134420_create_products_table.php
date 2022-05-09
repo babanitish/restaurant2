@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name', 255);
             $table->decimal('price',10,2)->nullable();
             $table->text('description')->nullable();
-            // $table->string('category',50);
 
             // $table->foreignId('shop_id');
              $table->foreignId('category_id');

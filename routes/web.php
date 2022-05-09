@@ -23,7 +23,7 @@ use App\Http\Controllers\ShopController;
 // });
 
 Route::get('/', [Clientcontroller::class, 'home']);
-Route::get('/menu', [Clientcontroller::class, 'menu']);
+Route::get('/menu', [Clientcontroller::class, 'menu'])->name('menu');
 Route::get('/about', [Clientcontroller::class, 'about']);
 Route::get('/book', [Clientcontroller::class, 'book']);
 
