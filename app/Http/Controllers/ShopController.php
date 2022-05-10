@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Order;
 use App\Models\orderProduct;
 use App\Models\Product;
@@ -11,7 +10,6 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 // use Gloudemans\Shoppingcart\Facades\Cart;
 
 class ShopController extends Controller
@@ -21,6 +19,10 @@ class ShopController extends Controller
      */
     public function addProduct(Request $request)
     {
+        $user_id = Auth::id();
+
+        $count = Shop::where('user_id',$user_id)->count();
+
         $product_id = $request->input('product_id');
         if (Auth::check()) {
             $prod_check = Product::where('id', $product_id)->first();
@@ -48,14 +50,14 @@ class ShopController extends Controller
      *  liste des produits dans le panier 
      *
      */
-    public function cartView()
+    public function cartView($id)
     {
         $cartItems = Shop::where('user_id', Auth::id())->get();
-        // $count = Shop::where('user_id',$id)->count();
+        $count = Shop::where('user_id',$id)->count();
         // dd($count);
         return view('cart.cartList', [
             'cartItems' => $cartItems,
-            // 'count' => $count,
+             'count' => $count,
 
         ]);
     }
@@ -93,6 +95,7 @@ class ShopController extends Controller
 
             if (Shop::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {
                 $shop = Shop::where('product_id', $product_id)->where('user_id', Auth::id())->first();
+                // dd($shop);
                 $shop->quantity = $quantity;
                 $shop->update();
 
@@ -108,9 +111,13 @@ class ShopController extends Controller
      */
     public function checkout()
     {
+        $user_id = Auth::id();
+        $count = Shop::where('user_id', $user_id)->count();
         $cartItems = Shop::where('user_id', Auth::id())->get();
         return view('cart.checkout', [
-            'cartItems' => $cartItems
+            'cartItems' => $cartItems,
+            'count' => $count,
+
         ]);
     }
 

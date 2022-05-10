@@ -28,7 +28,7 @@ Route::get('/about', [Clientcontroller::class, 'about']);
 Route::get('/book', [Clientcontroller::class, 'book']);
 
 
-Route::get('/redirects', [Clientcontroller::class, 'redirects']);
+Route::get('/redirects', [Clientcontroller::class, 'redirects'])->name('redirects');
 
 Route::put('/profile', [Clientcontroller::class, 'profileUpdate'])->name('profile.update');
 
@@ -88,7 +88,7 @@ Route::group(['>middleware' => 'auth'], function () {
         return view('profile');
     })->name('profile');
 
-Route::get('/cart_view', [ShopController::class, 'cartView'])->name('cart_view');
+Route::get('/cart_view/{id}', [ShopController::class, 'cartView'])->name('cart_view');
    
 
 });

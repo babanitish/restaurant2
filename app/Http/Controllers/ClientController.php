@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Shop;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +19,14 @@ class ClientController extends Controller
     {
         $products = Product::all()->where('status', 1);
         $categories = Category::all();
+        $user_id = Auth::id();
+        $count = Shop::where('user_id', $user_id)->count();
+
         return view('client.home', [
             'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'count' => $count,
+
 
         ]);
     }
@@ -32,9 +38,12 @@ class ClientController extends Controller
     {
         $products = Product::all()->where('status', 1);
         $categories = Category::all();
+        $user_id = Auth::id();
+        $count = Shop::where('user_id', $user_id)->count();
         return view('client.menu', [
             'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'count' => $count,
 
         ]);
     }
@@ -43,7 +52,12 @@ class ClientController extends Controller
      */
     public function book()
     {
-        return view('client.book');
+        $user_id = Auth::id();
+        $count = Shop::where('user_id', $user_id)->count();
+        return view('client.book', [
+            'count' => $count,
+
+        ]);
     }
 
     /**
@@ -51,7 +65,12 @@ class ClientController extends Controller
      */
     public function about()
     {
-        return view('client.about');
+        $user_id = Auth::id();
+        $count = Shop::where('user_id', $user_id)->count();
+        return view('client.about', [
+            'count' => $count,
+
+        ]);
     }
 
     /**
@@ -59,6 +78,8 @@ class ClientController extends Controller
      */
     function redirects()
     {
+        $user_id = Auth::id();
+        $count = Shop::where('user_id', $user_id)->count();
         $products = Product::all();
         $categories = Category::all();
 
@@ -69,7 +90,8 @@ class ClientController extends Controller
         } else {
             return view('client.home', [
                 'products' => $products,
-                'categories' => $categories
+                'count' => $count,
+                'categories' => $categories,
 
             ]);
         }
@@ -139,13 +161,11 @@ class ClientController extends Controller
         $reservation->phone = $request->input('phone');
         $reservation->email = $request->input('email');
         $reservation->guest = $request->input('guest');
-       //  $reservation->date = $request->input('date');
+        //  $reservation->date = $request->input('date');
         $reservation->time = $request->input('time');
         $reservation->message = $request->input('message');
         $reservation->save();
 
         return redirect()->route('menu');
     }
-
-    
 }

@@ -93,6 +93,7 @@ $(".client_owl-carousel").owlCarousel({
                 'product_id': product_id
             },
             success: function (response) {
+                 window.location.reload();
                 alert(response.status);
 
             }
@@ -179,6 +180,7 @@ $(".client_owl-carousel").owlCarousel({
         var product_id = $(this).closest('.product_data').find('.product_id').val();
         var quantity = $(this).closest('.product_data').find('.qty-input').val();
 
+    //     console.log(quantity);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -187,14 +189,14 @@ $(".client_owl-carousel").owlCarousel({
     
         $.ajax({
             type: "POST",
-            url: "update-cart",
+            url: "/update-cart",
             data: {
                 'product_id':product_id,
                 'quantity':quantity
             },
             success: function (response) {
-                alert(response.status);
-            //    window.location.reload();
+                // alert(response.status);
+                window.location.reload();
             }
         });
 
