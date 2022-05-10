@@ -27,29 +27,26 @@
                 <tbody>
                     <tr>
                         @foreach ($reservations as $reservation)
-                            
-                        
-                        <th>{{$reservation->name}}</th>
-                        <td>{{$reservation->email}}</td>
-                        <td>{{$reservation->phone}}</td>
-                        <td>{{$reservation->date}}</td>
-                        <td>{{$reservation->time}}</td>
-                        <td>{{$reservation->message}}</td>
-                        <td>
+                            <th>{{ $reservation->name }}</th>
+                            <td>{{ $reservation->email }}</td>
+                            <td>{{ $reservation->phone }}</td>
+                            <td>{{ $reservation->date }}</td>
+                            <td>{{ $reservation->time }}</td>
+                            <td>{{ $reservation->message }}</td>
+                            <td>
 
-                            <a href="#" class="btn btn-primary a-btn-slide-text">
-                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                <span><strong>Edit</strong></span>
-                            </a>
+                                <a href="#" class="btn btn-primary a-btn-slide-text">
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    <span><strong>Edit</strong></span>
+                                </a>
 
-                            <a href="#" class="btn btn-primary a-btn-slide-text">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                <span><strong>Delete</strong></span>
-                            </a>
-                        </td>
-                        @endforeach
+                                <a href="#" class="btn btn-primary a-btn-slide-text">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    <span><strong>Delete</strong></span>
+                                </a>
+                            </td>
                     </tr>
-
+                    @endforeach
                 </tbody>
             </table>
         </div>

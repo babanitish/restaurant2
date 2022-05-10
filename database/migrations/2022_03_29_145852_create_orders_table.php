@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone');
             $table->foreignId('user_id');
-            // $table->decimal('total',8,2);
+             $table->decimal('total',8,2)->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')

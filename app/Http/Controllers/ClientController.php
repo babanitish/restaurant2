@@ -133,18 +133,18 @@ class ClientController extends Controller
         ]);
 
 
-        $reservation = new reservation();
+        $reservation = new reservation;
         $reservation->user_id = Auth::id();
         $reservation->name = $request->input('name');
         $reservation->phone = $request->input('phone');
         $reservation->email = $request->input('email');
         $reservation->guest = $request->input('guest');
-        // $reservation->date = $request->input('date');
+       //  $reservation->date = $request->input('date');
         $reservation->time = $request->input('time');
         $reservation->message = $request->input('message');
         $reservation->save();
 
-        return redirect()->back()->with('status', ' success');
+        return redirect()->route('menu');
     }
 
     

@@ -69,6 +69,8 @@ $(".client_owl-carousel").owlCarousel({
     }
 });
 
+
+
 /**
  * add to cart ajax
  */
