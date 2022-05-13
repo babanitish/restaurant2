@@ -94,25 +94,25 @@
                             @endif
                             
                             
-                            @auth
-                            <a class="cart_link" href="{{ route('cart_view', Auth::user()->id) }}">
+                            {{-- @auth --}}
+                            <a class="cart_link" href="{{route('cart.index')}}">
 
                                 <span class="price" style="color:rgb(255, 255, 255)">
                                     <i class="fa fa-shopping-cart"></i>
-                                    <b>{{$count}}</b>
+                                    <b>{{Cart::count()}}</b>
                                 </span>
                             </a>
-                            @endauth
-                            @guest
+                            {{-- @endauth --}}
+                            {{-- @guest --}}
                             
-
+{{-- 
                                 <span class="price" style="color:rgb(255, 255, 255)">
                                     <i class="fa fa-shopping-cart"></i>
                                     <b>0</b>
                                 </span>
                           
                             @endguest
-                            <form class="form-inline">
+                            <form class="form-inline"> --}}
                                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                 </button>

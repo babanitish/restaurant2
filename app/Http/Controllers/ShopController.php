@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
+
+
+
     /**
      * Ajout de produit dans la table Shop
      */
@@ -85,26 +88,26 @@ class ShopController extends Controller
      * modifier un produit dans le panier 
      */
 
-    public function updateCart(Request $request)
-    {
+    // public function updateCart(Request $request)
+    // {
 
-        $product_id = $request->input('product_id');
-        $quantity = $request->input('quantity');
+    //     $product_id = $request->input('product_id');
+    //     $quantity = $request->input('quantity');
 
-        if (Auth::check()) {
+    //     if (Auth::check()) {
 
-            if (Shop::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {
-                $shop = Shop::where('product_id', $product_id)->where('user_id', Auth::id())->first();
-                // dd($shop);
-                $shop->quantity = $quantity;
-                $shop->update();
+    //         if (Shop::where('product_id', $product_id)->where('user_id', Auth::id())->exists()) {
+    //             $shop = Shop::where('product_id', $product_id)->where('user_id', Auth::id())->first();
+    //             // dd($shop);
+    //             $shop->quantity = $quantity;
+    //             $shop->update();
 
-                return response()->json(["status" => "updated"]);
-            }
-        } else {
-            return response()->json(["status" => "login please"]);
-        }
-    }
+    //             return response()->json(["status" => "updated"]);
+    //         }
+    //     } else {
+    //         return response()->json(["status" => "login please"]);
+    //     }
+    // }
 
     /**
      * page checkout de la commande

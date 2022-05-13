@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CartController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,10 +67,21 @@ Route::get('/desactiver_product/{id}', [ProductController::class, 'desactiver'])
 Route::get('/activer_product/{id}', [ProductController::class, 'activer'])->name('activer_product');
 Route::get('/select_par_category/{category_name}', [ProductController::class, 'select_par_category']);
 
+//CART
+Route::post('/add-to-cart', [CartController::class, 'ajouter'])->name('ajout');
 
-Route::post('/add-to-cart', [ShopController::class, 'addProduct']);
+Route::get('/panier', [CartController::class, 'index'])->name('cart.index');
 
-Route::post('/update-cart', [ShopController::class, 'updateCart']);
+Route::delete('/panier/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
+
+Route::get('/vider', function(){
+    Cart::destroy();
+});
+
+Route::post('/update-cart/{rowId}', [CartController::class, 'update']);
+
+
+// Route::post('/update-cart', [ShopController::class, 'updateCart']);
 
 Route::post('/delete-cart', [ShopController::class, 'deleteCart']);
 

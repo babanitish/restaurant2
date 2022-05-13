@@ -5,23 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Cart extends Model
 {
     use HasFactory;
 
+     
          /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name','poster_url','price','description','category_id','shop_id'];
-//'shop_id','category_id'
+    protected $fillable = ['quantity','user_id','produit_id'];
+
    /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'products';
+    protected $table = 'shops';
 
    /**
      * Indicates if the model should be timestamped.
@@ -30,19 +31,13 @@ class Product extends Model
      */
     public $timestamps = false;
 
-
-    public function cart()
+    public function user()
     {
-        return $this->belongsTo(Cart::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function shop()
+    public function product()
     {
-        return $this->belongsTo(Shop::class);
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
+        return $this->hasMany(Product::class);
     }
 }

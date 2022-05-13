@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Shop;
 use App\Models\Reservation;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,7 @@ class ClientController extends Controller
      */
     public function home()
     {
+        (Cart::content());
         $products = Product::all()->where('status', 1);
         $categories = Category::all();
         $user_id = Auth::id();
