@@ -114,14 +114,18 @@ class ShopController extends Controller
      */
     public function checkout()
     {
-        $user_id = Auth::id();
-        $count = Shop::where('user_id', $user_id)->count();
-        $cartItems = Shop::where('user_id', Auth::id())->get();
-        return view('cart.checkout', [
-            'cartItems' => $cartItems,
-            'count' => $count,
+        if (Auth::check()) {
+            $user_id = Auth::id();
+            $count = Shop::where('user_id', $user_id)->count();
+            $cartItems = Shop::where('user_id', Auth::id())->get();
+            return view('checkout.index', [
+                'cartItems' => $cartItems,
+                'count' => $count,
 
-        ]);
+            ]);
+        }else{
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -180,7 +184,7 @@ class ShopController extends Controller
             'statement_descriptor' => 'Custom descriptor',
             'metadata' => ['order_id' => uniqid()]
         ]);
-        //    dd($charge);
-        return redirect()->back()->with(["status" => "payement success"]);
+            dd($charge);
+        return redirect()->route('merci')->with(["status" => "votre payement a été accepté Merci."]);
     }
 }

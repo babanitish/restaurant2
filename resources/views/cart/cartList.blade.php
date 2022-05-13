@@ -96,7 +96,7 @@
                                     <h5>€ {{  Cart::total()  }}</h5>
                                 </div>
 
-                                <a href="{{url('checkout')}}" class="btn btn-outline-success btn-block btn-lg"
+                                <a href="{{route('checkout.index')}}" class="btn btn-outline-success btn-block btn-lg"
                                     data-mdb-ripple-color="dark">checkout</a>
 
                             </div>

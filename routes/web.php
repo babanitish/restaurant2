@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\checkoutController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 /*
@@ -80,14 +81,18 @@ Route::get('/vider', function(){
 
 Route::post('/update-cart/{rowId}', [CartController::class, 'update']);
 
+Route::get('/merci', function(){
+    return view('client.merci');
+})->name('merci');
+/////////////////////////////////////////
 
-// Route::post('/update-cart', [ShopController::class, 'updateCart']);
+//CHECKOUT
 
-Route::post('/delete-cart', [ShopController::class, 'deleteCart']);
+Route::get('/payment',[checkoutController::class, 'index'])->name('checkout.index');
 
-Route::get('/checkout',[ShopController::class, 'checkout']);
+Route::post('/order',[checkoutController::class, 'payer'])->name('place-order');
 
-Route::post('/place-order',[ShopController::class, 'place_order'])->name('place-order');
+
 
 Route::post('/stripe/order',[ShopController::class, 'stripe'])->name('stripe');
 
