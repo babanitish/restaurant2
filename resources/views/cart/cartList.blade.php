@@ -16,16 +16,14 @@
                                     <h6 class="mb-0 text-muted">3 items</h6>
                                 </div>
                                 <hr class="my-4">
-                                {{-- @php
-                                    $total = 0;
-                                @endphp --}}
+                              
                                 @foreach (cart::content() as $product)
                                     <div
                                         class="row mb-4 d-flex justify-content-between align-items-center product_data ">
 
                                         <div class="col-md-2 col-lg-2 col-xl-2">
                                             <img src="{{ asset('storage/product_images/' . $product->options['poster_url']) }}"
-                                                class="img-fluid rounded-3" alt="">
+                                                class="img-fluid rounded-3" alt="{{ $product->name }}">
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-xl-3 py-2">
                                             <h6 class="text-muted">{{ $product->name }}</h6>
@@ -56,10 +54,6 @@
                                         </form>
                                         </div>
                                     </div>
-
-                                    {{-- @php
-                                        $total += $item->product->price * $item->quantity;
-                                    @endphp --}}
                                 @endforeach
                                 <hr class="my-4">
 

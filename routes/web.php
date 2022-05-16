@@ -25,7 +25,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 //     return view('welcome');
 // });
 
-Route::get('/', [Clientcontroller::class, 'home']);
+Route::get('/', [Clientcontroller::class, 'home'])->name('/');
 Route::get('/menu', [Clientcontroller::class, 'menu'])->name('menu');
 Route::get('/about', [Clientcontroller::class, 'about']);
 Route::get('/book', [Clientcontroller::class, 'book']);
@@ -38,7 +38,16 @@ Route::put('/profile', [Clientcontroller::class, 'profileUpdate'])->name('profil
 Route::get('/users', [Admincontroller::class, 'user'])->name('users');
 Route::get('/deleteuser/{id}', [Admincontroller::class, 'deleteuser']);
 
+
+
+/////////////////////////////
 Route::get('/user/logout', [ClientController::class, 'UserLogout'])->name('user.logout');
+Route::get('/user/profil', [ClientController::class, 'UserProfile'])->name('user.profil');
+Route::put('/profile/update',[Clientcontroller::class, 'profileUpdate'])->name('profile.update');
+Route::get('/profile/order',[Clientcontroller::class, 'profileOrder'])->name('user.order');
+
+
+
 
 //CATEGORIES
 Route::get('/categories', [CategoryController::class, 'categories'])->name('categories');
@@ -94,8 +103,9 @@ Route::post('/order',[checkoutController::class, 'payer'])->name('place-order');
 
 
 
-Route::post('/stripe/order',[ShopController::class, 'stripe'])->name('stripe');
+// Route::post('/stripe/order',[ShopController::class, 'stripe'])->name('stripe');
 
+//////////////////////////////////////////
 
 Route::group(['>middleware' => 'auth'], function () {
     Route::get('/dashboard', function () {

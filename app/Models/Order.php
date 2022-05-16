@@ -15,7 +15,7 @@ class Order extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id','name','email','address','phone'];
+    protected $fillable = ['user_id','name','email','address','phone','amount'];
 
    /**
      * The table associated with the model.
@@ -34,5 +34,9 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
     }
 }

@@ -14,7 +14,8 @@
                         <div class="card-body px-5 py-5">
                             <h3 class="card-title text-left mb-3">Register</h3>
                             <form method="POST" action="{{ route('register') }}">
-
+                                <!-- Validation Errors -->
+                                <x-auth-validation-errors class="mb-4" :errors="$errors" />
                                 @csrf
                                 <div class="form-group">
                                     <label for="name" :value="__('Name')">Username</label>
@@ -47,7 +48,8 @@
                                     <button class="btn btn-google col">
                                         <i class="mdi mdi-google-plus"></i> Google plus </button>
                                 </div>
-                                <p class="sign-up text-center">Already have an Account?<a href="{{ route('login') }}"> Sign Up</a></p>
+                                <p class="sign-up text-center">Already have an Account?<a href="{{ route('login') }}">
+                                        Sign Up</a></p>
                                 <p class="terms">By creating an account you are accepting our<a href="#"> Terms
                                         & Conditions</a></p>
                             </form>

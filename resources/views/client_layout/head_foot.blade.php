@@ -37,7 +37,49 @@
     <link href="{{ asset('asset/css/responsive.css') }}" rel="stylesheet" />
     {{-- // stripe --}}
     <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        .dropbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
 
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+
+    </style>
 </head>
 
 <body class="sub_page">
@@ -79,43 +121,51 @@
 
                         </ul>
                         <div class="user_option">
-                            @if (Route::has('login'))
-                                {{-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> --}}
-                                @auth
-                                    <a href="{{ url('/profile') }}" class="user_link">
+                            <div class="dropdown">
+                                @if (Route::has('login'))
+                                    {{-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> --}}
+                                    @auth
+                                    <a href="" class="user_link dropbtnk">
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                     </a>
-                                @else
-                                    <a href="{{ route('register') }}" class="user_link">
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                    </a>
-                                @endauth
-                                {{-- </div> --}}
-                            @endif
-                            
-                            
+                                    <div class="dropdown-content">
+                                        <a href="{{ route('dashboard') }}">Profile</a>
+                                        <a href="{{ route('user.order') }}">commandes</a>
+                                    </div>
+                                       
+                                    @else
+                                        <a href="{{ route('login') }}" class="user_link">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </a>
+                                    @endauth
+                                    {{-- </div> --}}
+                                @endif
+                                
+                            </div>
+
+
+
                             {{-- @auth --}}
-                            <a class="cart_link" href="{{route('cart.index')}}">
+                            <a class="cart_link" href="{{ route('cart.index') }}">
 
                                 <span class="price" style="color:rgb(255, 255, 255)">
                                     <i class="fa fa-shopping-cart"></i>
-                                    <b>{{Cart::count()}}</b>
+                                    <b>{{ Cart::count() }}</b>
                                 </span>
                             </a>
                             {{-- @endauth --}}
                             {{-- @guest --}}
-                            
-{{-- 
-                                <span class="price" style="color:rgb(255, 255, 255)">
+
+                            {{-- <span class="price" style="color:rgb(255, 255, 255)">
                                     <i class="fa fa-shopping-cart"></i>
                                     <b>0</b>
                                 </span>
                           
                             @endguest
                             <form class="form-inline"> --}}
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </button>
+                            <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
                             </form>
                             <a href="{{ url('/menu') }}" class="order_online">
                                 Order Online
@@ -226,8 +276,7 @@
     <!-- bootstrap js -->
     <script src="{{ asset('asset/js/bootstrap.js') }}"></script>
     <!-- owl slider -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <!-- isotope js -->
     <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
     <!-- nice select -->

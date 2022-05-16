@@ -21,7 +21,11 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('checkout.index');
+        if (Auth::check()) {
+            return view('checkout.index');
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -33,18 +37,7 @@ class CheckoutController extends Controller
     {
 
 
-        Stripe::setApiKey('sk_test_51KcCE2BT18jGCwi9AhrV5lrLXAbn7j6Bvxb6ncdEORySoin8kpdcLKd9uO2QyvoeJXDUlxoSflrPlIJbTptJpJzP00LNizTrzW');
-
-
-        $charge = Charge::create([
-            'amount' => Cart::total() * 100,
-            'currency' => 'usd',
-            'description' => 'payment for order no ',
-            'source' => $request->input('stripeToken'),
-            'statement_descriptor' => 'Custom descriptor',
-            'metadata' => ['order_id' => uniqid()]
-        ]);
-        // dd($charge);
+       
 
 
         $order = new Order();
@@ -76,10 +69,24 @@ class CheckoutController extends Controller
             $user->phone = $request->input('number');
             $user->update();
         }
+
+        Stripe::setApiKey('sk_test_51KcCE2BT18jGCwi9AhrV5lrLXAbn7j6Bvxb6ncdEORySoin8kpdcLKd9uO2QyvoeJXDUlxoSflrPlIJbTptJpJzP00LNizTrzW');
+
+
+        $charge = Charge::create([
+            'amount' => Cart::total() * 100,
+            'currency' => 'usd',
+            'description' => 'payment for order no ',
+            'source' => $request->input('stripeToken'),
+            'statement_descriptor' => 'Custom descriptor',
+            'metadata' => ['order_id' => $order->id]
+        ]);
+        // dd($charge);
+
+
         Cart::destroy();
 
         return redirect()->route('merci')->with(["status" => "votre payement a été accepté Merci."]);
-       
     }
 
 
