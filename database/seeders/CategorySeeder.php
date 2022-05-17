@@ -33,7 +33,15 @@ class CategorySeeder extends Seeder
         ],
         [
             'id' => '3',
-            'name'=>'Frite',
+            'name'=>'Wrap',
+        ],
+        [
+            'id' => '4',
+            'name'=>'kids',
+        ],
+        [
+            'id' => '5',
+            'name'=>'Extra',
         ],
      ];
      

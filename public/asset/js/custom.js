@@ -181,63 +181,63 @@ $('.updateQuantity').click(function (e) {
     var qty = $(this).closest('.product_data').find('.qty-input').val();
     var rowId = $(this).closest('.product_data').find('.rowId').val();
     console.log(rowId);
-    
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
 
-        $.ajax({
-            type: "POST",
-            url: `/update-cart/${rowId}`,
-            data: {
-                // 'product_id': product_id,
-                'qty': qty
-            },
-            success: function (response) {
-                 alert(response.status);
-                window.location.reload();
-            }
-        });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: `/update-cart/${rowId}`,
+        data: {
+            // 'product_id': product_id,
+            'qty': qty
+        },
+        success: function (response) {
+            alert(response.status);
+            window.location.reload();
+        }
+    });
 });
 
 
 $('.book').click(function (e) {
     e.preventDefault();
-var name = $('.name').val();
-var email = $('.email').val();
-var phone = $('.phone').val();
-var guest = $('.guest').val();
-var time = $('.time').val();
-var date = $('.date').val();
-var message = $('.message').val();
+    var name = $('.name').val();
+    var email = $('.email').val();
+    var phone = $('.phone').val();
+    var guest = $('.guest').val();
+    var time = $('.time').val();
+    var date = $('.date').val();
+    var message = $('.message').val();
 
-    
-    
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
 
-        $.ajax({
-            type: "POST",
-            url: "/table_book",
-            data: {
-               'name':name,
-               'email':email,
-               'phone':phone,
-               'guest':guest,
-               'time':time,
-               'date':date,
-               'message':message
-            },
-            success: function (response) {
-                  alert(response.status);
-                // window.location.reload();
-            }
-        });
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/table_book",
+        data: {
+            'name': name,
+            'email': email,
+            'phone': phone,
+            'guest': guest,
+            'time': time,
+            'date': date,
+            'message': message
+        },
+        success: function (response) {
+            alert(response.status);
+            // window.location.reload();
+        }
+    });
 });
 
 
