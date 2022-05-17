@@ -102,6 +102,7 @@ menu
                                     <hr>
                                     <button class="btn btn-danger">modifier</button>
                                 </div>
+                            </form>
                         </div>
 
                         </form>

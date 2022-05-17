@@ -52,9 +52,7 @@ class ClientController extends Controller
      */
     public function book()
     {
-        return view('client.book', [
-
-        ]);
+        return view('client.book', []);
     }
 
     /**
@@ -62,13 +60,11 @@ class ClientController extends Controller
      */
     public function about()
     {
-        return view('client.about', [
-
-        ]);
+        return view('client.about', []);
     }
 
     /**
-     * 
+     * redirige l'utilisateur soit dans le back office soit sur l'accueil du site
      */
     function redirects()
     {
@@ -90,13 +86,13 @@ class ClientController extends Controller
 
 
     /**
-     * 
+     * Modification du profil du membre
      */
     public function profileUpdate(Request $request)
     {
 
         $request->validate([
-           
+
             'password' => 'required|confirmed|min:7'
 
         ]);
@@ -121,12 +117,15 @@ class ClientController extends Controller
 
         return redirect()->route('/');
     }
+    /**
+     * profil du membre
+     */
 
-
-    public function UserProfile(){
-    	$id = Auth::user()->id;
-    	$user = User::find($id);
-    	return view('client.profile.user_profile',[
+    public function UserProfile()
+    {
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        return view('client.profile.user_profile', [
             'user' => $user,
         ]);
     }
@@ -136,12 +135,12 @@ class ClientController extends Controller
      */
 
 
-    public function reservation(Request $request)
+    public function tableBook(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'guest' => 'required',
             'time' => 'required',
             'date' => 'required',
@@ -154,20 +153,24 @@ class ClientController extends Controller
         $reservation->phone = $request->input('phone');
         $reservation->email = $request->input('email');
         $reservation->guest = $request->input('guest');
-        //  $reservation->date = $request->input('date');
+        $reservation->date = $request->input('date');
         $reservation->time = $request->input('time');
         $reservation->message = $request->input('message');
+        //  dd($reservation);
         $reservation->save();
 
-        return redirect()->route('menu');
+        return response()->json(['status' => "reservation success"]);
     }
-
-    public function profileOrder(){
+    /**
+     * voir ses commandes en tant que membre
+     */
+    public function profileOrder()
+    {
         $order_id = Order::select(['id'])->where('user_id', Auth::id())->first();
-         $orderProduct = orderProduct::where('order_id', $order_id)->get();
-        //    dd($orderProduct);
-        return view('client.profile.order',[
-             'orderProduct' => $orderProduct
+        $orderProduct = orderProduct::where('order_id', $order_id)->get();
+        // dd($order_id);
+        return view('client.profile.order', [
+            'orderProduct' => $orderProduct
         ]);
     }
 }

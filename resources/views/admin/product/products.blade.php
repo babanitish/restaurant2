@@ -40,7 +40,7 @@
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->category->name }}</td>
-                            <td><img src="{{ asset('storage/product_images/' . $product->poster_url) }}" alt=""
+                            <td><img src="{{ asset('product_poster/' . $product->poster_url) }}" alt="{{ $product->name }}"
                                     style="height: 100px;width: 100px;"></td>
 
                             <td>

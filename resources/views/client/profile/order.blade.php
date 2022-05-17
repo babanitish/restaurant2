@@ -77,7 +77,7 @@ menu
                                         <p class="text-muted mb-0">Qty: {{ $item->quantity }}</p>
                                     </div>
                                     <div class="col-md-2 col-lg-2 col-xl-2">
-                                        <img src="{{ asset('storage/product_images/' . $item->product->poster_url) }}"
+                                        <img src="{{ asset('product_poster/' . $item->product->poster_url) }}"
                                             class="img-fluid rounded-3" alt="{{ $item->product->name }}">
                                     </div>
                                 @endforeach

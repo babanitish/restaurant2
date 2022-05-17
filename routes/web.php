@@ -59,9 +59,9 @@ Route::get('/delete_category/{id}', [CategoryController::class, 'delete'])->name
 
 //RESERVATION
 
-Route::post('/reservation', [Clientcontroller::class, 'reservation'])->name('reservation');
+Route::post('/table_book', [Clientcontroller::class, 'tableBook'])->name('book');
 
-// Route::get('reservation', [Admincontroller::class, 'viewReservation'])->name('view_reservation');
+ Route::get('/reservation', [Admincontroller::class, 'viewReservation'])->name('view_reservation'); 
 
 
 

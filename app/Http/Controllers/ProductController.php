@@ -57,31 +57,43 @@ class ProductController extends Controller
 
 
         ]);
-
-        if ($request->hasFile('product_image')) {
-
-            $fileNameExt = $request->file('product_image')->getClientOriginalName();
-
-            $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
-
-            $ext = $request->file('product_image')->getClientOriginalExtension();
-
-            $fileNameToStore = $fileName . '_' . time() . '.' . $ext;
-
-            $path = $request->file('product_image')->storeAs('public/product_images', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'default.png';
-        }
-
         $product = new product();
+                $imageName = time().'.'.$request->image->extension(); 
+        $request->image->move(public_path('product_poster'), $imageName);;
+        $product->poster_url = $imageName;
+
         $product->name = $request->input('product_name');
         $product->price = $request->input('product_price');
         $product->description = $request->input('product_description');
         $product->category_id = $request->input('product_category');
-        $product->poster_url = $fileNameToStore;
         $product->status = 1;
         $product->save();
         return back()->with('status', 'product created successful');
+
+        // if ($request->hasFile('product_image')) {
+
+        //     $fileNameExt = $request->file('product_image')->getClientOriginalName();
+
+        //     $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
+
+        //     $ext = $request->file('product_image')->getClientOriginalExtension();
+
+        //     $fileNameToStore = $fileName . '_' . time() . '.' . $ext;
+
+        //     $path = $request->file('product_image')->storeAs('public/product_images', $fileNameToStore);
+        // } else {
+        //     $fileNameToStore = 'default.png';
+        // }
+
+        // $product = new product();
+        // $product->name = $request->input('product_name');
+        // $product->price = $request->input('product_price');
+        // $product->description = $request->input('product_description');
+        // $product->category_id = $request->input('product_category');
+        // $product->poster_url = $fileNameToStore;
+        // $product->status = 1;
+        // $product->save();
+        // return back()->with('status', 'product created successful');
     }
 
     /**

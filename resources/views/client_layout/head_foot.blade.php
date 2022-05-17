@@ -4,7 +4,7 @@
 <head>
     <!-- Basic -->
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    {{-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> --}}
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!-- Site Metas -->
@@ -123,7 +123,6 @@
                         <div class="user_option">
                             <div class="dropdown">
                                 @if (Route::has('login'))
-                                    {{-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> --}}
                                     @auth
                                     <a href="" class="user_link dropbtnk">
                                         <i class="fa fa-user" aria-hidden="true"></i>
@@ -245,13 +244,13 @@
                 </div>
                 <div class="col-md-4 footer-col">
                     <h4>
-                        Opening Hours
+                        heure d'ouverture
                     </h4>
                     <p>
-                        Everyday
+                        Lundi-samedi
                     </p>
                     <p>
-                        10.00 Am -10.00 Pm
+                        10.00 matin -10.00 soir
                     </p>
                 </div>
             </div>

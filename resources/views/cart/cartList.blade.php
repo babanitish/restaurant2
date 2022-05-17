@@ -22,7 +22,7 @@
                                         class="row mb-4 d-flex justify-content-between align-items-center product_data ">
 
                                         <div class="col-md-2 col-lg-2 col-xl-2">
-                                            <img src="{{ asset('storage/product_images/' . $product->options['poster_url']) }}"
+                                            <img src="{{ asset('product_poster/' . $product->options['poster_url']) }}"
                                                 class="img-fluid rounded-3" alt="{{ $product->name }}">
                                         </div>
                                         <div class="col-md-3 col-lg-3 col-xl-3 py-2">

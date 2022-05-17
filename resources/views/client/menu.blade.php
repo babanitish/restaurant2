@@ -45,7 +45,7 @@
                             <div class="box">
                                 <div>
                                     <div class="img-box">
-                                        <img src="{{ asset('storage/product_images/' . $product->poster_url) }}" alt="">
+                                        <img src="{{ asset('product_poster/' . $product->poster_url) }}" alt="">
                                     </div>
                                     <div class="detail-box">
                                         <h5>
