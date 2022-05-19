@@ -15,28 +15,19 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    Our Menu
+                    Nos produits
                 </h2>
             </div>
 
-            {{-- <ul class="filters_menu">
-            <li class="active" data-filter="*">All</li>
-            <li data-filter=".burger">Burger</li>
-            <li data-filter=".pizza">Pizza</li>
-            <li data-filter=".pasta">Pasta</li>
-            <li data-filter=".fries">Fries</li>
-        </ul> --}}
             <ul class="filters_menu">
-                <li class="{{ request()->is('menu') ? 'active' : '' }}"><a href="{{ url('/menu') }}">All</a></li>
+                <li class="{{ request()->is('/menu') ? 'active' : '' }}"><a href="{{ url('/menu') }}">All</a></li>
                 @foreach ($categories as $category)
-                    <li class="{{ request()->is('select_par_category/' . $category->name) ? 'active' : '' }}"> <a
-                            href="{{ url('select_par_category', $category->id) }}">
+                    <li class="{{ request()->is('select_par_category/' . $category->name) ? 'active' : '' }}">
+                         <a href="{{ url('select_par_category', $category->id) }}">
                             {{ $category->name }}</a> </li>
                 @endforeach
             </ul>
-            {{-- @php
-        dd($products)
-    @endphp --}}
+    
             <div class="filters-content">
                 <div class="row grid">
                     @foreach ($products as $product)
@@ -45,7 +36,7 @@
                             <div class="box">
                                 <div>
                                     <div class="img-box">
-                                        <img src="{{ asset('product_poster/' . $product->poster_url) }}" alt="">
+                                        <img src="{{ asset('product_poster/' . $product->poster_url) }}" alt="  {{ $product->name }}">
                                     </div>
                                     <div class="detail-box">
                                         <h5>
@@ -81,11 +72,11 @@
 
             </div>
 
-            <div class="btn-box">
+            {{-- <div class="btn-box">
                 <a href="">
                     View More
                 </a>
-            </div>
+            </div> --}}
         </div>
     </section>
 

@@ -491,13 +491,14 @@ a:focus {
   margin: 45px 0 20px 0;
 }
 
-.food_section .filters_menu li {
+.food_section .filters_menu li a{
+  color: #000000;
   padding: 7px 25px;
   cursor: pointer;
   border-radius: 25px;
 }
 
-.food_section .filters_menu li.active {
+.food_section .filters_menu li.active a{
   background-color: #222831;
   color: #ffffff;
 }

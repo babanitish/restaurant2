@@ -58,7 +58,7 @@ class ProductController extends Controller
 
         ]);
         $product = new product();
-                $imageName = time().'.'.$request->image->extension(); 
+        $imageName = time() . '.' . $request->image->extension();
         $request->image->move(public_path('product_poster'), $imageName);;
         $product->poster_url = $imageName;
 
@@ -210,7 +210,7 @@ class ProductController extends Controller
     }
 
 
-     /**
+    /**
      * desactive le produit.
      *
      * @param  int  $id
@@ -226,8 +226,9 @@ class ProductController extends Controller
         return back();
     }
 
-    public function select_par_category($id){
-         $products = Product::all()->where('category_id',$id)->where('status',1);
+    public function select_par_category($id)
+    {
+        $products = Product::all()->where('category_id', $id)->where('status', 1);
         $categories = Category::all();
         return view('client.home', [
             'products' => $products,

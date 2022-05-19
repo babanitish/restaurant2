@@ -162,10 +162,39 @@
                                     <input type="text" id="zip" name="zip" placeholder="10001">
                                 </div> --}}
                             </div>
+
                         </div>
 
                         <div class="col-50">
-                            <h3>Payment</h3>
+                            <div class="container contain mt-3">
+
+                                <table class="table table-dark">
+                                    <thead>
+                                        <tr>
+                                            <th>name</th>
+                                            <th>quantity</th>
+                                            <th>price</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (Cart::content() as $product)
+                                            <tr>
+                                                <td>{{ $product->name }}</td>
+                                                <td>{{ $product->qty }}</td>
+                                                <td>{{ $product->price }}</td>
+
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                                <p>Total <span class="price" style="color:black"><b>€
+                                            {{ cart::total() }}</b></span></p>
+                            </div>
+
+                            <h3 class="mt-2">Payment</h3>
                             <label for="fname">Accepted Cards</label>
                             <div class="icon-container">
                                 <i class="fa fa-cc-visa" style="color:navy;"></i>
@@ -193,142 +222,102 @@
                         </div>
 
                     </div>
+
                     <label>
-                        <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                        <input type="checkbox" name="check" value="check"> Enregistrer ces informations pour faciliter mes
+                        prochaines réservations.
                     </label>
-        
-                    <button id="submit-btn" type="submit" value="payer" class="btn"></button>
+                    <label>
+                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                        <input type="checkbox" name="checkCondition" class="zen-icon_ic_open-in-new" value="check" required>
+                        <a href="http://" target="_blank" rel="noopener noreferrer">
+                            J'accepte les conditions générales d'utilisation du service </a>
+                        <span style="color:  rgba(235,81,96,0.8)">&nbsp;*</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="check" value="check"> Je souhaite recevoir les actualités et
+                        programmation du restaurant par email.
+                    </label>
+
+                    <button id="submit-btn" type="submit" value="proceder au payer" class="btn">payer</button>
                 </form>
             </div>
         </div>
 
-        <div class="col-25">
-            <div class="container contain mt-3">
-
-                {{-- @php
-                    $total = 0;
-                @endphp --}}
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th>name</th>
-                            <th>quantity</th>
-                            <th>price</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        @foreach (Cart::content() as $product)
-                            <tr>
-                                <td>{{ $product->name }}</td>
-                                <td>{{  $product->qty }}</td>
-                                <td>{{ $product->price }}</td>
-
-                            </tr>
-                            {{-- @php
-                                $total += $item->product->price * $item->quantity;
-                            @endphp --}}
-                        @endforeach
-
-                    </tbody>
-                </table>
-                <p>Total <span class="price" style="color:black"><b>€ {{ cart::total()}}</b></span></p>
-            </div>
-        </div>
+        {{-- <div class="col-25">
+            
+        </div> --}}
 
     </div>
-
-    {{-- <script type="text/javascript">
-        const stripe = Stripe(" env('STRIPE_KEY')");
-
-        const elements = stripe.elements();
-        const cardElement = elements.create('card');
-        cardElement.mount('#card-element');
-    
-        const btn = document.getElementById('submit-btn');
-    
-        btn.addEventListener('click', async(e) => {
-            e.preventDefault();
-
-            const {paymentMethod, error} = await stripe.paymentMethod('card', cardElement)
-
-            if (error) {
-            // Display "error.message" to the user...
-            document.getElementById('card-message').innerHTML = error.message;
-        } else {
-            // The card has been verified successfully...
-            document.getElementById('payment_method').value = paymentMethod.id;
-        }
-
-        document.getElementById('form').submit();
-        })
-    </script> --}}
 
     {{-- WITH CHARGE --}}
 
 
     <script type="text/javascript">
         // Create a Stripe client.
-    var stripe = Stripe('pk_test_51KcCE2BT18jGCwi9RfDD5I9q539LTmWKyPRycmrHCfTYMiBTRuH7PCUBLqNWH0m2CGkg0Z1GYOuwPcdDhLqpmvhv00mIBBDMxT');
-    // Create an instance of Elements.
-    var elements = stripe.elements();
-    // Custom styling can be passed to options when creating an Element.
-    // (Note that this demo uses a wider set of styles than the guide below.)
-    var style = {
-      base: {
-        color: '#32325d',
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSmoothing: 'antialiased',
-        fontSize: '16px',
-        '::placeholder': {
-          color: '#aab7c4'
+        var stripe = Stripe(
+            'pk_test_51KcCE2BT18jGCwi9RfDD5I9q539LTmWKyPRycmrHCfTYMiBTRuH7PCUBLqNWH0m2CGkg0Z1GYOuwPcdDhLqpmvhv00mIBBDMxT'
+        );
+        // Create an instance of Elements.
+        var elements = stripe.elements();
+        // Custom styling can be passed to options when creating an Element.
+        // (Note that this demo uses a wider set of styles than the guide below.)
+        var style = {
+            base: {
+                color: '#32325d',
+                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': {
+                    color: '#aab7c4'
+                }
+            },
+            invalid: {
+                color: '#fa755a',
+                iconColor: '#fa755a'
+            }
+        };
+        // Create an instance of the card Element.
+        var card = elements.create('card', {
+            style: style
+        });
+        // Add an instance of the card Element into the `card-element` <div>.
+        card.mount('#card-element');
+        // Handle real-time validation errors from the card Element.
+        card.on('change', function(event) {
+            var displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+        // Handle form submission.
+        var form = document.getElementById('payment-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                    // Inform the user if there was an error.
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server.
+                    stripeTokenHandler(result.token);
+                }
+            });
+        });
+        // Submit the form with the token ID.
+        function stripeTokenHandler(token) {
+            // Insert the token ID into the form so it gets submitted to the server
+            var form = document.getElementById('payment-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+            // Submit the form
+            form.submit();
         }
-      },
-      invalid: {
-        color: '#fa755a',
-        iconColor: '#fa755a'
-      }
-    };
-    // Create an instance of the card Element.
-    var card = elements.create('card', {style: style});
-    // Add an instance of the card Element into the `card-element` <div>.
-    card.mount('#card-element');
-    // Handle real-time validation errors from the card Element.
-    card.on('change', function(event) {
-      var displayError = document.getElementById('card-errors');
-      if (event.error) {
-        displayError.textContent = event.error.message;
-      } else {
-        displayError.textContent = '';
-      }
-    });
-    // Handle form submission.
-    var form = document.getElementById('payment-form');
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-      stripe.createToken(card).then(function(result) {
-        if (result.error) {
-          // Inform the user if there was an error.
-          var errorElement = document.getElementById('card-errors');
-          errorElement.textContent = result.error.message;
-        } else {
-          // Send the token to your server.
-          stripeTokenHandler(result.token);
-        }
-      });
-    });
-    // Submit the form with the token ID.
-    function stripeTokenHandler(token) {
-      // Insert the token ID into the form so it gets submitted to the server
-      var form = document.getElementById('payment-form');
-      var hiddenInput = document.createElement('input');
-      hiddenInput.setAttribute('type', 'hidden');
-      hiddenInput.setAttribute('name', 'stripeToken');
-      hiddenInput.setAttribute('value', token.id);
-      form.appendChild(hiddenInput);
-      // Submit the form
-      form.submit();
-    }
     </script>
 @endsection

@@ -103,6 +103,9 @@ Route::get('/profile/order',[Clientcontroller::class, 'profileOrder'])->name('us
 Route::get('/payment',[checkoutController::class, 'index'])->name('checkout.index');
 Route::post('/order',[checkoutController::class, 'payer'])->name('place-order');
 
+// Route::get('/store',[checkoutController::class, 'store'])->name('checkout.store');
+
+
 Route::get('/merci', function(){
     return view('client.merci');
 })->name('merci');

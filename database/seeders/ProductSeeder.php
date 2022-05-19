@@ -27,7 +27,7 @@ class ProductSeeder extends Seeder
 
                 'name' => 'Hamburger',
                 'description' => 'Sauce ketchup-moutarde, oignons, cornichons et steak haché.',
-                'poster_url' => 'hamburger.jpg',
+                'poster_url' => 'hamburger.png',
                 'price' => 7.95,
                 'category_id' => 1,
                 'status' => 1,
@@ -46,7 +46,7 @@ class ProductSeeder extends Seeder
 
                 'name' => 'Double cheese  ',
                 'description' => 'Sauce ketchup-moutarde, oignons, cornichons, double steak haché et double cheddar.',
-                'poster_url' => 'Double cheese.jpg',
+                'poster_url' => 'Double_cheese.jpg',
                 'price' => 7.95,
                 'category_id' => 1,
                 'status' => 1,
@@ -192,13 +192,13 @@ class ProductSeeder extends Seeder
 
                 'name' => 'Wrap Poulet PIRI PIRI',
                 'description' => 'Wrap avec poitrine de poulet croustillante, laitue, tomate et sauce PIRI PIRI.',
-                'poster_url' => 'wrap4.jpg',
+                'poster_url' => 'wrap5.jpg',
                 'price' => 6.95,
                 'category_id' => 3,
                 'status' => 1,
             ],
-            
-            [     
+
+            [
                 'name' => 'Wrap Veggie',
                 'description' => "Envelopper avec un hamburger végétarien tranché avec de la laitue, de la tomate, de l'oignon rouge et de la sauce Johnny's.",
                 'poster_url' => 'wrap4.jpg',
@@ -207,9 +207,9 @@ class ProductSeeder extends Seeder
                 'status' => 1,
             ],
 
-             // Kids Menu
+            // Kids Menu
 
-             [
+            [
 
                 'name' => 'Menu enfant classique ',
                 'description' => 'Petit burger classique de 60 grammes avec laitue et tomate, une portion de frites, une boisson et une surprise dans une box enfant.',
@@ -233,12 +233,12 @@ class ProductSeeder extends Seeder
                 'price' => 7.95,
                 'category_id' => 4,
                 'status' => 1,
-            ], 
-             
+            ],
 
-              // Wings
 
-              [
+            // Wings
+
+            [
 
                 'name' => 'Ailes de poulet 4',
                 'description' => '4 ailes de poulet croustillantes avec sauce au choix. ',
@@ -262,8 +262,8 @@ class ProductSeeder extends Seeder
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
-            ], 
-             
+            ],
+
             [
 
                 'name' => 'Filets de poulet 8 pièces ',
@@ -273,9 +273,9 @@ class ProductSeeder extends Seeder
                 'category_id' => 5,
                 'status' => 1,
             ],
-            
-            
-            [     
+
+
+            [
                 'name' => 'frite',
                 'description' => "(400 grammes) Frites  avec une couche savoureuse",
                 'poster_url' => 'frites1.jpg',
@@ -283,7 +283,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 5,
                 'status' => 1,
             ],
-              [     
+            [
                 'name' => 'Frites de patates douces ',
                 'description' => "(400 grammes) Frites de patates douces avec une couche savoureuse",
                 'poster_url' => 'potato1.jpg',
@@ -291,14 +291,87 @@ class ProductSeeder extends Seeder
                 'category_id' => 5,
                 'status' => 1,
             ],
-            // [     
-            //     'name' => 'Wrap Veggie',
-            //     'description' => "Envelopper avec un hamburger végétarien tranché avec de la laitue, de la tomate, de l'oignon rouge et de la sauce Johnny's.",
-            //     'poster_url' => 'wrap4.jpg',
-            //     'price' => 6.95,
-            //     'category_id' => 3,
-            //     'status' => 1,
-            // ],
+            [
+                'name' => 'coca',
+                'description' => "",
+                'poster_url' => 'coca.jpg',
+                'price' => 2.95,
+                'category_id' => 5,
+                'status' => 1,
+            ],
+            [
+                'name' => 'fanta',
+                'description' => "",
+                'poster_url' => 'fanta.jpg',
+                'price' => 2.95,
+                'category_id' => 5,
+                'status' => 1,
+            ],
+            [
+                'name' => 'ice tea',
+                'description' => "",
+                'poster_url' => 'iceTea.jpg',
+                'price' => 2.95,
+                'category_id' => 5,
+                'status' => 1,
+            ],
+            [
+                'name' => 'redBull',
+                'description' => "",
+                'poster_url' => 'redBull.jpg',
+                'price' => 2.95,
+                'category_id' => 5,
+                'status' => 1,
+            ],
+            [
+                'name' => 'mojito',
+                'description' => "",
+                'poster_url' => 'mojito.jpg',
+                'price' => 2.95,
+                'category_id' => 5,
+                'status' => 1,
+            ],
+            [
+                'name' => 'mayonnaise',
+                'description' => "",
+                'poster_url' => 'mayo.jpg',
+                'price' => 0.85,
+                'category_id' => 5,
+                'status' => 1,
+            ],
+            [
+                'name' => 'ketchup',
+                'description' => "",
+                'poster_url' => 'ketchup.jpg',
+                'price' => 0.85,
+
+                'category_id' => 5,
+                'status' => 1,
+            ],
+            [
+                'name' => 'barbecue',
+                'description' => "",
+                'poster_url' => 'barbecue.jpg',
+                'price' => 0.85,
+                'category_id' => 5,
+                'status' => 1,
+            ],
+            [
+                'name' => 'piri piri',
+                'description' => "",
+                'poster_url' => 'piripiri.jpg',
+                'price' => 0.85,
+                'category_id' => 5,
+                'status' => 1,
+            ],
+            [
+                'name' => 'moutarde',
+                'description' => "",
+                'poster_url' => 'moutarde.jpg',
+                'price' => 0.85,
+                'category_id' => 5,
+                'status' => 1,
+            ],
         ];
 
         //Prepare the data

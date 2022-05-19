@@ -36,7 +36,9 @@ class CheckoutController extends Controller
     public function payer(Request $request)
     {
 
-
+        $this->validate($request, [
+            'checkCondition' => 'required',
+        ]);
        
 
 
@@ -108,7 +110,7 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+     
     }
 
     /**
