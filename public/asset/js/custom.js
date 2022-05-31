@@ -196,7 +196,7 @@ $('.updateQuantity').click(function (e) {
             'qty': qty
         },
         success: function (response) {
-            alert(response.status);
+            // alert(response.status);
             window.location.reload();
         }
     });
@@ -234,8 +234,11 @@ $('.book').click(function (e) {
             'message': message
         },
         success: function (response) {
-            alert(response.status);
+            // alert(response.status);
             // window.location.reload();
+            if (response.redirect_url) {
+                window.location = data.redirect_url; // or {{url('login')}}
+            }
         }
     });
 });

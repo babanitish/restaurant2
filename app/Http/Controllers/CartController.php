@@ -89,7 +89,7 @@ class CartController extends Controller
         //  dd($quantity);
         Cart::update($rowId,$quantity);
 
-        return response()->json(['status' => 'quantity modifié']);
+        // return response()->json(['status' => 'quantity modifié']);
     }
 
     /**

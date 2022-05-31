@@ -15,7 +15,7 @@
 
     <link rel="shortcut icon" href="{{ asset('asset/images/favicon.png') }}" type="">
 
-    <title> Feane </title>
+    <title>le Joyau de Bx </title>
 
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('asset/css/bootstrap.css') }}" />
@@ -92,9 +92,11 @@
         <header class="header_section">
             <div class="container">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
-                    <a class="navbar-brand" href="index.html">
+                        <img src="{{ asset('asset/images/logo2.png') }}" alt="" style="width: 70px;">
+
+                    <a class="navbar-brand" href="{{route('/')}}">
                         <span>
-                            Le joyau
+                            Le joyau de Bx
                         </span>
                     </a>
 
@@ -107,16 +109,16 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav  mx-auto ">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}">Home </a>
+                                <a class="nav-link" href="{{ url('/') }}">Accueil </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/menu') }}">Menu</span> </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/about') }}">About</a>
+                                <a class="nav-link" href="{{ url('/about') }}">À propos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/book') }}">Book Table</a>
+                                <a class="nav-link" href="{{ url('/book') }}">Réserver Table</a>
                             </li>
 
                         </ul>
@@ -167,7 +169,7 @@
                             </button>
                             </form>
                             <a href="{{ url('/menu') }}" class="order_online">
-                                Order Online
+                                commander
                             </a>
                         </div>
                     </div>
@@ -190,7 +192,7 @@
                 <div class="col-md-4 footer-col">
                     <div class="footer_contact">
                         <h4>
-                            Contact Us
+                            Nous contacter
                         </h4>
                         <div class="contact_link_box">
                             <a href="">
@@ -202,7 +204,7 @@
                             <a href="">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
                                 <span>
-                                    Call +01 1234567890
+                                    appeler +01 1234567890
                                 </span>
                             </a>
                             <a href="">
@@ -217,12 +219,12 @@
                 <div class="col-md-4 footer-col">
                     <div class="footer_detail">
                         <a href="" class="footer-logo">
-                            Feane
+                            Le joyau de Bx
                         </a>
-                        <p>
+                        {{-- <p>
                             Necessary, making this the first true generator on the Internet. It uses a dictionary of
                             over 200 Latin words, combined with
-                        </p>
+                        </p> --}}
                         <div class="footer_social">
                             <a href="">
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
@@ -256,9 +258,9 @@
             </div>
             <div class="footer-info">
                 <p>
-                    &copy; <span id="displayYear"></span> All Rights Reserved By
+                    &copy; <span id="displayYear"></span> Tous droits réservés par
                     <a href="https://html.design/">Free Html Templates</a><br><br>
-                    &copy; <span id="displayYear"></span> Distributed By
+                    &copy; <span id="displayYear"></span> Distribuer par
                     <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
                 </p>
             </div>

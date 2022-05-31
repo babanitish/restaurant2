@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('date');
             $table->string('message');
 
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')

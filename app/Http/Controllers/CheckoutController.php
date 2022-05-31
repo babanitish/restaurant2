@@ -72,7 +72,7 @@ class CheckoutController extends Controller
             $user->update();
         }
 
-        Stripe::setApiKey('sk_test_51KcCE2BT18jGCwi9AhrV5lrLXAbn7j6Bvxb6ncdEORySoin8kpdcLKd9uO2QyvoeJXDUlxoSflrPlIJbTptJpJzP00LNizTrzW');
+        Stripe::setApiKey("sk_test_51KcCE2BT18jGCwi9AhrV5lrLXAbn7j6Bvxb6ncdEORySoin8kpdcLKd9uO2QyvoeJXDUlxoSflrPlIJbTptJpJzP00LNizTrzW");
 
 
         $charge = Charge::create([

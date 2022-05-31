@@ -138,17 +138,17 @@
                     @csrf
                     <div class="row">
                         <div class="col-50">
-                            <h3>Billing Address</h3>
-                            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                            <h3>Adresse de facturation</h3>
+                            <label for="fname"><i class="fa fa-user"></i> Nom</label>
                             <input type="text" class="form-control" id="firstName" name="name" placeholder=""
                                 value="{{ Auth::user()->name }}" required>
                             <label for="email"><i class="fa fa-envelope"></i> Email</label>
                             <input type="email" class="form-control" id="email" name="email"
                                 value="{{ Auth::user()->email }}" placeholder="you@example.com">
-                            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                            <label for="adr"><i class="fa fa-address-card-o"></i> Adresse</label>
                             <input type="text" class="form-control" id="address" name="address"
                                 value="{{ Auth::user()->address }}" placeholder="1234 Main St" required>
-                            <label for="phone"><i class="fa fa-institution"></i> phone</label>
+                            <label for="phone"><i class="fa fa-institution"></i> numéro</label>
                             <input type="number" class="form-control" id="number" name="number"
                                 value="{{ Auth::user()->phone }}" placeholder="04-55-66-77-88" required>
 
@@ -171,9 +171,9 @@
                                 <table class="table table-dark">
                                     <thead>
                                         <tr>
-                                            <th>name</th>
-                                            <th>quantity</th>
-                                            <th>price</th>
+                                            <th>nom</th>
+                                            <th>quantité</th>
+                                            <th>prix</th>
 
                                         </tr>
                                     </thead>
@@ -194,8 +194,8 @@
                                             {{ cart::total() }}</b></span></p>
                             </div>
 
-                            <h3 class="mt-2">Payment</h3>
-                            <label for="fname">Accepted Cards</label>
+                            <h3 class="mt-2">Paiement</h3>
+                            <label for="fname">Mode de paiement</label>
                             <div class="icon-container">
                                 <i class="fa fa-cc-visa" style="color:navy;"></i>
                                 <i class="fa fa-cc-amex" style="color:blue;"></i>

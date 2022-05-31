@@ -23,11 +23,11 @@
                                         <p>
                                             Un jour, au restaurant, Chuck Norris a commandé un steak. Et le steak a
                                             obéi.
-                                            Bienvenu chez nous.
+                                            Bienvenue chez nous.
                                         </p>
                                         <div class="btn-box">
                                             <a href="{{ route('menu') }}" class="btn1">
-                                                Order Now
+                                                Commander maintenant
                                             </a>
                                         </div>
                                     </div>
@@ -46,11 +46,11 @@
                                         <p>
                                             Un jour, au restaurant, Chuck Norris a commandé un steak. Et le steak a
                                             obéi.
-                                            Bienvenu chez nous.
+                                            Bienvenue chez nous.
                                         </p>
                                         <div class="btn-box">
                                             <a href="{{ route('menu') }}" class="btn1">
-                                                Order Now
+                                                Commander maintenant
                                             </a>
                                         </div>
                                     </div>
@@ -69,11 +69,11 @@
                                         <p>
                                             Un jour, au restaurant, Chuck Norris a commandé un steak. Et le steak a
                                             obéi.
-                                            Bienvenu chez nous.
+                                            Bienvenue chez nous.
                                         </p>
                                         <div class="btn-box">
                                             <a href="{{ route('menu') }}" class="btn1">
-                                                Order Now
+                                                Commander maintenant
                                             </a>
                                         </div>
                                     </div>
@@ -108,13 +108,13 @@
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    Tasty Thursdays
+                                    Jeudis savoureux
                                 </h5>
                                 <h6>
-                                    <span>20%</span> Off
+                                    <span>20%</span> réduction
                                 </h6>
                                 <a href="">
-                                    Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                    commander maintenant <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                         viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
                                         xml:space="preserve">
@@ -182,13 +182,14 @@
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    Pizza Days
+                                    Jours de Pizza
                                 </h5>
                                 <h6>
-                                    <span>15%</span> Off
+                                    <span>15%</span> réduction
                                 </h6>
                                 <a href="">
-                                    Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                    commander maintenant 
+                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                         viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
                                         xml:space="preserve">
@@ -268,10 +269,10 @@
                 </h2>
             </div>
             <ul class="filters_menu">
-                <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">All</a></li>
+                <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Tout</a></li>
                 @foreach ($categories as $category)
-                    <li class="{{ request()->is('select_par_category/' . $category->id) ? 'active' : '' }}"> <a
-                            href="{{ url('select_par_category', $category->id) }}">
+                    <li class="{{ request()->is('select_par_category/' . $category->id) ? 'active' : '' }}"> 
+                        <a href="{{ url('/select_par_category', $category->id) }}">
                             {{ $category->name }}</a> </li>
                 @endforeach
             </ul>
@@ -281,7 +282,7 @@
                     @foreach ($products as $product)
                         <div class="col-sm-6 col-lg-4 all" id="product_data"> {{-- all burger --}}
 
-                            <div class="box">
+                            <div class="box" style="height: 450px">
                                 <div>
                                     <div class="img-box">
                                         <img src="{{ asset('product_poster/' . $product->poster_url) }}" alt="  {{ $product->name }}">
@@ -291,7 +292,7 @@
                                         <h5>
                                             {{ $product->name }}
                                         </h5>
-                                        <p>
+                                        <p class="">
                                             {{ $product->description }}
                                         </p>
                                         <div class="options">
@@ -310,7 +311,7 @@
                                                 {{-- addToCart --}}
                                                 {{-- data-toggle="modal" data-target="#exampleModal" --}}
                                                 <button class="btn btn-warning " id="{{ $product->id }}"><i
-                                                        class="fa-solid fa-cart-shopping"></i>ADD</button>
+                                                        class="fa-solid fa-cart-shopping"></i>Ajouter</button>
                                             </form>
                                         </div>
 
@@ -389,7 +390,7 @@
         <div class="container">
             <div class="heading_container">
                 <h2>
-                    réserver une Table
+                    Réserver une Table
                 </h2>
             </div>
             <div class="row">
@@ -428,7 +429,7 @@
                             </div>
                             <div class="btn_box">
                                 <button type="submit" class="btn btn-success book">
-                                    réserver maintenant
+                                    Réserver maintenant
                                 </button>
                             </div>
                         </form>

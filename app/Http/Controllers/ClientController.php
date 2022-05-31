@@ -173,4 +173,8 @@ class ClientController extends Controller
             'orderProduct' => $orderProduct
         ]);
     }
+
+    // public function commande(){
+    //     return view('client.profile.order');
+    // }
 }

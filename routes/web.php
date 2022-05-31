@@ -31,7 +31,6 @@ Route::get('/about', [Clientcontroller::class, 'about']);
 Route::get('/book', [Clientcontroller::class, 'book']);
 
 
-Route::get('/redirects', [Clientcontroller::class, 'redirects'])->name('redirects');
 
 // Route::put('/profile', [Clientcontroller::class, 'profileUpdate'])->name('profile.update');
 
@@ -45,7 +44,7 @@ Route::get('/select_par_category/{category_name}', [ProductController::class, 's
 //RESERVATION
 
 Route::post('/table_book', [Clientcontroller::class, 'tableBook'])->name('book');
-Route::get('/reservation', [Admincontroller::class, 'viewReservation'])->name('view_reservation'); 
+Route::get('/reservation', [Admincontroller::class, 'viewReservation'])->name('view_reservation');
 
 
 //CART
@@ -56,7 +55,7 @@ Route::post('/update-cart/{rowId}', [CartController::class, 'update']);
 
 
 
-Route::get('/vider', function(){
+Route::get('/vider', function () {
     Cart::destroy();
 });
 
@@ -72,42 +71,47 @@ Route::group(['middleware' => 'auth'], function () {
         return view('profile');
     })->name('profile');
 
-// Route::get('/cart_view/{id}', [ShopController::class, 'cartView'])->name('cart_view');
-   //CATEGORIES
-Route::get('/addcategory', [CategoryController::class, 'addcategory'])->name('addcategory');
-Route::post('/savecategory', [CategoryController::class, 'store'])->name('savecategory');
-Route::get('/edit_category/{id}', [CategoryController::class, 'edit'])->name('edit_category');
-Route::post('/update_category/{id}', [CategoryController::class, 'update'])->name('update_category');
-Route::get('/delete_category/{id}', [CategoryController::class, 'delete'])->name('delete_category');
-Route::get('/categories', [CategoryController::class, 'categories'])->name('categories');
+
+    Route::get('/redirects', [Clientcontroller::class, 'redirects'])->name('redirects');
 
 
-//PRODUCTS
-Route::get('/products', [ProductController::class, 'product'])->name('products');
-Route::get('/addproduct', [ProductController::class, 'addproduct'])->name('addproduct');
-Route::post('/saveproduct', [ProductController::class, 'store'])->name('saveproduct');
-Route::get('/edit_product/{id}', [ProductController::class, 'edit'])->name('edit_product');
-Route::post('/update_product/{id}', [ProductController::class, 'update'])->name('update_product');
-Route::get('/delete_product/{id}', [ProductController::class, 'delete'])->name('delete_product');
-Route::get('/desactiver_product/{id}', [ProductController::class, 'desactiver'])->name('desactiver_product');
-Route::get('/activer_product/{id}', [ProductController::class, 'activer'])->name('activer_product');
 
-/////////////////////////////
-Route::get('/user/logout', [ClientController::class, 'UserLogout'])->name('user.logout');
-Route::get('/user/profil', [ClientController::class, 'UserProfile'])->name('user.profil');
-Route::put('/profile/update',[Clientcontroller::class, 'profileUpdate'])->name('profile.update');
-Route::get('/profile/order',[Clientcontroller::class, 'profileOrder'])->name('user.order');
-
-//CHECKOUT
-
-Route::get('/payment',[checkoutController::class, 'index'])->name('checkout.index');
-Route::post('/order',[checkoutController::class, 'payer'])->name('place-order');
-
-// Route::get('/store',[checkoutController::class, 'store'])->name('checkout.store');
+    // Route::get('/cart_view/{id}', [ShopController::class, 'cartView'])->name('cart_view');
+    //CATEGORIES
+    Route::get('/addcategory', [CategoryController::class, 'addcategory'])->name('addcategory');
+    Route::post('/savecategory', [CategoryController::class, 'store'])->name('savecategory');
+    Route::get('/edit_category/{id}', [CategoryController::class, 'edit'])->name('edit_category');
+    Route::post('/update_category/{id}', [CategoryController::class, 'update'])->name('update_category');
+    Route::get('/delete_category/{id}', [CategoryController::class, 'delete'])->name('delete_category');
+    Route::get('/categories', [CategoryController::class, 'categories'])->name('categories');
 
 
-Route::get('/merci', function(){
-    return view('client.merci');
-})->name('merci');
+    //PRODUCTS
+    Route::get('/products', [ProductController::class, 'product'])->name('products');
+    Route::get('/addproduct', [ProductController::class, 'addproduct'])->name('addproduct');
+    Route::post('/saveproduct', [ProductController::class, 'store'])->name('saveproduct');
+    Route::get('/edit_product/{id}', [ProductController::class, 'edit'])->name('edit_product');
+    Route::post('/update_product/{id}', [ProductController::class, 'update'])->name('update_product');
+    Route::get('/delete_product/{id}', [ProductController::class, 'delete'])->name('delete_product');
+    Route::get('/desactiver_product/{id}', [ProductController::class, 'desactiver'])->name('desactiver_product');
+    Route::get('/activer_product/{id}', [ProductController::class, 'activer'])->name('activer_product');
+
+    /////////////////////////////
+    Route::get('/user/logout', [ClientController::class, 'UserLogout'])->name('user.logout');
+    Route::get('/user/profil', [ClientController::class, 'UserProfile'])->name('user.profil');
+    Route::put('/profile/update', [Clientcontroller::class, 'profileUpdate'])->name('profile.update');
+    Route::get('/profile/order', [Clientcontroller::class, 'profileOrder'])->name('user.order');
+
+    //CHECKOUT
+
+    Route::get('/payment', [checkoutController::class, 'index'])->name('checkout.index');
+    Route::post('/order', [checkoutController::class, 'payer'])->name('place-order');
+
+    Route::get('/mes-commandes',[clientController::class, 'commande'])->name('mes_commandes');
+
+
+    Route::get('/merci', function () {
+        return view('client.merci');
+    })->name('merci');
 });
 require __DIR__ . '/auth.php';

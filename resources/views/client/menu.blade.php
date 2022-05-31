@@ -33,7 +33,7 @@
                     @foreach ($products as $product)
                         <div class="col-sm-6 col-lg-4 all " id="product_data"> {{-- all burger --}}
 
-                            <div class="box">
+                            <div class="box" style="height: 450px">
                                 <div>
                                     <div class="img-box">
                                         <img src="{{ asset('product_poster/' . $product->poster_url) }}" alt="  {{ $product->name }}">
@@ -47,7 +47,7 @@
                                         </p>
                                         <div class="options">
                                             <h6>
-                                                {{ $product->price }}$
+                                                {{ $product->price }}€
                                             </h6>
                                             <form action="{{ route('ajout') }}" method="post">
                                                 @csrf
@@ -58,7 +58,7 @@
                                                 {{-- addToCart --}}
                                                 {{-- data-toggle="modal" data-target="#exampleModal" --}}
                                                 <button class="btn btn-warning " id="{{ $product->id }}"><i
-                                                        class="fa-solid fa-cart-shopping"></i>ADD</button>
+                                                        class="fa-solid fa-cart-shopping"></i>Ajouter</button>
                                             </form>
                                         </div>
                                     </div>
