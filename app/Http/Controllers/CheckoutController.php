@@ -14,10 +14,10 @@ use Carbon\Carbon;
 
 class CheckoutController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Si l'utilisateur est connecté, afficher la page de paiement, sinon rediriger vers la page de connexion.    * 
+     * @return Une vue appelée checkout.index
      */
     public function index()
     {
@@ -28,18 +28,19 @@ class CheckoutController extends Controller
         }
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function payer(Request $request)
     {
 
+        /* Ceci valide le formulaire et enregistre les données dans la base de données. */
         $this->validate($request, [
             'checkCondition' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'number' => 'required',
         ]);
-       
+
 
 
         $order = new Order();
@@ -52,6 +53,7 @@ class CheckoutController extends Controller
         $order->created_at = Carbon::now();
         $order->save();
 
+        /* Il s'agit d'une boucle foreach qui parcourt le panier et crée un nouveau orderProduct. */
         foreach (Cart::content() as $item) {
 
             orderProduct::create([
@@ -63,6 +65,8 @@ class CheckoutController extends Controller
             ]);
         }
 
+        /* Ceci est une vérification pour voir si l'utilisateur a une adresse. Si ce n'est pas le cas, alors nous mettons à jour son
+        l'adresse de l'utilisateur. */
         if (Auth::user()->address == null) {
             $user = User::where('id', Auth::id())->first();
             $user->name = $request->input('name');
@@ -71,7 +75,7 @@ class CheckoutController extends Controller
             $user->phone = $request->input('number');
             $user->update();
         }
-
+        /* Le code  crée une charge en utilisant l'API Stripe. */
         Stripe::setApiKey("sk_test_51KcCE2BT18jGCwi9AhrV5lrLXAbn7j6Bvxb6ncdEORySoin8kpdcLKd9uO2QyvoeJXDUlxoSflrPlIJbTptJpJzP00LNizTrzW");
 
 
@@ -110,7 +114,6 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-     
     }
 
     /**

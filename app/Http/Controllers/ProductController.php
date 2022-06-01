@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Si l'utilisateur est connecté et est un administrateur, affiché- la page des produits. Sinon, redirigez-le vers
+     * la page de connexion.
+     * 
+     * @return La vue est renvoyée.
      */
     public function product()
     {
@@ -29,6 +31,12 @@ class ProductController extends Controller
         }
     }
 
+
+    /**
+     * permet à l'admin d'ajouter des produits 
+     * 
+     * @return The view is being returned.
+     */
 
     public function addproduct()
     {
@@ -55,11 +63,12 @@ class ProductController extends Controller
         //
     }
 
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * la méthode prend la requête du formulaire, la valide, puis enregistre l'image dans le dossier public, puis
+     * enregistre le reste des données dans la base de données.
+     * 
+     * @param Request request The request object.
      */
     public function store(Request $request)
     {
@@ -69,6 +78,7 @@ class ProductController extends Controller
             $this->validate($request, [
                 'product_name' => 'required',
                 'product_price' => 'required',
+                'product_description' => 'required',
                 'product_category' => 'required',
 
 
@@ -101,10 +111,11 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Il s'agit d'une fonction qui permet à l'administrateur de modifier un produit.
+     * 
+     * @param id L'identifiant du produit qu'on veut modifier.
+     * 
+     * @return The La vue est retrournée
      */
     public function edit($id)
     {
@@ -123,12 +134,16 @@ class ProductController extends Controller
         }
     }
 
+
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Il prend l'identifiant du produit à mettre à jour, il valide la requête, il trouve
+     * le produit dans la base de données, ensuite il met à jour le produit avec les nouvelles données, puis il vérifie si 
+     * l'utilisateur a téléchargé une nouvelle image, il stocke la nouvelle image, puis il supprime l'ancienne image si
+     * ce n'est pas l'image par défaut, il met à jour le produit dans la base de données, puis il redirige
+     * l'utilisateur vers la page des produits avec un message de réussite.
+     * 
+     * @param Request request The request object.
+     * @param id The id of the product to be updated.
      */
     public function update(Request $request, $id)
     {
@@ -176,10 +191,12 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Il supprime le produit de la base de données et si le produit a une image, il supprime l'image'
+     * du stockage et tout ceci est possible que par l'admin
+     * 
+     * @param id L'identifiant du produit à supprimer
+     * 
+     * @return message de réussite
      */
     public function delete($id)
     {
@@ -200,11 +217,12 @@ class ProductController extends Controller
     }
 
     /**
-     * active le produit.
+     * active le produit si son statu est à 0.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id du produit qu'on veut activer
+     * @return 
      */
+
     public function activer($id)
     {
         $usertype = Auth::user()->usertype;
@@ -225,8 +243,8 @@ class ProductController extends Controller
     /**
      * desactive le produit.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int   $id du produit qu'on veut desactiver
+     * @return 
      */
     public function desactiver($id)
     {
@@ -243,6 +261,10 @@ class ProductController extends Controller
         }
     }
 
+    /**
+     * Elle retourne une vue avec les produits qui ont le même category_id que l'id passé dans la fonction.  * 
+     * @param id l'id de la catégorie
+     */
     public function select_par_category($id)
     {
         $products = Product::all()->where('category_id', $id)->where('status', 1);

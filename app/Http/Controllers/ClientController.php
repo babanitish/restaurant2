@@ -16,15 +16,15 @@ use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
+
     /**
-     * 
+     * Il renvoie une vue de la page d'accueil avec les produits et les catégories.
      */
     public function home()
     {
         (Cart::content());
         $products = Product::all()->where('status', 1);
         $categories = Category::all();
-        $user_id = Auth::id();
 
         return view('client.home', [
             'products' => $products,
@@ -34,14 +34,15 @@ class ClientController extends Controller
         ]);
     }
 
+
     /**
-     * 
+     * Elle renvoie une vue appelée "client.menu"  avec les produits et les catégories.
+     * @return The view is being returned.
      */
     public function menu()
     {
         $products = Product::all()->where('status', 1);
         $categories = Category::all();
-        $user_id = Auth::id();
         return view('client.menu', [
             'products' => $products,
             'categories' => $categories,
@@ -49,23 +50,29 @@ class ClientController extends Controller
         ]);
     }
     /**
-     * 
+     * Elle renvoie la vue `client.book`
+     * * @return La vue est renvoyée.
      */
     public function book()
     {
-        return view('client.book', []);
+        return view('client.book');
     }
 
+
     /**
-     * 
+     * Elle renvoie la vue `client.about`     * 
+     * @return La vue est renvoyée.
      */
     public function about()
     {
-        return view('client.about', []);
+        return view('client.about');
     }
 
     /**
-     * redirige l'utilisateur soit dans le back office soit sur l'accueil du site
+     * Si l'utilisateur est un administrateur, rediriger vers la page d'accueil de l'administrateur,
+     * sinon rediriger vers la page d'accueil du client.
+     * 
+     * @return Le type d'utilisateur de l'utilisateur qui est connecté.
      */
     function redirects()
     {
@@ -86,8 +93,14 @@ class ClientController extends Controller
     }
 
 
+
     /**
-     * Modification du profil du membre
+     * Il prend la requête, la valide, met à jour le nom et l'email de l'utilisateur et si le mot de passe est présent, il met à jour le mot de passe.
+     * 
+     * @param Request Il s'agit de l'objet de requête qui contient toutes les informations sur la
+     * demande 
+     * 
+     * @return The user is being returned.
      */
     public function profileUpdate(Request $request)
     {
@@ -109,8 +122,11 @@ class ClientController extends Controller
         return redirect()->route('dashboard')->with('status', 'Profile saved successfully');
     }
 
+
     /**
+     * Il déconnecte l'utilisateur et le redirige vers la page d'accueil.
      * 
+     * @return page d'accueil
      */
     public function UserLogout()
     {
@@ -118,10 +134,14 @@ class ClientController extends Controller
 
         return redirect()->route('/');
     }
-    /**
-     * profil du membre
-     */
 
+
+    /**
+     * Il obtient l'identifiant de l'utilisateur à partir de la fonction Auth::user(), puis il trouve l'utilisateur dans la base de données et
+     * renvoie la vue user_profile avec les informations de l'utilisateur.
+     * 
+     * @return The user object.
+     */
     public function UserProfile()
     {
         $id = Auth::user()->id;
@@ -131,11 +151,14 @@ class ClientController extends Controller
         ]);
     }
 
+
+
     /**
-     * reservation 
+     * Je veux vérifier si la date est inférieure à hier, si c'est le cas,la réservation 
+     * sera valide sinon un message d'erreur 
+     * 
+     * @param Request request The request object.
      */
-
-
     public function tableBook(Request $request)
     {
         $request->validate([
@@ -148,35 +171,30 @@ class ClientController extends Controller
         ]);
 
 
-        if($request->input('date') < Carbon::yesterday()){
-            return response()->json(['status'=>'date invalide']);
+        if ($request->input('date') < Carbon::yesterday()) {
+            return response()->json(['status' => 'date invalide']);
         }
-        // $now = Carbon::now()->addhour()->format('H:i');
-        // $moinsUneHeure = Carbon::now()->subHour(1);
 
-        // if($request->input('time') < ($moinsUneHeure)){
-        
-            $reservation = new reservation;
+        $reservation = new reservation;
 
 
-            $reservation->user_id = Auth::id();
-            $reservation->name = $request->input('name');
-            $reservation->phone = $request->input('phone');
-            $reservation->email = $request->input('email');
-            $reservation->guest = $request->input('guest');
-            $reservation->date = $request->input('date');
-            $reservation->time = $request->input('time');
-            $reservation->message = $request->input('message');
-            //  dd($reservation);
-            $reservation->save();
+        $reservation->user_id = Auth::id();
+        $reservation->name = $request->input('name');
+        $reservation->phone = $request->input('phone');
+        $reservation->email = $request->input('email');
+        $reservation->guest = $request->input('guest');
+        $reservation->date = $request->input('date');
+        $reservation->time = $request->input('time');
+        $reservation->message = $request->input('message');
+        $reservation->save();
 
-            return response()->json(['status' => "reservation success"]);
-        }
-    //     return response()->json(['status'=> 'time invalide']);
+        return response()->json(['status' => "reservation success"]);
+    }
 
-    // }
+
     /**
-     * voir ses commandes en tant que membre
+     * Je veux d'obtenir le order_id de l'utilisateur qui est connecté et ensuite obtenir le orderProduct qui a
+     * le même order_id
      */
     public function profileOrder()
     {
@@ -187,8 +205,4 @@ class ClientController extends Controller
             'orderProduct' => $orderProduct
         ]);
     }
-
-    // public function commande(){
-    //     return view('client.profile.order');
-    // }
 }

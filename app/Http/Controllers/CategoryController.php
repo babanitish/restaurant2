@@ -27,10 +27,10 @@ class CategoryController extends Controller
         }
     }
 
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Elle renvoie une vue si l'utilisateur est un administrateur, sinon elle redirige vers la page de connexion.    * 
+     * @return La vue est retournée.
      */
     public function addcategory()
     {
@@ -57,6 +57,13 @@ class CategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     */
+    /**
+     * Il valide la demande, crée une nouvelle catégorie, l'enregistre, puis redirige vers la page précédente avec un message 
+     * cela se fait que si l'utilisateur est un administrateur, sinon elle redirige vers la page de connexion.
+     * @param \Illuminate\Http\Request  $request
+     * 
+     * @return The return value of the last statement executed in the method.
      */
     public function store(Request $request)
     {
@@ -91,6 +98,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    /**
+     * C'est une fonction qui renvoie une vue.
+     * 
+     * @param id L'identifiant de la catégorie qu'on veut modifier.
+     * 
+     * @return La vue est retournée.
+     */
     public function edit($id)
     {
         $usertype = Auth::user()->usertype;
@@ -106,11 +120,14 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Il prend la requête, la valide, trouve la catégorie, met à jour la catégorie, et redirige
+     * l'utilisateur
+     * 
+     * @param Request request The request object.
+     * @param id L'id de la catégorie à mettre à jour
+     * 
+     * @return La catégorie est mise à jour et l'utilisateur est redirigé vers la page des catégories.
+     * avec un message.
      */
     public function update(Request $request, $id)
     {
@@ -134,6 +151,13 @@ class CategoryController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     */
+    /**
+     * Il supprime une catégorie de la base de données
+     * 
+     * @param id L'identifiant de la catégorie qu'on veut supprimer.
+     * 
+     * @return avec un message 
      */
     public function delete($id)
     {
