@@ -30,6 +30,7 @@ Route::get('/menu', [Clientcontroller::class, 'menu'])->name('menu');
 Route::get('/about', [Clientcontroller::class, 'about']);
 Route::get('/book', [Clientcontroller::class, 'book']);
 
+Route::get('/search', [Productcontroller::class, 'search']);
 
 
 // Route::put('/profile', [Clientcontroller::class, 'profileUpdate'])->name('profile.update');
@@ -46,6 +47,9 @@ Route::get('/select_par_category/{category_name}', [ProductController::class, 's
 Route::post('/table_book', [Clientcontroller::class, 'tableBook'])->name('book');
 Route::get('/reservation', [Admincontroller::class, 'viewReservation'])->name('view_reservation');
 
+// view order by admin
+Route::get('/orders', [Admincontroller::class, 'viewOrder']);
+
 
 //CART
 Route::post('/add-to-cart', [CartController::class, 'ajouter'])->name('ajout');
@@ -53,11 +57,6 @@ Route::get('/panier', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/panier/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 Route::post('/update-cart/{rowId}', [CartController::class, 'update']);
 
-
-
-
-
-// Route::post('/stripe/order',[ShopController::class, 'stripe'])->name('stripe');
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -84,7 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/categories', [CategoryController::class, 'categories'])->name('categories');
 
 
-    //PRODUCTS
+    //CRUD PRODUCTS
     Route::get('/products', [ProductController::class, 'product'])->name('products');
     Route::get('/addproduct', [ProductController::class, 'addproduct'])->name('addproduct');
     Route::post('/saveproduct', [ProductController::class, 'store'])->name('saveproduct');

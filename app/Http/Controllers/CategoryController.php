@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+
 class CategoryController extends Controller
 {
     /**
@@ -12,10 +15,16 @@ class CategoryController extends Controller
      */
     public function categories()
     {
-        $categories = Category::all();
-        return view('admin.category.categories', [
-            'categories' => $categories
-        ]);
+        $usertype = Auth::user()->usertype;
+        if ($usertype == '1') {
+
+            $categories = Category::all();
+            return view('admin.category.categories', [
+                'categories' => $categories
+            ]);
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -25,7 +34,12 @@ class CategoryController extends Controller
      */
     public function addcategory()
     {
-        return view('admin.category.addcategory');
+        $usertype = Auth::user()->usertype;
+        if ($usertype == '1') {
+            return view('admin.category.addcategory');
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -46,13 +60,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['name' => 'required|unique:categories']);  
+        $usertype = Auth::user()->usertype;
+        if ($usertype == '1') {
+            $this->validate($request, ['name' => 'required|unique:categories']);
 
-        $category = new Category();
-        $category->name = $request->input('name');
-        $category->save();
-        
-        return back()->with('status', 'category success');
+            $category = new Category();
+            $category->name = $request->input('name');
+            $category->save();
+
+            return back()->with('status', 'category success');
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -74,11 +93,16 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
+        $usertype = Auth::user()->usertype;
+        if ($usertype == '1') {
+            $category = Category::find($id);
 
-        return view('admin.category.editcategory',[
-            'category' => $category 
-        ]);
+            return view('admin.category.editcategory', [
+                'category' => $category
+            ]);
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -90,17 +114,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, ['name' => 'required|unique:categories']);  
+        $usertype = Auth::user()->usertype;
+        if ($usertype == '1') {
+            $this->validate($request, ['name' => 'required|unique:categories']);
 
-        $category = Category::find($id);
+            $category = Category::find($id);
 
-        $category->name = $request->input('name');
-        $category->update();
+            $category->name = $request->input('name');
+            $category->update();
 
-        return redirect('/categories')->with('status', 'category updated successful');
+            return redirect('/categories')->with('status', 'category updated successful');
+        } else {
+            return redirect()->route('login');
+        }
     }
 
-/**
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -108,10 +137,15 @@ class CategoryController extends Controller
      */
     public function delete($id)
     {
-        $category = Category::find($id);
-        $category->delete();
+        $usertype = Auth::user()->usertype;
+        if ($usertype == '1') {
+            $category = Category::find($id);
+            $category->delete();
 
-        return back()->with('status', 'delete success');
+            return back()->with('status', 'delete success');
+        } else {
+            return redirect()->route('login');
+        }
     }
 
 

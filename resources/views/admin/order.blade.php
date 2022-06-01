@@ -18,21 +18,20 @@
                         <th scope="col">Name</th>
                         <th scope="col">email</th>
                         <th scope="col">Phone</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Message</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Amount</th>
 
                     </tr>
                 </thead>
                 <tbody>
+                 
                     <tr>
-                        @foreach ($reservations as $reservation)
-                            <th>{{ $reservation->name }}</th>
-                            <td>{{ $reservation->email }}</td>
-                            <td>{{ $reservation->phone }}</td>
-                            <td>{{ $reservation->date }}</td>
-                            <td>{{ $reservation->time }}</td>
-                            <td>{{ $reservation->message }}</td>
+                        @foreach ($orders as $order)
+                            <th>{{ $order->name }}</th>
+                            <td>{{ $order->email }}</td>
+                            <td>{{ $order->phone }}</td>
+                            <td>{{ $order->address }}</td>
+                            <td>{{ $order->amount }}</td>
                             <td>
 
                                 <a href="#" class="btn btn-primary a-btn-slide-text">

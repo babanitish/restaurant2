@@ -8576,10 +8576,12 @@ pre {
   .table th, .jsgrid .jsgrid-table th,
   .table td,
   .jsgrid .jsgrid-table td {
+    color: white;
     padding: 0.9375rem;
     vertical-align: top;
     border-top: 1px solid #2c2e33; }
   .table thead th, .jsgrid .jsgrid-table thead th {
+    color: white;
     vertical-align: bottom;
     border-bottom: 2px solid #2c2e33; }
   .table tbody + tbody, .jsgrid .jsgrid-table tbody + tbody {
@@ -17892,14 +17894,15 @@ div.tagsinput {
     border-top: 0;
     border-bottom-width: 1px;
     font-weight: 500;
-    color: #6c7293; }
+    font-size: 20px;
+    color: white; }
     .table thead th i, .jsgrid .jsgrid-table thead th i {
       margin-left: 0.325rem; }
   .table th, .jsgrid .jsgrid-table th,
   .table td,
   .jsgrid .jsgrid-table td {
     vertical-align: middle;
-    font-size: 0.875rem;
+    font-size: 15px;
     line-height: 1;
     white-space: nowrap; }
     .table th img, .jsgrid .jsgrid-table th img,
