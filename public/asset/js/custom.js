@@ -243,46 +243,46 @@ $('.book').click(function (e) {
     });
 });
 
-$('.category').click(function (e) {
-    e.preventDefault();
-    var name = $('.cat').val();
-    console.log(name);
-    // var email = $('.email').val();
-    // var phone = $('.phone').val();
-    // var guest = $('.guest').val();
-    // var time = $('.time').val();
-    // var date = $('.date').val();
-    // var message = $('.message').val();
+// $('.category').click(function (e) {
+//     e.preventDefault();
+//     var name = $('.cat').val();
+//     console.log(name);
+//     // var email = $('.email').val();
+//     // var phone = $('.phone').val();
+//     // var guest = $('.guest').val();
+//     // var time = $('.time').val();
+//     // var date = $('.date').val();
+//     // var message = $('.message').val();
 
 
 
-    // $.ajaxSetup({
-    //     headers: {
-    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //     }
-    // });
+//     // $.ajaxSetup({
+//     //     headers: {
+//     //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//     //     }
+//     // });
 
-    // $.ajax({
-    //     type: "POST",
-    //     url: "/table_book",
-    //     data: {
-    //         'name': name,
-    //         'email': email,
-    //         'phone': phone,
-    //         'guest': guest,
-    //         'time': time,
-    //         'date': date,
-    //         'message': message
-    //     },
-    //     success: function (response) {
-    //         alert(response.status);
-    //         // window.location.reload();
-    //         // if (response.redirect_url) {
-    //         //     window.location = data.redirect_url; // or {{url('login')}}
-    //         // }
-    //     }
-    // });
-});
+//     // $.ajax({
+//     //     type: "POST",
+//     //     url: "/table_book",
+//     //     data: {
+//     //         'name': name,
+//     //         'email': email,
+//     //         'phone': phone,
+//     //         'guest': guest,
+//     //         'time': time,
+//     //         'date': date,
+//     //         'message': message
+//     //     },
+//     //     success: function (response) {
+//     //         alert(response.status);
+//     //         // window.location.reload();
+//     //         // if (response.redirect_url) {
+//     //         //     window.location = data.redirect_url; // or {{url('login')}}
+//     //         // }
+//     //     }
+//     // });
+// });
 
 
 // });
