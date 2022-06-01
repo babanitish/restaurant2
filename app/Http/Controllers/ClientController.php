@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Order;
 use App\Models\Reservation;
 use App\Models\User;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -141,26 +142,39 @@ class ClientController extends Controller
             'name' => 'required',
             'phone' => 'required',
             'email' => 'required|email',
-            'guest' => 'required',
+            'guest' => 'required|min:1',
             'time' => 'required',
             'date' => 'required',
         ]);
 
 
-        $reservation = new reservation;
-        $reservation->user_id = Auth::id();
-        $reservation->name = $request->input('name');
-        $reservation->phone = $request->input('phone');
-        $reservation->email = $request->input('email');
-        $reservation->guest = $request->input('guest');
-        $reservation->date = $request->input('date');
-        $reservation->time = $request->input('time');
-        $reservation->message = $request->input('message');
-        //  dd($reservation);
-        $reservation->save();
+        if($request->input('date') < Carbon::yesterday()){
+            return response()->json(['status'=>'date invalide']);
+        }
+        // $now = Carbon::now()->addhour()->format('H:i');
+        // $moinsUneHeure = Carbon::now()->subHour(1);
 
-        return response()->json(['status' => "reservation success"]);
-    }
+        // if($request->input('time') < ($moinsUneHeure)){
+        
+            $reservation = new reservation;
+
+
+            $reservation->user_id = Auth::id();
+            $reservation->name = $request->input('name');
+            $reservation->phone = $request->input('phone');
+            $reservation->email = $request->input('email');
+            $reservation->guest = $request->input('guest');
+            $reservation->date = $request->input('date');
+            $reservation->time = $request->input('time');
+            $reservation->message = $request->input('message');
+            //  dd($reservation);
+            $reservation->save();
+
+            return response()->json(['status' => "reservation success"]);
+        }
+    //     return response()->json(['status'=> 'time invalide']);
+
+    // }
     /**
      * voir ses commandes en tant que membre
      */

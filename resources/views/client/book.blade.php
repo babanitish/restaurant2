@@ -5,6 +5,11 @@
 @section('content')
     <!-- book section -->
     <section class="book_section layout_padding">
+        @if (Session::has('status'))
+        <div class="alert alert-success">
+            {{Session::get('status')}}
+        </div>
+    @endif
         <div class="container">
             <div class="heading_container">
                 <h2>
@@ -29,7 +34,7 @@
                                     required />
                             </div>
                             <div>
-                                <input type="number" name="guest" class="form-control nice-select wide guest"
+                                <input type="number" name="guest" min="1" class="form-control nice-select wide guest"
                                     placeholder="number of person" />
                             </div>
                             <div>

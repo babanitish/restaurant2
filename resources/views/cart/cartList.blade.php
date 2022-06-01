@@ -12,8 +12,15 @@
                         <div class="col-lg-8">
                             <div class="p-5">
                                 <div class="d-flex justify-content-between align-items-center mb-5">
+                                   <form action="{{route('vider')}}" method="POST">
+                                    @csrf
+                                    <button class="btn btn-danger">Vider</button>
+                                    </form>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-5">
                                     <h1 class="fw-bold mb-0 text-black">Panier</h1>
                                 </div>
+                                
                                 <hr class="my-4">
                               
                                 @foreach (cart::content() as $product)
@@ -101,7 +108,7 @@
     </div>
 </div>
 @else
-<p class="col-md-12"> Votre panier est vide</p>
+<p class="col-md-12 text-center text-bold display-3"> Votre panier est vide</p>
 @endif
   
 @endsection

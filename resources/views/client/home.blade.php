@@ -268,12 +268,17 @@
                    Nos produits
                 </h2>
             </div>
-            <ul class="filters_menu">
+            <ul class="filters_menu  category">
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Tout</a></li>
+             
                 @foreach ($categories as $category)
-                    <li class="{{ request()->is('select_par_category/' . $category->id) ? 'active' : '' }}"> 
+               
+                <input type="hidden" value="{{$category->id}}">
+                    <li class="{{ request()->is('select_par_category/' . $category->id) ? 'active' : ''}}" value="{{$category->name}}"> 
                         <a href="{{ url('/select_par_category', $category->id) }}">
-                            {{ $category->name }}</a> </li>
+                            {{ $category->name }}
+                        </a> 
+                    </li>
                 @endforeach
             </ul>
             <div class="filters-content ">
@@ -382,11 +387,11 @@
 
     <!-- book section -->
     <section class="book_section layout_padding">
-        {{-- @if (Session::has('status'))
+        @if (Session::has('status'))
                 <div class="alert alert-success">
                     {{Session::get('status')}}
                 </div>
-            @endif --}}
+            @endif
         <div class="container">
             <div class="heading_container">
                 <h2>
@@ -411,7 +416,7 @@
                                     required />
                             </div>
                             <div>
-                                <input type="number" name="guest" class="form-control nice-select wide guest"
+                                <input type="number" name="guest" min="1" class="form-control nice-select wide guest"
                                     placeholder="number of person" />
                             </div>
                             <div>

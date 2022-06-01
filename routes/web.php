@@ -55,9 +55,7 @@ Route::post('/update-cart/{rowId}', [CartController::class, 'update']);
 
 
 
-Route::get('/vider', function () {
-    Cart::destroy();
-});
+
 
 // Route::post('/stripe/order',[ShopController::class, 'stripe'])->name('stripe');
 
@@ -109,6 +107,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/mes-commandes',[clientController::class, 'commande'])->name('mes_commandes');
 
+    Route::post('/vider', [CartController::class, 'clearAllCart'])->name('vider');
 
     Route::get('/merci', function () {
         return view('client.merci');

@@ -45,7 +45,7 @@ class ProductSeeder extends Seeder
             [
 
                 'name' => 'Double cheese  ',
-                'description' => 'Sauce ketchup-moutarde, oignons, cornichons, double steak haché et double cheddar.',
+                'description' => 'Sauce ketchup-moutarde, oignons, double steak haché et double cheddar.',
                 'poster_url' => 'Double_cheese.jpg',
                 'price' => 7.95,
                 'category_id' => 1,
@@ -72,7 +72,7 @@ class ProductSeeder extends Seeder
             [
 
                 'name' => 'Suprême ',
-                'description' => 'Burger cheddar, laitue, tomate et sauce.',
+                'description' => 'Burger cheddar, laitue, tomate et saucemayonnaise.',
                 'poster_url' => 'supreme.png',
                 'price' => 8.95,
                 'category_id' => 1,
@@ -84,7 +84,7 @@ class ProductSeeder extends Seeder
             [
 
                 'name' => 'Menu classique ',
-                'description' => "Burger classique, tomate et sauce, une boisson et un choix de quartiers de pommes de terre, frites de patates douces ou salade d'accompagnement.",
+                'description' => "Burger classique, tomate et sauce, une boisson avec frites de patates douces ou salade d'accompagnement.",
                 'poster_url' => 'menu_burger1.jpg',
                 'price' => 12.95,
                 'category_id' => 1,
@@ -94,7 +94,7 @@ class ProductSeeder extends Seeder
             [
 
                 'name' => 'Menu Mexicain',
-                'description' => "Burger avec nachos,cheddar, laitue, sauce tomate et salsa, une boisson et un choix de quartiers de pommes de terre, frites de patates douces ou salade d'accompagnement.",
+                'description' => "Burger avec nachos,cheddar, laitue, sauce tomate et salsa, une boisson avec frites de patates douces.",
                 'poster_url' => 'menu_burger2.jpg',
                 'price' => 12.95,
                 'category_id' => 1,
@@ -103,7 +103,7 @@ class ProductSeeder extends Seeder
             [
 
                 'name' => 'Menu Suprême ',
-                'description' => "Burger avec rondelles d'oignon frites, cheddar, tomate et sauce, une boisson et un choix de quartiers de pommes de terre, frites de patates douces ou salade d'accompagnement.",
+                'description' => "Burger avec rondelles d'oignon frites, cheddar, tomate et sauce, une boisson avec quartiers de pommes de terre.",
                 'poster_url' => 'menu_burger3.jpg',
                 'price' => 13.95,
                 'category_id' => 1,
@@ -112,8 +112,26 @@ class ProductSeeder extends Seeder
             [
 
                 'name' => 'Menu Oeufs Frits ',
-                'description' => "Burger avec œuf au plat, cheddar, bacon (de dinde), laitue, tomate, une boisson et un choix de quartiers de pommes de terre, frites de patates douces ou salade d'accompagnement",
+                'description' => "Burger avec œuf au plat, cheddar, bacon (de dinde), laitue, tomate, une boisson avec quartiers de pommes de terre.",
                 'poster_url' => 'menu_burger5.png',
+                'price' => 13.95,
+                'category_id' => 1,
+                'status' => 1,
+            ],
+            [
+
+                'name' => 'Menu cool ',
+                'description' => "Burger avec rondelles d'oignon frites, cheddar, tomate et sauce, une boisson avec frites de patates douces.",
+                'poster_url' => 'menu_burger3.jpg',
+                'price' => 13.95,
+                'category_id' => 1,
+                'status' => 1,
+            ],
+            [
+
+                'name' => 'Menu jutsu ',
+                'description' => "Burger avec rondelles d'oignon frites, cheddar, tomate et sauce, une boisson avec quartiers de pommes de terre.",
+                'poster_url' => 'menu_burger3.jpg',
                 'price' => 13.95,
                 'category_id' => 1,
                 'status' => 1,
@@ -212,15 +230,25 @@ class ProductSeeder extends Seeder
             [
 
                 'name' => 'Menu enfant classique ',
-                'description' => 'Petit burger classique de 60 grammes avec laitue et tomate, une portion de frites, une boisson et une surprise dans une box enfant.',
+                'description' => 'Petit burger classique de 60 grammes avec laitue et tomate, une portion de frites, une boisson et une surprise.',
                 'poster_url' => 'kid1.png',
                 'price' => 7.95,
                 'category_id' => 4,
                 'status' => 1,
-            ],  [
+            ], 
+            [
+
+                'name' => 'Menu enfant délice ',
+                'description' => 'Petit burger classique de 60 grammes avec laitue et tomate, une portion de frites, une boisson et une surprise.',
+                'poster_url' => 'kid1.png',
+                'price' => 7.95,
+                'category_id' => 4,
+                'status' => 1,
+            ],
+             [
 
                 'name' => 'Menu enfant classique au fromage ',
-                'description' => 'Petit cheese burger classique de 60 grammes avec cheddar, laitue et tomate, une portion de frites, une boisson et une surprise dans une box enfant. ',
+                'description' => 'Petit cheese burger classique de 60 grammes avec cheddar, laitue et tomate, une portion de frites, une boisson et une surprise. ',
                 'poster_url' => 'kid2.png',
                 'price' => 7.95,
                 'category_id' => 4,
@@ -228,6 +256,24 @@ class ProductSeeder extends Seeder
             ],  [
 
                 'name' => 'Menu pour enfants Doigts de poulet ',
+                'description' => '3 tendres doigts de poulet avec une portion de frites , une boisson et une surprise dans une box enfant. ',
+                'poster_url' => 'kid3.png',
+                'price' => 7.95,
+                'category_id' => 4,
+                'status' => 1,
+            ],
+            [
+
+                'name' => 'Menu pour enfants ailes de poulet ',
+                'description' => '3 tendres doigts de poulet avec une portion de frites , une boisson et une surprise dans une box enfant. ',
+                'poster_url' => 'kid3.png',
+                'price' => 7.95,
+                'category_id' => 4,
+                'status' => 1,
+            ],
+            [
+
+                'name' => 'Menu pour enfants cuisse de poulet ',
                 'description' => '3 tendres doigts de poulet avec une portion de frites , une boisson et une surprise dans une box enfant. ',
                 'poster_url' => 'kid3.png',
                 'price' => 7.95,
@@ -279,6 +325,22 @@ class ProductSeeder extends Seeder
                 'name' => 'frite',
                 'description' => "(400 grammes) Frites  avec une couche savoureuse",
                 'poster_url' => 'frites1.jpg',
+                'price' => 3.95,
+                'category_id' => 5,
+                'status' => 1,
+            ],
+            [
+                'name' => 'Frites de patates douces ',
+                'description' => "(400 grammes) Frites de patates douces avec une couche savoureuse",
+                'poster_url' => 'potato1.jpg',
+                'price' => 3.95,
+                'category_id' => 5,
+                'status' => 1,
+            ],
+            [
+                'name' => 'Frites de patates douces ',
+                'description' => "(400 grammes) Frites de patates douces avec une couche savoureuse",
+                'poster_url' => 'potato1.jpg',
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,

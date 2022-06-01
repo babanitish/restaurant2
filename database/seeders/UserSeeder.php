@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             [
                 'name'=>'admin',
                 'email'=>'admin@sull.com',
-                'password'=>'123',
+                'password'=>'12345678',
                 'usertype' => '1',
                 'address' => 'churchill',
                 'phone' => '0405667788'
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
             [
                 'name'=>'abou',
                 'email'=>'abou@sull.com',
-                'password'=>'123',
+                'password'=>'12345678',
                 'usertype' => '0',
                 'address' => 'Brugman',
                 'phone' => '0405967798'

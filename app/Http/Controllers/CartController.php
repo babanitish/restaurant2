@@ -103,4 +103,12 @@ class CartController extends Controller
         Cart::remove($rowId);
         return back()->with('status', 'le produit a été supprimé' );
     }
+    public function clearAllCart()
+    {
+        Cart::destroy();
+
+        session()->flash('success', 'All Item Cart Clear Successfully !');
+
+        return  view('cart.cartList');
+    }
 }
