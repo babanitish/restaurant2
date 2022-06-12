@@ -14,7 +14,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','poster_url','price','description','category_id','shop_id'];
+    protected $fillable = ['name','poster_url','price','description','category_id'];
 //'shop_id','category_id'
    /**
      * The table associated with the model.
@@ -44,5 +44,9 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+      public function OrderProduct()
+    {
+        return $this->hasMany(OrderProduct::class);
     }
 }

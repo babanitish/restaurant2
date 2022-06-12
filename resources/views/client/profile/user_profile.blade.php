@@ -25,19 +25,17 @@ menu
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                    <a href="" class="mb-0">vos commandes</a>
+                                    <a href="{{route('my_order')}}" class="mb-0">vos commandes</a>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                    <a href="" class="mb-0">Profile Update</a>
+                                    <a href="{{route('user.profil')}}" class="mb-0">Mettre à jour ses
+                                        données</a>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                                    <a href="" class="mb-0">change password</a>
-                                </li>
+                               
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                    <a href="{{ route('user.logout') }}" class="mb-0">logout</a>
+                                    <a href="{{ route('user.logout') }}" class="mb-0">Se déconnecter</a>
                                 </li>
 
                             </ul>
@@ -65,8 +63,8 @@ menu
                                             <p class="mb-0">Nom</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0">{{ auth()->user()->name }}</p>
-                                        </div>
+                                            <x-input id="" class="block mt-1 w-full" type=""
+                                            name="name" autocomplete="new-password" value="{{ auth()->user()->name }}"/>                                        </div>
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -74,7 +72,8 @@ menu
                                             <p class="mb-0">Email</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0">{{ auth()->user()->email }}</p>
+                                            <x-input id="" class="block mt-1 w-full" type=""
+                                            name="email" autocomplete="new-password" value="{{ auth()->user()->email }}"/>
                                         </div>
                                     </div>
                                     <hr>

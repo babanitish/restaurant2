@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -272,6 +275,56 @@ class ProductController extends Controller
         return view('client.home', [
             'products' => $products,
             'categories' => $categories
+        ]);
+    }
+
+    public function search(){
+        $products = Product::select('name')->where('status','1')->get();
+       // dd($products);
+        $data = [];
+        foreach($products as $item){
+            $data[] = $item['name'];
+        }
+        return $data;
+    }
+
+    public function searchProduct(Request $request ){
+        $productName = $request->input('product_name');
+        $product = Product::where('name','LIKE','%'.$productName.'%')->with('category')->get();
+   
+        if($productName != ''){
+            if($product){
+                return view('admin.product.search',[
+                    'product' => $product,
+                ]);
+            }else{
+                return redirect()->back()->with('status',"pas disponible");
+            }
+            return redirect()->back();
+        }
+        
+    }
+
+     /**
+     * It returns the first order of the user.
+     * 
+     * @return The order id of the user.
+     */
+    public function myOrder()
+    {
+        $order = Order::where('user_id', Auth::id())->get();
+        
+        return view('client.profile.order', [
+            'order' => $order,
+        ]);
+    }
+
+    public function orderDetail($id)
+    {
+        $order = Order::where('id',$id)->where('user_id', Auth::id())->first();
+        //  dd($order);
+        return view('client.profile.order_view', [
+            'order' => $order,
         ]);
     }
 }

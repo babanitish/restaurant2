@@ -30,7 +30,8 @@ Route::get('/menu', [Clientcontroller::class, 'menu'])->name('menu');
 Route::get('/about', [Clientcontroller::class, 'about']);
 Route::get('/book', [Clientcontroller::class, 'book']);
 
-Route::get('/search', [Productcontroller::class, 'search']);
+// Route::get('/product-list', [Productcontroller::class, 'search']);
+
 
 
 // Route::put('/profile', [Clientcontroller::class, 'profileUpdate'])->name('profile.update');
@@ -92,24 +93,22 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/delete_product/{id}', [ProductController::class, 'delete'])->name('delete_product');
     Route::get('/desactiver_product/{id}', [ProductController::class, 'desactiver'])->name('desactiver_product');
     Route::get('/activer_product/{id}', [ProductController::class, 'activer'])->name('activer_product');
+    Route::get('/search-product', [Productcontroller::class, 'searchProduct'])->name('search_product');
+    Route::get('/mes-commandes', [Productcontroller::class, 'myOrder'])->name('my_order');
+    Route::get('/commande/détail/{id}', [Productcontroller::class, 'orderDetail'])->name('order_view');
 
     /////////////////////////////
     Route::get('/user/logout', [ClientController::class, 'UserLogout'])->name('user.logout');
     Route::get('/user/profil', [ClientController::class, 'UserProfile'])->name('user.profil');
     Route::put('/profile/update', [Clientcontroller::class, 'profileUpdate'])->name('profile.update');
-    Route::get('/profile/order', [Clientcontroller::class, 'profileOrder'])->name('user.order');
+    // Route::get('/profile/order', [Clientcontroller::class, 'profileOrder'])->name('user.order');
 
     //CHECKOUT
 
     Route::get('/payment', [checkoutController::class, 'index'])->name('checkout.index');
     Route::post('/order', [checkoutController::class, 'payer'])->name('place-order');
 
-    Route::get('/mes-commandes',[clientController::class, 'commande'])->name('mes_commandes');
 
     Route::post('/vider', [CartController::class, 'clearAllCart'])->name('vider');
-
-    Route::get('/merci', function () {
-        return view('client.merci');
-    })->name('merci');
 });
 require __DIR__ . '/auth.php';

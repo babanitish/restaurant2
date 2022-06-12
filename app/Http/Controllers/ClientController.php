@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
@@ -104,21 +105,24 @@ class ClientController extends Controller
      */
     public function profileUpdate(Request $request)
     {
-
+        $user = User::find(Auth::id());
         $request->validate([
-
+            'name' => 'required',
+            'email' => 'required|email',
             'password' => 'required|confirmed|min:7'
 
         ]);
 
-        auth()->user()->update($request->only('name', 'email'));
 
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        // auth()->user()->update($request->only('name', 'email'));
         if ($request->input('password')) {
             auth()->user()->update([
                 'password' => bcrypt($request->input('password'))
             ]);
         }
-
+        $user->save();
         return redirect()->route('dashboard')->with('status', 'Profile saved successfully');
     }
 
@@ -198,11 +202,13 @@ class ClientController extends Controller
      */
     public function profileOrder()
     {
-        $order_id = Order::select(['id'])->where('user_id', Auth::id())->first();
-        $orderProduct = orderProduct::where('order_id', $order_id)->get();
-        // dd($order_id);
-        return view('client.profile.order', [
-            'orderProduct' => $orderProduct
-        ]);
+        // $order_id = Order::select(['id'])->where('user_id', Auth::id())->first();
+        // $orderProduct = orderProduct::where('order_id', $order_id)->get();
+        // // dd($order_id);
+        // return view('client.profile.order', [
+        //     'orderProduct' => $orderProduct
+        // ]);
     }
+
+  
 }

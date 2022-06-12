@@ -34,33 +34,33 @@
                 </thead>
                 <tbody>
 
-                    @foreach ($products as $product)
+                    @foreach ($product as $prod)
                         <tr>
                             <td>{{ $increment }}</td>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->price }}</td>
-                            <td>{{ $product->category->name }}</td>
-                            <td><img src="{{ asset('product_poster/' . $product->poster_url) }}" alt="{{ $product->name }}"
+                            <td>{{ $prod->name }}</td>
+                            <td>{{ $prod->price }}</td>
+                            <td>{{ $prod->category->name }}</td>
+                            <td><img src="{{ asset('product_poster/' . $prod->poster_url) }}" alt="{{ $prod->name }}"
                                     style="height: 100px;width: 100px;"></td>
 
                             <td>
                                 <div>
-                                    <a href="{{ route('edit_product', $product->id) }}" class="btn btn-primary">
+                                    <a href="{{ route('edit_product', $prod->id) }}" class="btn btn-primary">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                         <span><strong>Edit</strong></span>
                                     </a>
 
-                                    <a href="{{ route('delete_product', $product->id) }}"
+                                    <a href="{{ route('delete_product', $prod->id) }}"
                                         class="btn btn-primary a-btn-slide-text">
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                         <span><strong>Delete</strong></span>
                                     </a>
                                 </div>
                                 <div class="pt-3">
-                                    @if ($product->status != 0)
-                                    <a href="{{ route('desactiver_product', $product->id) }}" class="btn btn-success">unactivate</a>
+                                    @if ($prod->status != 0)
+                                    <a href="{{ route('desactiver_product', $prod->id) }}" class="btn btn-success">unactivate</a>
                                     @else
-                                    <a href="{{ route('activer_product', $product->id) }}" class="btn btn-warning">activate</a>                                        
+                                    <a href="{{ route('activer_product', $prod->id) }}" class="btn btn-warning">activate</a>                                        
                                     @endif
                                 </div>
 

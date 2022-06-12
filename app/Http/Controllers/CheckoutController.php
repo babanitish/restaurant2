@@ -9,6 +9,7 @@ use Stripe\Stripe;
 use Stripe\Charge;
 use App\Models\Order;
 use App\Models\orderProduct;
+use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
 
@@ -92,7 +93,7 @@ class CheckoutController extends Controller
 
         Cart::destroy();
 
-        return redirect()->route('merci')->with(["status" => "votre payement a été accepté Merci."]);
+        return redirect()->route('my_order');
     }
 
 
@@ -160,4 +161,6 @@ class CheckoutController extends Controller
     {
         //
     }
+
+   
 }

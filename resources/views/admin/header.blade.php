@@ -8,9 +8,11 @@
           <span class="mdi mdi-menu"></span>
         </button>
         <ul class="navbar-nav w-100">
-          <li class="nav-item w-100">
-            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-              <input type="text" class="form-control" placeholder="Search products">
+          <li class="nav-item w-100 mt-4">
+            <form method="GET" action="{{route('search_product')}}" class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+              @csrf
+              <input type="search" id="search_product"class="form-control" name="product_name" placeholder="Search products">
+              <button type="submit"><i class="fas fa-search">GO</i></button>
             </form>
           </li>
         </ul>

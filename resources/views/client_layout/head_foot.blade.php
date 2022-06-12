@@ -78,7 +78,6 @@
         .dropdown:hover .dropbtn {
             background-color: #3e8e41;
         }
-
     </style>
 </head>
 
@@ -92,9 +91,9 @@
         <header class="header_section">
             <div class="container">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
-                        <img src="{{ asset('asset/images/logo2.png') }}" alt="" style="width: 70px;">
+                    <img src="{{ asset('asset/images/logo2.png') }}" alt="" style="width: 70px;">
 
-                    <a class="navbar-brand" href="{{route('/')}}">
+                    <a class="navbar-brand" href="{{ route('/') }}">
                         <span>
                             Le joyau de Bx
                         </span>
@@ -126,22 +125,35 @@
                             <div class="dropdown">
                                 @if (Route::has('login'))
                                     @auth
-                                    <a href="" class="user_link dropbtnk">
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                    </a>
-                                    <div class="dropdown-content">
-                                        <a href="{{ route('dashboard') }}">Profile</a>
-                                        <a href="{{ route('user.order') }}">commandes</a>
-                                    </div>
-                                       
-                                    @else
-                                        <a href="{{ route('login') }}" class="user_link">
+                                        <a href="" class="user_link dropbtnk">
                                             <i class="fa fa-user" aria-hidden="true"></i>
                                         </a>
+                                        <div class="dropdown-content">
+                                            <a href="{{ route('dashboard') }}">Profile</a>
+                                            <a href="{{ route('my_order') }}">commandes</a>
+                                            <a href="{{ route('user.logout') }}">logout</a>
+
+                                        </div>
+
+
+
                                     @endauth
+
+
+                                    @guest
+                                        <a href="" class="user_link dropbtnk">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </a>
+                                        <div class="dropdown-content">
+                                            <a href="{{ route('login') }}">login</a>
+                                            <a href="{{ route('register') }}">register</a>
+                                        </div>
+
+
+                                    @endguest
                                     {{-- </div> --}}
                                 @endif
-                                
+
                             </div>
 
 
@@ -162,8 +174,8 @@
                                     <b>0</b>
                                 </span>
                           
-                            @endguest
-                            <form class="form-inline"> --}}
+                            @endguest --}}
+                            <form class="form-inline">
                             <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </button>

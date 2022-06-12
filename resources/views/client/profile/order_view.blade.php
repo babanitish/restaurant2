@@ -54,11 +54,29 @@ menu
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h3 class="text-center">Vos commandes</h3>
-                        
+                            <h3 class="text-center">Détails de la commande</h3>
+                          
                             <div class="row">
-                              
-                                <table class="table">
+                                @foreach ($order->orderProducts as $item)
+                                 
+                                    <div class="col-sm-3">
+                                        <p class="mb-0">{{ $item->product->name }}</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{ $item->price }}</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">{{ $item->product->description }}</p>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <p class="text-muted mb-0">Qty: {{ $item->quantity }}</p>
+                                    </div>
+                                    <div class="col-md-2 col-lg-2 col-xl-2">
+                                        <img src="{{ asset('product_poster/' . $item->product->poster_url) }}"
+                                            class="img-fluid rounded-3" alt="{{ $item->product->name }}">
+                                    </div>
+                                @endforeach
+                                {{-- <table class="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">Nom</th>
@@ -81,14 +99,14 @@ menu
                                                 <td>
                                                     <a href="{{route('order_view',$item->id)}}" class="btn btn-primary a-btn-slide-text">
                                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                                        <span><strong>Détails</strong></span>
+                                                        <span><strong>Détail</strong></span>
                                                     </a>
                                                 </td>
                                             </tr>
                                         @endforeach
 
                                     </tbody>
-                                </table>
+                                </table> --}}
                             </div>
                             <hr>
 

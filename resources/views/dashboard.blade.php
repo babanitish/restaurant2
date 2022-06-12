@@ -5,10 +5,10 @@ menu
 @section('content')
     <h2 class="d-flex justify-content-center">Bienvenue {{ Auth::user()->name }}</h2>
     @if (Session::has('status'))
-    <div class="alert alert-success">
-        {{Session::get('status')}}
-    </div>
-@endif
+        <div class="alert alert-success">
+            {{ Session::get('status') }}
+        </div>
+    @endif
     <section style="background-color: #eee;">
         <div class="container py-5">
             <div class="row">
@@ -31,23 +31,20 @@ menu
                             <ul class="list-group list-group-flush rounded-3">
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="fas fa-globe fa-lg text-warning"></i>
-                                    <a href="{{route('user.order')}}" class="mb-0">Home</p>
+                                    <a href="" class="mb-0">Accueil</p>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                    <a href="" class="mb-0">vos commandes</a>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                    <a href="" class="mb-0">Profile Update</a>
+                                    <a href="{{ route('my_order') }}" class="mb-0">vos commandes</a>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                                    <a href="{{route('user.profil')}}" class="mb-0">change password</a>
+                                    <a href="{{ route('user.profil') }}" class="mb-0">Mettre à jour ses
+                                        données</a>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                    <a href="{{ route('user.logout') }}" class="mb-0">logout</a>
+                                    <a href="{{ route('user.logout') }}" class="mb-0">Se déconnecter</a>
                                 </li>
 
                             </ul>
@@ -62,7 +59,7 @@ menu
                                     <p class="mb-0">Full Name</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Johnatan Smith</p>
+                                    <p class="text-muted mb-0">{{ Auth::user()->name }}</p>
                                 </div>
                             </div>
                             <hr>
@@ -71,7 +68,7 @@ menu
                                     <p class="mb-0">Email</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">example@example.com</p>
+                                    <p class="text-muted mb-0">{{ Auth::user()->email }}</p>
                                 </div>
                             </div>
                             <hr>
@@ -80,25 +77,20 @@ menu
                                     <p class="mb-0">Phone</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(097) 234-5678</p>
+                                    <p class="text-muted mb-0">
+                                        {{ Auth::user()->phone }} </p>
                                 </div>
                             </div>
                             <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Mobile</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(098) 765-4321</p>
-                                </div>
-                            </div>
+
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Address</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                                    <p class="text-muted mb-0">
+                                        {{ Auth::user()->address }} </p>
                                 </div>
                             </div>
                         </div>
