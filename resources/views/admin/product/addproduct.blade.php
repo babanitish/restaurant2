@@ -22,11 +22,11 @@
                 </div>
             @endif
 
-            @if (Session::has('status'))
+            {{-- @if (Session::has('status'))
                 <div class="alert alert-success">
                     {{ Session::get('status') }}
                 </div>
-            @endif
+            @endif --}}
             <h1>Product</h1>
             <form action="{{ route('saveproduct') }}" method="POST" enctype="multipart/form-data" name="formName">
                 @csrf

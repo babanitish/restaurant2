@@ -19,6 +19,7 @@
 
 <script src="asset/js/bootstrap.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 <script>
@@ -26,14 +27,26 @@
     $.ajax({
         type: "GET",
         url: "/product-list",
-        success: function (response) {
+        success: function(response) {
             startAutoComplete(response);
         }
     });
-    function startAutoComplete(availableTags){
+
+    function startAutoComplete(availableTags) {
         $("#search_product").autocomplete({
-        source: availableTags
-    });
+            source: availableTags
+        });
     }
-    
 </script>
+
+@if (session('status'))
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: "{{ session('status') }}",
+            showConfirmButton: false,
+            timer: 1200
+        })
+    </script>
+@endif

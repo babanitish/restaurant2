@@ -234,11 +234,12 @@ $('.book').click(function (e) {
             'message': message
         },
         success: function (response) {
-            alert(response.status);
-            // window.location.reload();
-            // if (response.redirect_url) {
-            //     window.location = data.redirect_url; // or {{url('login')}}
-            // }
+            // alert(response.status);
+           Swal.fire({
+            title: 'Succès',
+            text: 'Réservation effectuée',
+            icon: 'success'
+           })
         }
     });
 });

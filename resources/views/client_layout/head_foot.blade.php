@@ -176,9 +176,9 @@
                           
                             @endguest --}}
                             <form class="form-inline">
-                            <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </button>
+                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
                             </form>
                             <a href="{{ url('/menu') }}" class="order_online">
                                 commander
@@ -300,12 +300,19 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
     </script>
     <!-- End Google Map -->
-    {{-- <script>
-        $(document).on('click', 'ul li', function() {
-            $(this).addClass('active').siblings.removeClass('active')
-        })
-    </script> --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    @if (session('status'))
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: "{{session('status')}}",
+                showConfirmButton: false,
+                timer: 1000
+            })
+        </script>
+    @endif
 </body>
 
 </html>

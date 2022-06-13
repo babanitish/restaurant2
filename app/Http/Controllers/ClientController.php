@@ -195,20 +195,5 @@ class ClientController extends Controller
         return response()->json(['status' => "reservation success"]);
     }
 
-
-    /**
-     * Je veux d'obtenir le order_id de l'utilisateur qui est connecté et ensuite obtenir le orderProduct qui a
-     * le même order_id
-     */
-    public function profileOrder()
-    {
-        // $order_id = Order::select(['id'])->where('user_id', Auth::id())->first();
-        // $orderProduct = orderProduct::where('order_id', $order_id)->get();
-        // // dd($order_id);
-        // return view('client.profile.order', [
-        //     'orderProduct' => $orderProduct
-        // ]);
-    }
-
   
 }

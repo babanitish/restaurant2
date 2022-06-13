@@ -97,7 +97,7 @@ class ProductController extends Controller
             $product->category_id = $request->input('product_category');
             $product->status = 1;
             $product->save();
-            return back()->with('status', 'product created successful');
+            return back()->with('status', 'produit crée');
         } else {
             return redirect()->route('login');
         }
@@ -213,7 +213,7 @@ class ProductController extends Controller
 
             $product->delete();
 
-            return back()->with('status', 'product has been delete success');
+            return back()->with('status', 'produit supprimé');
         } else {
             return redirect()->route('login');
         }

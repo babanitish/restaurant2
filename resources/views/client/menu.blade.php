@@ -4,11 +4,11 @@
 @endsection
 @section('content')
     <!-- food section -->
-    @if (Session::has('status'))
+    {{-- @if (Session::has('status'))
         <div class="alert alert-success">
             {{ Session::get('status') }}
         </div>
-    @endif
+    @endif --}}
 
     <section class="food_section layout_padding-bottom">
 
