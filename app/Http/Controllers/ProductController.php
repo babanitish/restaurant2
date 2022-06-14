@@ -312,7 +312,9 @@ class ProductController extends Controller
      */
     public function myOrder()
     {
-        $order = Order::where('user_id', Auth::id())->get();
+        $order = DB::table('orders')->where('user_id', Auth::id())
+        ->orderByDesc('created_at')
+        ->get();
         
         return view('client.profile.order', [
             'order' => $order,

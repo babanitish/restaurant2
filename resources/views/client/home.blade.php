@@ -108,7 +108,7 @@
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    Jeudis savoureux
+                                    Jeudi savoureux
                                 </h5>
                                 <h6>
                                     <span>20%</span> réduction

@@ -77,7 +77,7 @@ class CheckoutController extends Controller
             $user->update();
         }
         /* Le code  crée une charge en utilisant l'API Stripe. */
-        Stripe::setApiKey("sk_test_51KcCE2BT18jGCwi9AhrV5lrLXAbn7j6Bvxb6ncdEORySoin8kpdcLKd9uO2QyvoeJXDUlxoSflrPlIJbTptJpJzP00LNizTrzW");
+        Stripe::setApiKey(env('STRIPE_SECRET'));
 
 
         $charge = Charge::create([

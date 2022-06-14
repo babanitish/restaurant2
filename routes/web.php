@@ -30,11 +30,11 @@ Route::get('/menu', [Clientcontroller::class, 'menu'])->name('menu');
 Route::get('/about', [Clientcontroller::class, 'about']);
 Route::get('/book', [Clientcontroller::class, 'book']);
 
-// Route::get('/product-list', [Productcontroller::class, 'search']);
+
+//NEWSLETTER
+Route::post('/newsletter', [Clientcontroller::class, 'newsletter'])->name('subscribe_newsletter');
 
 
-
-// Route::put('/profile', [Clientcontroller::class, 'profileUpdate'])->name('profile.update');
 
 Route::get('/users', [Admincontroller::class, 'user'])->name('users');
 Route::get('/deleteuser/{id}', [Admincontroller::class, 'deleteuser']);
@@ -48,8 +48,7 @@ Route::get('/select_par_category/{category_name}', [ProductController::class, 's
 Route::post('/table_book', [Clientcontroller::class, 'tableBook'])->name('book');
 Route::get('/reservation', [Admincontroller::class, 'viewReservation'])->name('view_reservation');
 
-// view order by admin
-Route::get('/orders', [Admincontroller::class, 'viewOrder']);
+
 
 
 //CART
@@ -72,7 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/redirects', [Clientcontroller::class, 'redirects'])->name('redirects');
 
-
+    Route::get('/orders', [Admincontroller::class, 'viewOrder']);
 
     // Route::get('/cart_view/{id}', [ShopController::class, 'cartView'])->name('cart_view');
     //CATEGORIES

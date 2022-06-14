@@ -233,10 +233,20 @@
                         <a href="" class="footer-logo">
                             Le joyau de Bx
                         </a>
-                        {{-- <p>
-                            Necessary, making this the first true generator on the Internet. It uses a dictionary of
-                            over 200 Latin words, combined with
-                        </p> --}}
+                        <form action="{{ route('subscribe_newsletter') }}" method="post">
+                            @csrf
+                            <div class="input-group mb-3 mt-4 rounded">
+
+                                <input type="text" class="form-control" placeholder="Enter email"
+                                    aria-label="Recipient's username" aria-describedby="button-addon2"
+                                    style="border-top-left-radius: 28px;border-bottom-left-radius: 28px;" name="email">
+                                <button class="btn btn-warning border-rad" type="submit" id="button-addon2"
+                                    name="btnNews"
+                                    style="border-top-right-radius: 28px;border-bottom-right-radius: 28px;">
+                                    Souscrire</button>
+
+                            </div>
+                        </form>
                         <div class="footer_social">
                             <a href="">
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
@@ -307,7 +317,7 @@
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: "{{session('status')}}",
+                title: "{{ session('status') }}",
                 showConfirmButton: false,
                 timer: 1000
             })

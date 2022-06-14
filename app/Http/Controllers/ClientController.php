@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Category;
-use App\Models\orderProduct;
 use App\Models\Product;
-use App\Models\Order;
 use App\Models\Reservation;
 use App\Models\User;
 use Carbon\Carbon;
@@ -14,7 +12,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Newsletter;
 class ClientController extends Controller
 {
 
@@ -194,6 +192,19 @@ class ClientController extends Controller
 
         return response()->json(['status' => "reservation success"]);
     }
-
-  
+  /**
+   * It takes the email address from the form, and subscribes the user to the newsletter list
+   * 
+   * @param Request request The request object
+   * 
+   * @return The newsletter method is returning a redirect to the homepage.
+   */
+    public function newsletter(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+        Newsletter::subscribeOrUpdate($request->input('email'), ['firstname' => 'bob'], 'newsletter');
+        return redirect()->back()->with('status','thank you for your subscribe');
+    }
 }
