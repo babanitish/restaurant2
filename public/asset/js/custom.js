@@ -235,14 +235,89 @@ $('.book').click(function (e) {
         },
         success: function (response) {
             // alert(response.status);
-           Swal.fire({
-            title: 'Succès',
-            text: 'Réservation effectuée',
-            icon: 'success'
-           })
+            Swal.fire({
+                title: 'Succès',
+                text: 'Réservation effectuée',
+                icon: 'success'
+            })
         }
     });
 });
+
+
+///COUPON
+
+$('.btnCoupon').click(function (e) {
+    e.preventDefault();
+    var coupon_name = $('.coupon_name').val();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/coupon-apply",
+        data: {
+            'coupon_name': coupon_name,
+        },
+        success: function (response) {
+            alert(response.status);
+            window.location.reload();
+
+            //    Swal.fire({
+            //     title: 'Succès',
+            //     text: 'Coupon appliqué',
+            //     icon: 'success'
+            //    })
+        }
+    });
+});
+
+
+// $.ajaxSetup({
+//     headers: {
+//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//     }
+// });
+// function couponCal(){
+//     $.ajax({
+//         type: "GET",
+//         url: "/coupon-calcul",
+//         dataType: 'json',
+//         success: function (response) {
+    
+//             if(response.total){
+//                 $('couponCal').html(
+//                     ` <h5 class="text-uppercase">Total</h5>
+//                     <h5>€ ${  response.total  }</h5>`
+    
+//                 )
+//             }else{
+//                 ` <h5 class="text-uppercase">Total</h5>
+//                 <h5>€ ${  response.total  }</h5>
+//                 <h5>€ ${  response.name  }</h5>
+//                 <h5>€ ${  response.discount  }</h5>
+//                 <h5>€ ${  response.total  }</h5>
+    
+//                 `
+                
+//             }
+    
+    
+    
+//                 //    Swal.fire({
+//             //     title: 'Succès',
+//             //     text: 'Réservation effectuée',
+//             //     icon: 'success'
+//             //    })
+//             }
+//     });
+    
+    
+// }
+// couponCal();
 
 // $('.category').click(function (e) {
 //     e.preventDefault();

@@ -120,7 +120,6 @@
                 margin-bottom: 20px;
             }
         }
-
     </style>
     @if (Session::has('status'))
         <div class="alert alert-success">
@@ -190,8 +189,14 @@
 
                                     </tbody>
                                 </table>
-                                <p>Total <span class="price" style="color:black"><b>€
-                                            {{ cart::total() }}</b></span></p>
+                                @if (session::has('coupon'))
+                                <p> coupon<span class="price" style="color:black"><b>{{session()->get('coupon')['discount']}}%</b></span></p>
+                                    <p>Total <span class="price" style="color:black"><b>€
+                                                {{ Cart::total() - (Cart::total() * session()->get('coupon')['discount']) / 100 }}</b></span></p>
+                                @else
+                                    {{ cart::total() }}
+                                @endif
+
                             </div>
 
                             <h3 class="mt-2">Paiement</h3>
@@ -238,7 +243,6 @@
                         <input type="checkbox" name="check" value="check"> Je souhaite recevoir les actualités et
                         programmation du restaurant par email.
                     </label>
-
                     <button id="submit-btn" type="submit" value="proceder au payer" class="btn">payer</button>
                 </form>
             </div>

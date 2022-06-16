@@ -12,6 +12,7 @@ use App\Models\orderProduct;
 use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
 {
@@ -42,7 +43,12 @@ class CheckoutController extends Controller
             'number' => 'required',
         ]);
 
+        if (Session::has('coupon')) {
 
+            $total = (Cart::total() * session()->get('coupon')['discount'] / 100);
+        } else {
+            $total = Cart::total();
+        }
 
         $order = new Order();
         $order->user_id = Auth::id();
@@ -50,7 +56,7 @@ class CheckoutController extends Controller
         $order->email = $request->input('email');
         $order->address = $request->input('address');
         $order->phone = $request->input('number');
-        $order->amount = Cart::total();
+        $order->amount = $total;
         $order->created_at = Carbon::now();
         $order->save();
 
@@ -81,7 +87,7 @@ class CheckoutController extends Controller
 
 
         $charge = Charge::create([
-            'amount' => Cart::total() * 100,
+            'amount' => round($total * 100),
             'currency' => 'usd',
             'description' => 'payment for order no ',
             'source' => $request->input('stripeToken'),
@@ -92,8 +98,8 @@ class CheckoutController extends Controller
 
 
         Cart::destroy();
-
-        return redirect()->route('my_order');
+        session()->forget('coupon');
+        return redirect()->route('merci');
     }
 
 
@@ -161,6 +167,4 @@ class CheckoutController extends Controller
     {
         //
     }
-
-   
 }

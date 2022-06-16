@@ -8,6 +8,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\checkoutController;
+use App\Http\Controllers\CouponController;
+
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 /*
@@ -35,7 +37,6 @@ Route::get('/book', [Clientcontroller::class, 'book']);
 Route::post('/newsletter', [Clientcontroller::class, 'newsletter'])->name('subscribe_newsletter');
 
 
-
 Route::get('/users', [Admincontroller::class, 'user'])->name('users');
 Route::get('/deleteuser/{id}', [Admincontroller::class, 'deleteuser']);
 
@@ -48,6 +49,10 @@ Route::get('/select_par_category/{category_name}', [ProductController::class, 's
 Route::post('/table_book', [Clientcontroller::class, 'tableBook'])->name('book');
 Route::get('/reservation', [Admincontroller::class, 'viewReservation'])->name('view_reservation');
 
+//COUPON 
+Route::post('/coupon-apply', [CartController::class, 'apply'])->name('apply_coupon');
+Route::get('/coupon-calcul', [CartController::class, 'couponCalcul'])->name('coupon_calcul');
+Route::delete('/coupon-destroy', [CartController::class, 'couponDestroy'])->name('coupon.destroy');
 
 
 
@@ -95,6 +100,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/search-product', [Productcontroller::class, 'searchProduct'])->name('search_product');
     Route::get('/mes-commandes', [Productcontroller::class, 'myOrder'])->name('my_order');
     Route::get('/commande/détail/{id}', [Productcontroller::class, 'orderDetail'])->name('order_view');
+    Route::get('/search', [Productcontroller::class, 'search']);
 
     /////////////////////////////
     Route::get('/user/logout', [ClientController::class, 'UserLogout'])->name('user.logout');
@@ -109,5 +115,17 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::post('/vider', [CartController::class, 'clearAllCart'])->name('vider');
+
+    //COUPON
+    Route::get('/coupons', [couponController::class, 'index'])->name('coupon.index');
+    Route::get('/addcoupon', [couponController::class, 'addCoupon'])->name('addcoupon');
+    Route::post('/savecoupon', [couponController::class, 'store'])->name('savecoupon');
+    Route::get('/edit_coupon/{id}', [couponController::class, 'edit'])->name('edit_coupon');
+    Route::post('/update_coupon/{id}', [couponController::class, 'update'])->name('update_coupon');
+    Route::get('/delete_coupon/{id}', [couponController::class, 'delete'])->name('delete_coupon');
+
+    Route::get('/merci', function () {
+        return view('client.merci');
+    })->name('merci');
 });
 require __DIR__ . '/auth.php';

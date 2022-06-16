@@ -136,6 +136,26 @@
         <span class="menu-title">Events</span>
       </a>
     </li>
-   
+    <li class="nav-item menu-items">
+      <a class="nav-link" data-toggle="collapse" href="#authh" aria-expanded="false" aria-controls="authh">
+        <span class="menu-icon">
+          <i class="mdi mdi-security"></i>
+        </span>
+        <span class="menu-title">coupons</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="authh">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{route('addcoupon')}}"> Add coupon </a></li>
+          
+        </ul>
+      </div>
+      <div class="collapse" id="authh">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{url('coupons')}}">  Coupon </a></li>
+          
+        </ul>
+      </div>
+    </li>
   </ul>
 </nav>

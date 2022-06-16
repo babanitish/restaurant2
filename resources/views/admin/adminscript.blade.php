@@ -26,7 +26,7 @@
     var availableTags = [];
     $.ajax({
         type: "GET",
-        url: "/product-list",
+        url: "/search",
         success: function(response) {
             startAutoComplete(response);
         }

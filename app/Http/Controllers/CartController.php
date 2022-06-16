@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Coupon;
 use App\Models\Product;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -125,5 +127,47 @@ class CartController extends Controller
         session()->flash('success', 'All Item Cart Clear Successfully !');
 
         return  view('cart.cartList');
+    }
+
+
+    
+    public function apply(Request $request ){
+        $couponName = $request->input('coupon_name');
+        $coupon = Coupon::where('name',$couponName)
+        ->where('validity','>=',Carbon::now()->format('Y-m-d'))
+        ->first();
+
+        if($coupon){
+
+            Session::put('coupon',[
+                'name' => $coupon->name,
+                'discount' => $coupon->discount,
+                'total' => round((Cart::total() * $coupon->discount)/100)
+            ]);
+
+            return response()->json(['status' => 'coupon appliqué']);
+        }else{
+            return response()->json(['status' => 'coupon invalide']);
+
+        }
+    }
+
+    // public function couponCalcul(){
+
+    //     if (Session::has('coupon')) {
+         
+    //         $total = (Cart::total() * session()->get('coupon')['discount'] / 100);
+          
+    //     } else {
+    //         $total = Cart::total();
+    //     }
+    //      return view('cart.cartList',[
+    //             'total' => $total
+    //         ]);
+    // }
+    public function couponDestroy(){
+        Session::forget('coupon');
+        return redirect()->back();
+
     }
 }
