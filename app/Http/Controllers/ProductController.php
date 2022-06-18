@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Nutrition;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderProduct;
@@ -83,6 +84,13 @@ class ProductController extends Controller
                 'product_price' => 'required',
                 'product_description' => 'required',
                 'product_category' => 'required',
+                'energy' => 'required',
+                'gras' => 'required',
+                'proteine' => 'required',
+                'glucide' => 'required',
+                'sel' => 'required',
+
+
 
 
             ]);
@@ -94,9 +102,22 @@ class ProductController extends Controller
             $product->name = $request->input('product_name');
             $product->price = $request->input('product_price');
             $product->description = $request->input('product_description');
+            $product->allergene = $request->input('allergene');
             $product->category_id = $request->input('product_category');
             $product->status = 1;
+
+            $nutrition = new Nutrition();
+            $nutrition->energy = $request->input('energy');
+            $nutrition->fat = $request->input('gras');
+            $nutrition->proteines = $request->input('proteine');
+            $nutrition->glucides = $request->input('glucide');
+            $nutrition->sel = $request->input('sel');
+            
             $product->save();
+            $nutrition->product_id = $product->id;
+
+            $nutrition->save();
+            
             return back()->with('status', 'produit crée');
         } else {
             return redirect()->route('login');
@@ -110,7 +131,12 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        
+        // dd($products);
+        return view('client.product_show',[
+            'product' => $product
+        ]);
     }
 
     /**
@@ -157,34 +183,31 @@ class ProductController extends Controller
                 'product_price' => 'required',
                 'product_description' => 'required',
                 'product_category' => 'required',
+                'energy' => 'required',
+                'gras' => 'required',
+                'proteine' => 'required',
+                'glucide' => 'required',
+                'sel' => 'required',
             ]);
 
             $product = Product::find($id);
+            $nutrition = Nutrition::find($id);
 
             $product->name = $request->input('product_name');
             $product->price = $request->input('product_price');
-            $product->price = $request->input('product_description');
+            $product->description = $request->input('product_description');
             $product->category_id = $request->input('product_category');
+            // dd(floatval($request->input('energy')));
 
-            if ($request->hasFile('product_image')) {
-                $fileNameExt = $request->file('product_image')->getClientOriginalName();
-
-                $fileName = pathinfo($fileNameExt, PATHINFO_FILENAME);
-
-                $ext = $request->file('product_image')->getClientOriginalExtension();
-
-                $fileNameToStore = $fileName . '_' . time() . '.' . $ext;
-
-                $path = $request->file('product_image')->storeAs('public/product_images', $fileNameToStore);
-
-                //supprimer l'ancienne photo si c'est pas le default.png
-                // pck le default.pgn doit être permanent
-                if ($product->poster_url != 'default.png') {
-                    Storage::delete('public/product_images' . $product->poster_url);
-                }
-
-                $product->poster_url = $fileNameToStore;
-            }
+            $product->nutrition->energy = $request->input('energy') +10;
+            
+            $product->nutrition->fat = $request->input('gras');
+            $product->nutrition->proteines = $request->input('proteine');
+            $product->nutrition->glucides = $request->input('glucide');
+            $product->nutrition->sel = $request->input('sel');
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('product_poster'), $imageName);;
+            $product->poster_url = $imageName;
             $product->update();
 
             return redirect('/products')->with('status', 'product has been  update successful');
@@ -270,9 +293,9 @@ class ProductController extends Controller
      */
     public function select_par_category($id)
     {
-        $products = Product::all()->where('category_id', $id)->where('status', 1);
+        $products = Product::where('category_id', $id)->where('status', 1)->get();
         $categories = Category::all();
-        return view('client.home', [
+        return view('client.menu', [
             'products' => $products,
             'categories' => $categories
         ]);

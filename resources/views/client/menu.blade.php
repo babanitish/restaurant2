@@ -19,24 +19,33 @@
                 </h2>
             </div>
 
-            <ul class="filters_menu">
-                <li class="{{ request()->is('/menu') ? 'active' : '' }}"><a href="{{ url('/menu') }}">All</a></li>
+            <ul class="filters_menu  category">
+                <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{ url('/menu') }}">Tout</a></li>
+             
                 @foreach ($categories as $category)
-                    <li class="{{ request()->is('select_par_category/' . $category->name) ? 'active' : '' }}">
-                         <a href="{{ url('select_par_category', $category->id) }}">
-                            {{ $category->name }}</a> </li>
+               
+                <input type="hidden" value="{{$category->id}}" class="cat">
+                    <li class="{{ request()->is('select_par_category/' . $category->name) ? 'active' : ''}} catId" value="{{$category->id}}"> 
+                        <a href="{{ url('/select_par_category', $category->id) }}"  value="{{$category->id}}">
+                            {{ $category->name }}
+                        </a> 
+                    </li>
                 @endforeach
             </ul>
-    
+  
+           
+          
             <div class="filters-content">
                 <div class="row grid">
                     @foreach ($products as $product)
+                    
                         <div class="col-sm-6 col-lg-4 all " id="product_data"> {{-- all burger --}}
 
                             <div class="box" style="height: 450px">
                                 <div>
                                     <div class="img-box">
-                                        <img src="{{ asset('product_poster/' . $product->poster_url) }}" alt="  {{ $product->name }}">
+                                        <a href="{{route('product.show', $product->id)}}"><img src="{{ asset('product_poster/' . $product->poster_url) }}" alt="  {{ $product->name }}"></a> 
+
                                     </div>
                                     <div class="detail-box">
                                         <h5>
@@ -51,9 +60,12 @@
                                             </h6>
                                             <form action="{{ route('ajout') }}" method="post">
                                                 @csrf
-                                                <input type="hidden" class="prod_id" name="id" value="{{ $product->id }}">
-                                                <input type="hidden" class="" name="name" value="{{ $product->name }}">
-                                                <input type="hidden" class="" name="price" value="{{ $product->price}}">
+                                                <input type="hidden" class="prod_id" name="id"
+                                                    value="{{ $product->id }}">
+                                                <input type="hidden" class="" name="name"
+                                                    value="{{ $product->name }}">
+                                                <input type="hidden" class="" name="price"
+                                                    value="{{ $product->price }}">
 
                                                 {{-- addToCart --}}
                                                 {{-- data-toggle="modal" data-target="#exampleModal" --}}
@@ -79,6 +91,5 @@
             </div> --}}
         </div>
     </section>
-
     <!-- end food section -->
 @endsection

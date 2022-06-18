@@ -203,8 +203,10 @@ $('.updateQuantity').click(function (e) {
 });
 
 
-$('.book').click(function (e) {
+$('#reservation').on('submit', function (e) {
     e.preventDefault();
+
+
     var name = $('.name').val();
     var email = $('.email').val();
     var phone = $('.phone').val();
@@ -233,13 +235,24 @@ $('.book').click(function (e) {
             'date': date,
             'message': message
         },
+        beforeSend: function () {
+            $(document).find('span.error-text').text('');
+        },
         success: function (response) {
             // alert(response.status);
-            Swal.fire({
-                title: 'Succès',
-                text: 'Réservation effectuée',
-                icon: 'success'
-            })
+            if (response.status == 0) {
+                $each(response.error, function (prefix, val) {
+                    $('span.' + prefix + '_error').text(val[0]);
+                });
+            } else {
+                $('#reservation')[0].reset();
+                Swal.fire({
+                    title: 'Succès',
+                    text: 'Réservation effectuée',
+                    icon: 'success'
+                })
+            }
+
         }
     });
 });
@@ -276,53 +289,11 @@ $('.btnCoupon').click(function (e) {
 });
 
 
-// $.ajaxSetup({
-//     headers: {
-//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//     }
-// });
-// function couponCal(){
-//     $.ajax({
-//         type: "GET",
-//         url: "/coupon-calcul",
-//         dataType: 'json',
-//         success: function (response) {
-    
-//             if(response.total){
-//                 $('couponCal').html(
-//                     ` <h5 class="text-uppercase">Total</h5>
-//                     <h5>€ ${  response.total  }</h5>`
-    
-//                 )
-//             }else{
-//                 ` <h5 class="text-uppercase">Total</h5>
-//                 <h5>€ ${  response.total  }</h5>
-//                 <h5>€ ${  response.name  }</h5>
-//                 <h5>€ ${  response.discount  }</h5>
-//                 <h5>€ ${  response.total  }</h5>
-    
-//                 `
-                
-//             }
-    
-    
-    
-//                 //    Swal.fire({
-//             //     title: 'Succès',
-//             //     text: 'Réservation effectuée',
-//             //     icon: 'success'
-//             //    })
-//             }
-//     });
-    
-    
-// }
-// couponCal();
 
-// $('.category').click(function (e) {
+// $('.cate').click(function (e) {
 //     e.preventDefault();
-//     var name = $('.cat').val();
-//     console.log(name);
+//     var name = $('.cate').val();
+//     alert(name);
 //     // var email = $('.email').val();
 //     // var phone = $('.phone').val();
 //     // var guest = $('.guest').val();

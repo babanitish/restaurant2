@@ -16,18 +16,22 @@
           <div class="detail-box">
             <div class="heading_container">
               <h2>
-                We Are Feane
+                Nous sommes le joyau
               </h2>
             </div>
             <p>
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-              in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-              the middle of text. All
+              Le concept moderne de joyau dans un marché très porteur a tout pour séduire les fans de fast
+                            food par le choix multiple des menus gourmands et leur excellent rapport qualité prix.
+
+                            Tout en tenant compte :
+
+                             la qualité, de l’exigence nutritionnelle et calorique ainsi que la traçabilité des produits,
+                            qui plaît aux jeunes et aux familles.
+
+                             un large choix de viandes, légumes et sauces pour composer le menu adéquat au goût de chaque
+                            client
             </p>
-            <a href="">
-              Read More
-            </a>
+          
           </div>
         </div>
       </div>

@@ -10,60 +10,62 @@
             {{Session::get('status')}}
         </div>
     @endif
-        <div class="container">
-            <div class="heading_container">
+        <div class="container ">
+            <div class="heading_container align-items-center">
                 <h2>
                     Réserver une Table
                 </h2>
             </div>
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-md-6 ">
                     <div class="form_container">
-                        <form action="{{ route('book') }}" method="POST">
+                        <form action="{{ route('book') }}" method="POST" id="reservation">
 
                             @csrf
                             <div>
-                                <input type="text" name="name" class="form-control name" placeholder="Your Name" required />
+                                <input type="text" name="name" class="form-control name" placeholder="Votre nom" required />
+                                <span class="text-danger error-text name_error"></span>  
                             </div>
                             <div>
-                                <input type="text" name="phone" class="form-control phone" placeholder="Phone Number"
+                                <input type="text" name="phone" class="form-control phone" placeholder="votre numéro"
                                     required />
+                                    <span class="text-danger error-text phone_error"></span>
                             </div>
                             <div>
-                                <input type="email" name="email" class="form-control email" placeholder="Your Email"
+                                <input type="email" name="email" class="form-control email" placeholder="Votre mail"
                                     required />
+                                    <span class="text-danger error-text email_error"></span>
                             </div>
                             <div>
                                 <input type="number" name="guest" min="1" class="form-control nice-select wide guest"
-                                    placeholder="number of person" />
+                                    placeholder="nombre de persone" required/>
+                                    <span class="text-danger error-text guest_error"></span>
                             </div>
                             <div>
                                 <input type="time" name="time" class="form-control time"
-                                    class="form-control nice-select wide" />
+                                    class="form-control nice-select wide" required/>
+                                    <span class="text-danger error-text time_error"></span>
                             </div>
                             <div>
                                 <input type="date" name="date" class="form-control date"
-                                    class="form-control nice-select wide date" />
+                                    class="form-control nice-select wide date" required/>
+                                    <span class="text-danger error-text date_error"></span>
                             </div>
                             <div>
                                 <fieldset>
-                                    <textarea name="message" id="message" class="message" cols="57" rows="5"></textarea>
+                                    <textarea name="message" id="message" class="message" cols="59" rows="5"></textarea>
                                 </fieldset>
                             </div>
-                            <div class="btn_box">
-                                <button type="submit" class="btn btn-success book">
-                                    Réserver une Table
+                            <div class="btn_box d-flex justify-content-center align-items-center">
+                                <button type="submit" class="btn btn-success btn-lg book">
+                                    Réserver maintenant
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-md-6">
-                    <div class="map_container ">
-                        <div id="googleMap"></div>
-                    </div>
-                    </div> --}}
+           
         </div>
 
     </section>

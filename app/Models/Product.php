@@ -49,4 +49,8 @@ class Product extends Model
     {
         return $this->hasMany(OrderProduct::class);
     }
+    public function nutrition()
+    {
+        return $this->hasOne(Nutrition::class);
+    }
 }

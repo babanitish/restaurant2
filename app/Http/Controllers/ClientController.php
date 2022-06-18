@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Reservation;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -163,15 +164,18 @@ class ClientController extends Controller
      */
     public function tableBook(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(),[
             'name' => 'required',
             'phone' => 'required',
             'email' => 'required|email',
             'guest' => 'required|min:1',
             'time' => 'required',
-            'date' => 'required',
+            'date' => 'required|date',
         ]);
 
+        if(!$validator->passes()){
+            return response()->json(['status'=>0, 'error'=>$validator->error()->toArray()]);
+        }
 
         if ($request->input('date') < Carbon::yesterday()) {
             return response()->json(['status' => 'date invalide']);
@@ -206,5 +210,18 @@ class ClientController extends Controller
         ]);
         Newsletter::subscribeOrUpdate($request->input('email'), ['firstname' => 'bob'], 'newsletter');
         return redirect()->back()->with('status','thank you for your subscribe');
+    }
+
+
+    public function mention(){
+        return view('client.info.mention');
+    }
+
+    public function cgu(){
+        return view('client.info.cgu');
+    }
+
+    public function cgv(){
+        return view('client.info.cgv');
     }
 }

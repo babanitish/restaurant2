@@ -31,6 +31,8 @@ class ProductSeeder extends Seeder
                 'price' => 7.95,
                 'category_id' => 1,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
 
             ],
             [
@@ -41,6 +43,8 @@ class ProductSeeder extends Seeder
                 'price' => 7.95,
                 'category_id' => 1,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs,moutarde, Gluten (blé) ',
+
             ],
             [
 
@@ -50,6 +54,8 @@ class ProductSeeder extends Seeder
                 'price' => 7.95,
                 'category_id' => 1,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+                
             ],
             [
 
@@ -59,6 +65,8 @@ class ProductSeeder extends Seeder
                 'price' => 7.95,
                 'category_id' => 1,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
 
@@ -68,6 +76,8 @@ class ProductSeeder extends Seeder
                 'price' => 7.95,
                 'category_id' => 1,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
 
@@ -77,6 +87,8 @@ class ProductSeeder extends Seeder
                 'price' => 8.95,
                 'category_id' => 1,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
 
             //MENU BURGER
@@ -89,6 +101,7 @@ class ProductSeeder extends Seeder
                 'price' => 12.95,
                 'category_id' => 1,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
 
             ],
             [
@@ -99,24 +112,30 @@ class ProductSeeder extends Seeder
                 'price' => 12.95,
                 'category_id' => 1,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
 
                 'name' => 'Menu Suprême ',
-                'description' => "Burger avec rondelles d'oignon frites, cheddar, tomate et sauce, une boisson avec quartiers de pommes de terre.",
+                'description' => "Burger avec rondelles d'oignon frites, cheddar, tomate et sauce, une boisson avec des pommes de terre.",
                 'poster_url' => 'menu_burger3.jpg',
                 'price' => 13.95,
                 'category_id' => 1,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
 
                 'name' => 'Menu Oeufs Frits ',
-                'description' => "Burger avec œuf au plat, cheddar, bacon (de dinde), laitue, tomate, une boisson avec quartiers de pommes de terre.",
+                'description' => "Burger avec œuf au plat, cheddar, bacon (de dinde), laitue, tomate, une boisson avec des pommes de terre.",
                 'poster_url' => 'menu_burger5.png',
                 'price' => 13.95,
                 'category_id' => 1,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
 
@@ -126,15 +145,19 @@ class ProductSeeder extends Seeder
                 'price' => 13.95,
                 'category_id' => 1,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
 
                 'name' => 'Menu jutsu ',
-                'description' => "Burger avec rondelles d'oignon frites, cheddar, tomate et sauce, une boisson avec quartiers de pommes de terre.",
+                'description' => "Burger avec rondelles d'oignon frites, cheddar, tomate et sauce, une boisson avec  des pommes de terre.",
                 'poster_url' => 'menu_burger3.jpg',
                 'price' => 13.95,
                 'category_id' => 1,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
 
             // Pizza
@@ -146,6 +169,8 @@ class ProductSeeder extends Seeder
                 'price' => 8.95,
                 'category_id' => 2,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],  [
 
                 'name' => 'pizza Margherita ',
@@ -154,6 +179,8 @@ class ProductSeeder extends Seeder
                 'price' => 8.95,
                 'category_id' => 2,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],  [
 
                 'name' => 'pizza Hot & Spicy ',
@@ -162,6 +189,8 @@ class ProductSeeder extends Seeder
                 'price' => 8.95,
                 'category_id' => 2,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],  [
 
                 'name' => 'Pizza BBQ Chicken & Bacon ',
@@ -170,6 +199,8 @@ class ProductSeeder extends Seeder
                 'price' => 8.95,
                 'category_id' => 2,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],  [
 
                 'name' => 'Pizza 4 Stagioni ',
@@ -178,6 +209,8 @@ class ProductSeeder extends Seeder
                 'price' => 8.95,
                 'category_id' => 2,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
 
             // WRAPS
@@ -190,6 +223,8 @@ class ProductSeeder extends Seeder
                 'price' => 6.95,
                 'category_id' => 3,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],  [
 
                 'name' => 'Wrap Poulet Croustillant BBQ',
@@ -198,6 +233,8 @@ class ProductSeeder extends Seeder
                 'price' => 6.95,
                 'category_id' => 3,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],  [
 
                 'name' => 'Wrap Moutarde',
@@ -206,6 +243,8 @@ class ProductSeeder extends Seeder
                 'price' => 6.95,
                 'category_id' => 3,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],  [
 
                 'name' => 'Wrap Poulet PIRI PIRI',
@@ -214,6 +253,8 @@ class ProductSeeder extends Seeder
                 'price' => 6.95,
                 'category_id' => 3,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
 
             [
@@ -223,6 +264,8 @@ class ProductSeeder extends Seeder
                 'price' => 6.95,
                 'category_id' => 3,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
 
             // Kids Menu
@@ -235,6 +278,8 @@ class ProductSeeder extends Seeder
                 'price' => 7.95,
                 'category_id' => 4,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ], 
             [
 
@@ -244,6 +289,8 @@ class ProductSeeder extends Seeder
                 'price' => 7.95,
                 'category_id' => 4,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
              [
 
@@ -253,6 +300,8 @@ class ProductSeeder extends Seeder
                 'price' => 7.95,
                 'category_id' => 4,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],  [
 
                 'name' => 'Menu pour enfants Doigts de poulet ',
@@ -261,6 +310,8 @@ class ProductSeeder extends Seeder
                 'price' => 7.95,
                 'category_id' => 4,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
 
@@ -270,6 +321,8 @@ class ProductSeeder extends Seeder
                 'price' => 7.95,
                 'category_id' => 4,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
 
@@ -279,6 +332,8 @@ class ProductSeeder extends Seeder
                 'price' => 7.95,
                 'category_id' => 4,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
 
 
@@ -292,6 +347,8 @@ class ProductSeeder extends Seeder
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],  [
 
                 'name' => 'Ailes de poulet 8 pièces ',
@@ -300,6 +357,8 @@ class ProductSeeder extends Seeder
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],  [
 
                 'name' => 'Filets de poulet 4 pièces ',
@@ -308,6 +367,8 @@ class ProductSeeder extends Seeder
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
 
             [
@@ -318,6 +379,8 @@ class ProductSeeder extends Seeder
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
 
 
@@ -328,6 +391,8 @@ class ProductSeeder extends Seeder
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
                 'name' => 'Frites de patates douces ',
@@ -336,6 +401,8 @@ class ProductSeeder extends Seeder
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
                 'name' => 'Frites de patates douces ',
@@ -344,6 +411,8 @@ class ProductSeeder extends Seeder
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
                 'name' => 'Frites de patates douces ',
@@ -352,6 +421,8 @@ class ProductSeeder extends Seeder
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
                 'name' => 'coca',
@@ -360,6 +431,8 @@ class ProductSeeder extends Seeder
                 'price' => 2.95,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
                 'name' => 'fanta',
@@ -367,6 +440,8 @@ class ProductSeeder extends Seeder
                 'poster_url' => 'fanta.jpg',
                 'price' => 2.95,
                 'category_id' => 5,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
                 'status' => 1,
             ],
             [
@@ -376,6 +451,8 @@ class ProductSeeder extends Seeder
                 'price' => 2.95,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
                 'name' => 'redBull',
@@ -384,6 +461,8 @@ class ProductSeeder extends Seeder
                 'price' => 2.95,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
                 'name' => 'mojito',
@@ -392,6 +471,8 @@ class ProductSeeder extends Seeder
                 'price' => 2.95,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
                 'name' => 'mayonnaise',
@@ -400,12 +481,15 @@ class ProductSeeder extends Seeder
                 'price' => 0.85,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
                 'name' => 'ketchup',
                 'description' => "",
                 'poster_url' => 'ketchup.jpg',
                 'price' => 0.85,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
 
                 'category_id' => 5,
                 'status' => 1,
@@ -417,6 +501,8 @@ class ProductSeeder extends Seeder
                 'price' => 0.85,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
                 'name' => 'piri piri',
@@ -425,6 +511,8 @@ class ProductSeeder extends Seeder
                 'price' => 0.85,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
             [
                 'name' => 'moutarde',
@@ -433,6 +521,8 @@ class ProductSeeder extends Seeder
                 'price' => 0.85,
                 'category_id' => 5,
                 'status' => 1,
+                'allergene' => 'Lait, Oeufs, Gluten (blé) ',
+
             ],
         ];
 
@@ -444,6 +534,7 @@ class ProductSeeder extends Seeder
                 'description' => $data['description'],
                 'poster_url' => $data['poster_url'],
                 'price' => $data['price'],
+                'allergene' => $data['allergene'],
                 'category_id' => $category->id ?? null,
 
             ]);

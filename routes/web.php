@@ -32,6 +32,18 @@ Route::get('/menu', [Clientcontroller::class, 'menu'])->name('menu');
 Route::get('/about', [Clientcontroller::class, 'about']);
 Route::get('/book', [Clientcontroller::class, 'book']);
 
+//INFORMATIONS
+
+Route::get('/Mentions-légales', [Clientcontroller::class, 'mention'])->name('mention');
+Route::get("/conditions-générales-utilisation", [Clientcontroller::class, 'cgu'])->name('cgu');
+Route::get('/conditions-générales-vente', [Clientcontroller::class, 'cgv'])->name('cgv');
+
+
+//Voir produit en détail
+Route::get('/product/{id}', [Productcontroller::class, 'show'])->name('product.show');
+
+// Vider panier
+Route::post('/vider', [CartController::class, 'clearAllCart'])->name('vider');
 
 //NEWSLETTER
 Route::post('/newsletter', [Clientcontroller::class, 'newsletter'])->name('subscribe_newsletter');
@@ -114,7 +126,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/order', [checkoutController::class, 'payer'])->name('place-order');
 
 
-    Route::post('/vider', [CartController::class, 'clearAllCart'])->name('vider');
 
     //COUPON
     Route::get('/coupons', [couponController::class, 'index'])->name('coupon.index');

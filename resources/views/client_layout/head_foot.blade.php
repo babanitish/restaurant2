@@ -201,7 +201,23 @@
     <footer class="footer_section">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 footer-col">
+                <div class="col-md-3 footer-col">
+                    <h4>
+                        Informations
+                    </h4>
+                    <p>
+                       <a href="{{route('mention')}}" target="_blank" rel="noopener noreferrer" style="color: white;"> Mentions Légales  </a>
+                       
+                    </p>
+                    <p>
+                       <a href="{{route('cgu')}}" target="_blank" rel="noopener noreferrer" style="color: white;"> CGU </a>
+                        
+                    </p>
+                    <p>
+                       <a href="{{route('cgv')}}" target="_blank" rel="noopener noreferrer" style="color: white;"> CGV </a>
+                    </p>
+                </div>
+                <div class="col-md-3 footer-col">
                     <div class="footer_contact">
                         <h4>
                             Nous contacter
@@ -228,7 +244,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 footer-col">
+                <div class="col-md-3 footer-col">
                     <div class="footer_detail">
                         <a href="" class="footer-logo">
                             Le joyau de Bx
@@ -247,26 +263,20 @@
 
                             </div>
                         </form>
+                        
                         <div class="footer_social">
                             <a href="">
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                             </a>
-                            <a href="">
-                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                            </a>
+                          
                             <a href="">
                                 <i class="fa fa-instagram" aria-hidden="true"></i>
                             </a>
-                            <a href="">
-                                <i class="fa fa-pinterest" aria-hidden="true"></i>
-                            </a>
+                            
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 footer-col">
+                <div class="col-md-3 footer-col">
                     <h4>
                         heure d'ouverture
                     </h4>
@@ -277,6 +287,7 @@
                         10.00 matin -10.00 soir
                     </p>
                 </div>
+             
             </div>
             <div class="footer-info">
                 <p>
