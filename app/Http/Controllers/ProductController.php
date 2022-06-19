@@ -118,7 +118,7 @@ class ProductController extends Controller
 
             $nutrition->save();
             
-            return back()->with('status', 'produit crée');
+            return redirect()->route('products')->with('status', 'produit créé');
         } else {
             return redirect()->route('login');
         }
@@ -199,7 +199,7 @@ class ProductController extends Controller
             $product->category_id = $request->input('product_category');
             // dd(floatval($request->input('energy')));
 
-            $product->nutrition->energy = $request->input('energy') +10;
+            $product->nutrition->energy = $request->input('energy');
             
             $product->nutrition->fat = $request->input('gras');
             $product->nutrition->proteines = $request->input('proteine');

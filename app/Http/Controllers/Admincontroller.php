@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Order;
 use App\Models\Reservation;
 use App\Models\User;
@@ -63,5 +64,30 @@ class Admincontroller extends Controller
         return view("admin.order", [
             'orders' => $orders
         ]);
+    }
+
+    public function deleteOrder($id)
+    {
+
+        $orders = Order::find($id);
+        $orders->delete();
+        return redirect()->back()->with('status','commande supprimé');
+    }
+
+
+
+    public function allContact(){
+        $contacts = Contact::all();
+        return view("admin.contact", [
+            'contacts' => $contacts
+        ]);
+    }
+
+    public function deleteContact($id)
+    {
+
+        $contacts = Contact::find($id);
+        $contacts->delete();
+        return redirect()->back()->with('status','contact supprimé');
     }
 }

@@ -18,9 +18,7 @@
                         
                         <th scope="col">Nom</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Adresse</th>
-                        <th scope="col">Tél</th>
-                        <th scope="col">status</th>
+                        <th scope="col">message</th>
                         <th scope="col">Action</th>
 
 
@@ -28,16 +26,13 @@
                 </thead>
                 <tbody>
 
-                    @foreach ($users as $item)
+                    @foreach ($contacts as $item)
                     <tr>
                         <td>{{$item->name}}</td>
                         <td>{{$item->email}}</td>
-                        <td>{{$item->address}}</td>
-                        <td>{{$item->phone}}</td>
-                        <td>{{$item->usertype}}</td>
-
+                        <td>{{$item->message}}</td>
                         <td>
-                            <a href="#" class="btn btn-primary a-btn-slide-text">
+                            <a href="{{route('delete_contact', $item->id)}}" class="btn btn-primary a-btn-slide-text">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                 <span><strong>Delete</strong></span>
                             </a>

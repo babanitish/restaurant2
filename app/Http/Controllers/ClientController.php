@@ -258,7 +258,7 @@ class ClientController extends Controller
         $request->validate([
             'email' => 'required|email',
         ]);
-        Newsletter::subscribeOrUpdate($request->input('email'), ['firstname' => 'bob'], 'newsletter');
+        Newsletter::subscribeOrUpdate($request->input('email'), ['firstname' => 'bob', 'lastName'=>'Bar'], 'newsletter');
         return redirect()->back()->with('status', 'thank you for your subscribe');
     }
 

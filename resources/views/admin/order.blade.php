@@ -31,14 +31,8 @@
                             <td>{{ $order->email }}</td>
                             <td>{{ $order->phone }}</td>
                             <td>{{ $order->address }}</td>
-                            <td>{{ $order->amount }}</td>
-                            <td>
-
-                                <a href="#" class="btn btn-primary a-btn-slide-text">
-                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                    <span><strong>Delete</strong></span>
-                                </a>
-                            </td>
+                            <td>{{ $order->amount }}€</td>
+                            
                     </tr>
                     @endforeach
                 </tbody>

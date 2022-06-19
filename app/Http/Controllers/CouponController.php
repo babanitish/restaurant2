@@ -65,7 +65,7 @@ class CouponController extends Controller
             $coupon->created_at = Carbon::now();
 
             $coupon->save();
-            return back()->with('status', 'coupon modifié');
+            return redirect()->route('coupon.index')->with('status', 'coupon modifié');
         } else {
             return redirect()->route('login');
         }

@@ -75,7 +75,7 @@ class CategoryController extends Controller
             $category->name = $request->input('name');
             $category->save();
 
-            return back()->with('status', 'category success');
+            return back()->with('status', 'categorie créée');
         } else {
             return redirect()->route('login');
         }
@@ -140,7 +140,7 @@ class CategoryController extends Controller
             $category->name = $request->input('name');
             $category->update();
 
-            return redirect('/categories')->with('status', 'category updated successful');
+            return redirect('/categories')->with('status', 'category updated ');
         } else {
             return redirect()->route('login');
         }

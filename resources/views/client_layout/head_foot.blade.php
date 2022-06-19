@@ -220,7 +220,7 @@
                             style="color: white;text-decoration:underline;"> CGV </a>
                     </p>
                     <p>
-                        <a href="{{ route('contact') }}" rel="noopener noreferrer"
+                        <a href="{{ route('contacts') }}" rel="noopener noreferrer"
                             style="color: white;text-decoration:underline;">Nous contacter</a>
                     </p>
                 </div>
@@ -262,7 +262,7 @@
 
                                 <input type="text" class="form-control" placeholder="Enter email"
                                     aria-label="Recipient's username" aria-describedby="button-addon2"
-                                    style="border-top-left-radius: 28px;border-bottom-left-radius: 28px;" name="email">
+                                    style="border-top-left-radius: 28px;border-bottom-left-radius: 28px;" name="email" required>
                                 <button class="btn btn-warning border-rad" type="submit" id="button-addon2"
                                     name="btnNews"
                                     style="border-top-right-radius: 28px;border-bottom-right-radius: 28px;">

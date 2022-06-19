@@ -9,8 +9,8 @@
             <span class="count bg-success"></span>
           </div>
           <div class="profile-name">
-            <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-            <span>Gold Member</span>
+            <h5 class="mb-0 font-weight-normal">{{ Auth::user()->name }}</h5>
+            {{-- <span>Gold Member</span> --}}
           </div>
         </div>
         <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -156,6 +156,14 @@
           
         </ul>
       </div>
+    </li>
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="{{route('view_contact')}}">
+        <span class="menu-icon">
+          <i class="mdi mdi-chart-bar"></i>
+        </span>
+        <span class="menu-title">Contact</span>
+      </a>
     </li>
   </ul>
 </nav>

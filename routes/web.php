@@ -37,7 +37,7 @@ Route::get('/book', [Clientcontroller::class, 'book']);
 Route::get('/Mentions-légales', [Clientcontroller::class, 'mention'])->name('mention');
 Route::get("/conditions-générales-utilisation", [Clientcontroller::class, 'cgu'])->name('cgu');
 Route::get('/conditions-générales-vente', [Clientcontroller::class, 'cgv'])->name('cgv');
-Route::get('/contact', [Clientcontroller::class, 'contact'])->name('contact');
+Route::get('/Nous_contacter', [Clientcontroller::class, 'contact'])->name('contacts');
 Route::post('/save_contact', [Clientcontroller::class, 'saveContact'])->name('save.contact');
 
 
@@ -53,8 +53,7 @@ Route::post('/vider', [CartController::class, 'clearAllCart'])->name('vider');
 Route::post('/newsletter', [Clientcontroller::class, 'newsletter'])->name('subscribe_newsletter');
 
 
-Route::get('/users', [Admincontroller::class, 'user'])->name('users');
-Route::get('/deleteuser/{id}', [Admincontroller::class, 'deleteuser']);
+
 
 //CATEGORIES
 Route::get('/select_par_category/{category_name}', [ProductController::class, 'select_par_category']);
@@ -92,7 +91,17 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/redirects', [Clientcontroller::class, 'redirects'])->name('redirects');
 
+
+    Route::get('/users', [Admincontroller::class, 'user'])->name('users');
+    Route::get('/deleteuser/{id}', [Admincontroller::class, 'deleteuser']);
+    Route::get('/contact', [Admincontroller::class, 'allContact'])->name('view_contact');
+    Route::get('/deleteContact/{id}', [Admincontroller::class, 'deleteContact'])->name('delete_contact');
+
+
+
     Route::get('/orders', [Admincontroller::class, 'viewOrder']);
+    // Route::get('/delete_order/{id}', [Admincontroller::class, 'deleteOrder'])->name('delete_order');
+
 
     // Route::get('/cart_view/{id}', [ShopController::class, 'cartView'])->name('cart_view');
     //CATEGORIES
