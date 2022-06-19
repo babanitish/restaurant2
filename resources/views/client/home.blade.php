@@ -122,22 +122,22 @@
                                             <g>
                                                 <path
                                                     d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                                                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                                                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                                                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path
                                                     d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                                             </g>
                                         </g>
                                         <g>
@@ -188,7 +188,7 @@
                                     <span>15%</span> réduction
                                 </h6>
                                 <a href="">
-                                    commander maintenant 
+                                    commander maintenant
                                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                         viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;"
@@ -197,23 +197,23 @@
                                             <g>
                                                 <path
                                                     d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                                                  c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                                                                                  c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path
                                                     d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                                                                C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                                                                c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                                                                C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                                                                                C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                                                                                                c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                                                                                                C457.728,97.71,450.56,86.958,439.296,84.91z" />
                                             </g>
                                         </g>
                                         <g>
                                             <g>
                                                 <path
                                                     d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                                                        c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                                                                        c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
                                             </g>
                                         </g>
                                         <g>
@@ -265,19 +265,20 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                   Nos produits
+                    Nos produits
                 </h2>
             </div>
             <ul class="filters_menu  category">
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Tout</a></li>
-             
+
                 @foreach ($categories as $category)
-               
-                <input type="hidden" value="{{$category->id}}" id="cat">
-                    <li class="{{ request()->is('select_par_category/' . $category->id) ? 'active' : ''}}" value="{{$category->id}}" > 
-                        <a href="{{ url('/select_par_category', $category->id) }}" id="catId"  value="{{$category->id}}">
+                    <input type="hidden" value="{{ $category->id }}" id="cat">
+                    <li class="{{ request()->is('select_par_category/' . $category->id) ? 'active' : '' }}"
+                        value="{{ $category->id }}">
+                        <a href="{{ url('/select_par_category', $category->id) }}" id="catId"
+                            value="{{ $category->id }}">
                             {{ $category->name }}
-                        </a> 
+                        </a>
                     </li>
                 @endforeach
             </ul>
@@ -289,7 +290,9 @@
                             <div class="box" style="height: 450px">
                                 <div>
                                     <div class="img-box">
-                                       <a href="{{route('product.show', $product->id)}}"><img src="{{ asset('product_poster/' . $product->poster_url) }}" alt="  {{ $product->name }}"></a> 
+                                        <a href="{{ route('product.show', $product->id) }}"><img
+                                                src="{{ asset('product_poster/' . $product->poster_url) }}"
+                                                alt="  {{ $product->name }}"></a>
                                     </div>
                                     <div class="detail-box">
 
@@ -382,10 +385,10 @@
     <!-- book section -->
     <section class="book_section layout_padding">
         @if (Session::has('status'))
-                <div class="alert alert-success">
-                    {{Session::get('status')}}
-                </div>
-            @endif
+            <div class="alert alert-success">
+                {{ Session::get('status') }}
+            </div>
+        @endif
         <div class="container">
             <div class="heading_container align-items-center">
                 <h2>
@@ -400,38 +403,63 @@
                             @csrf
                             <div>
                                 <input type="text" name="name" class="form-control name" placeholder="Votre nom" required />
-                                <span class="text-danger error-text name_error"></span>  
+                                <span class="text-danger error-text name_error"></span>
                             </div>
                             <div>
                                 <input type="text" name="phone" class="form-control phone" placeholder="votre numéro"
                                     required />
-                                    <span class="text-danger error-text phone_error"></span>
+                                <span class="text-danger error-text phone_error"></span>
                             </div>
                             <div>
                                 <input type="email" name="email" class="form-control email" placeholder="Votre mail"
                                     required />
-                                    <span class="text-danger error-text email_error"></span>
+                                <span class="text-danger error-text email_error"></span>
                             </div>
                             <div>
                                 <input type="number" name="guest" min="1" class="form-control nice-select wide guest"
-                                    placeholder="nombre de persone" required/>
-                                    <span class="text-danger error-text guest_error"></span>
+                                    placeholder="nombre de persone" required />
+                                <span class="text-danger error-text guest_error"></span>
                             </div>
                             <div>
                                 <input type="time" name="time" class="form-control time"
-                                    class="form-control nice-select wide" required/>
-                                    <span class="text-danger error-text time_error"></span>
+                                    class="form-control nice-select wide" required />
+                                <span class="text-danger error-text time_error"></span>
                             </div>
                             <div>
                                 <input type="date" name="date" class="form-control date"
-                                    class="form-control nice-select wide date" required/>
-                                    <span class="text-danger error-text date_error"></span>
+                                    class="form-control nice-select wide date" required />
+                                <span class="text-danger error-text date_error"></span>
                             </div>
                             <div>
                                 <fieldset>
                                     <textarea name="message" id="message" class="message" cols="59" rows="5"></textarea>
                                 </fieldset>
                             </div>
+                            <a href="{{ route('cgu') }}" target="_blank" rel="noopener noreferrer"
+                                style="color:black;text-decoration: underline;">En savoir plus sur
+                                la gestion de vos données et vos droits</a>
+
+
+                            <p>Les données collectées peuvent également nous permettre de vois adresser par e-mail des
+                                publicités.</p>
+
+                            <p>Pour le permettre, vous devez cocher les cases ci-dessous : </p>
+
+                            <label>
+                                <input type="checkbox" name="check" value="check"> Être recontacté par le restaurant dans le
+                                cadre de ma demande
+                            </label>
+
+                            <label>
+                                <input type="checkbox" name="checkCondition" class="zen-icon_ic_open-in-new" value="check">
+                                Recevoir des offres commerciales de notre part par voie électronique
+                            </label>
+
+                            <label>
+                                <input type="checkbox" name="check" value="check"> j'accepte de recevoir, par e-mail, de la
+                                publicité de la part des partenaires.
+                            </label>
+
                             <div class="btn_box d-flex justify-content-center align-items-center">
                                 <button type="submit" class="btn btn-success btn-lg book">
                                     Réserver maintenant
@@ -442,6 +470,7 @@
                 </div>
             </div>
         </div>
+        
     </section>
     <!-- end book section -->
 
@@ -451,7 +480,7 @@
         <div class="container">
             <div class="heading_container heading_center psudo_white_primary mb_45">
                 <h2>
-                   Les avis
+                    Les avis
                 </h2>
             </div>
             <div class="carousel-wrap row ">
@@ -460,7 +489,7 @@
                         <div class="box">
                             <div class="detail-box">
                                 <p>
-                                   Que dire si ce n'est l'un de mes endroits favoris
+                                    Que dire si ce n'est l'un de mes endroits favoris
                                 </p>
                                 <h6>
                                     Moana Michell
@@ -497,5 +526,9 @@
             </div>
         </div>
     </section>
+    <button type="button" class="btn btn-warning btn-floating btn-lg" id="btn-back-to-top" style="position: fixed;bottom:20px;right:20px;display:none;">
+        Haut
+    </button>
+    
     <!-- end client section -->
 @endsection

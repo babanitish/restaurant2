@@ -39,7 +39,7 @@
     <script src="https://js.stripe.com/v3/"></script>
     <style>
         .dropbtn {
-            background-color: #04AA6D;
+            background-color: #cbdeba;
             color: white;
             padding: 16px;
             font-size: 16px;
@@ -175,11 +175,11 @@
                                 </span>
                           
                             @endguest --}}
-                            <form class="form-inline">
+                            {{-- <form class="form-inline">
                                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                                     <i class="fa fa-search" aria-hidden="true"></i>
                                 </button>
-                            </form>
+                            </form> --}}
                             <a href="{{ url('/menu') }}" class="order_online">
                                 commander
                             </a>
@@ -206,15 +206,22 @@
                         Informations
                     </h4>
                     <p>
-                       <a href="{{route('mention')}}" target="_blank" rel="noopener noreferrer" style="color: white;"> Mentions Légales  </a>
-                       
+                        <a href="{{ route('mention') }}" target="_blank" rel="noopener noreferrer"
+                            style="color: white;text-decoration:underline;"> Mentions Légales </a>
+
                     </p>
                     <p>
-                       <a href="{{route('cgu')}}" target="_blank" rel="noopener noreferrer" style="color: white;"> CGU </a>
-                        
+                        <a href="{{ route('cgu') }}" target="_blank" rel="noopener noreferrer"
+                            style="color: white;text-decoration:underline;"> CGU </a>
+
                     </p>
                     <p>
-                       <a href="{{route('cgv')}}" target="_blank" rel="noopener noreferrer" style="color: white;"> CGV </a>
+                        <a href="{{ route('cgv') }}" target="_blank" rel="noopener noreferrer"
+                            style="color: white;text-decoration:underline;"> CGV </a>
+                    </p>
+                    <p>
+                        <a href="{{ route('contact') }}" rel="noopener noreferrer"
+                            style="color: white;text-decoration:underline;">Nous contacter</a>
                     </p>
                 </div>
                 <div class="col-md-3 footer-col">
@@ -232,13 +239,13 @@
                             <a href="">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
                                 <span>
-                                    appeler +01 1234567890
+                                    appeler +32 1234567890
                                 </span>
                             </a>
                             <a href="">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                                 <span>
-                                    demo@gmail.com
+                                    joyau@gmail.com
                                 </span>
                             </a>
                         </div>
@@ -263,16 +270,16 @@
 
                             </div>
                         </form>
-                        
+
                         <div class="footer_social">
                             <a href="">
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                             </a>
-                          
+
                             <a href="">
                                 <i class="fa fa-instagram" aria-hidden="true"></i>
                             </a>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -287,12 +294,12 @@
                         10.00 matin -10.00 soir
                     </p>
                 </div>
-             
+
             </div>
             <div class="footer-info">
                 <p>
-                    &copy; <span id="displayYear"></span> Tous droits réservés par
-                    <a href="https://html.design/">Free Html Templates</a><br><br>
+                    Aboubacar Touré &copy; <span id="displayYear"></span> 
+                    {{-- <a href="https://html.design/">Free Html Templates</a><br><br> --}}
                     &copy; <span id="displayYear"></span> Distribuer par
                     <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
                 </p>
@@ -334,6 +341,34 @@
             })
         </script>
     @endif
+
+    <script>
+        //Get the button
+        let mybutton = document.getElementById("btn-back-to-top");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (
+                document.body.scrollTop > 20 ||
+                document.documentElement.scrollTop > 1000
+            ) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+        // When the user clicks on the button, scroll to the top of the document
+        mybutton.addEventListener("click", backToTop);
+
+        function backToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 300;
+        }
+    </script>
 </body>
 
 </html>

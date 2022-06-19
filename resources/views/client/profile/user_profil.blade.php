@@ -20,21 +20,24 @@ menu
                         <div class="card-body p-0">
                             <ul class="list-group list-group-flush rounded-3">
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fas fa-globe fa-lg text-warning"></i>
-                                    <a href="{{ route('dashboard') }}" class="mb-0">Accueil</p>
+                                   
+                                    <a href="{{ route('dashboard') }}" class="mb-0">Accueil</a>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-github fa-lg" style="color: #333333;"></i>
+                                    
                                     <a href="{{route('my_order')}}" class="mb-0">vos commandes</a>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                    <a href="{{route('user.profil')}}" class="mb-0">Mettre à jour ses
+                                    <a href="{{ route('user.mdp') }}" class="mb-0">Mettre à jour son
+                                        mot de passe</a>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <a href="{{ route('user.profil') }}" class="mb-0">Mettre à jour ses
                                         données</a>
                                 </li>
                                
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                                    
                                     <a href="{{ route('user.logout') }}" class="mb-0">Se déconnecter</a>
                                 </li>
 
@@ -54,7 +57,7 @@ menu
                     @endif
                     <div class="card mb-4">
                         <div class="card-body">
-                            <form method="POST" action="{{ route('profile.update') }}">
+                            <form method="POST" action="{{ route('profil.update') }}">
                                 @method('PUT')
                                 @csrf
                                 <div class="card-body">
@@ -79,27 +82,27 @@ menu
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <p class="mb-0">Nouveau mot de passe</p>
+                                            <p class="mb-0">Tél</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <x-label for="new_password" />
-                                            <x-input id="new_password" class="block mt-1 w-full" type="password"
-                                                name="password" autocomplete="new-password" />
+                                            <x-label for="phone" />
+                                            <x-input id="phone" class="block mt-1 w-full" type="text"
+                                                name="phone" autocomplete="phone number" value="{{ auth()->user()->phone }}"/>
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <p class="mb-0">Confirmation mot de passe</p>
+                                            <p class="mb-0">Adresse</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <x-label for="confirm_password" />
-                                            <x-input id="confirm_password" class="block mt-1 w-full" type="password"
-                                                name="password_confirmation" autocomplete="confirm-password" />
+                                            <x-label for="address" />
+                                            <x-input id="address" class="block mt-1 w-full" type="text"
+                                                name="address" autocomplete="addressd" value="{{ auth()->user()->address }}"/>
                                         </div>
                                     </div>
                                     <hr>
-                                    <button class="btn btn-danger">modifier</button>
+                                    <button class="btn btn-warning">modifier</button>
                                 </div>
                             </form>
                         </div>

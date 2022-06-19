@@ -39,7 +39,7 @@ class ProductSeeder extends Seeder
 
                 'name' => 'Cheeseburger ',
                 'description' => 'Sauce ketchup-moutarde, oignons, cornichons, steak haché et cheddar.',
-                'poster_url' => 'Cheeseburger.jpg',
+                'poster_url' => 'Cheeseburger.png',
                 'price' => 7.95,
                 'category_id' => 1,
                 'status' => 1,
@@ -50,7 +50,7 @@ class ProductSeeder extends Seeder
 
                 'name' => 'Double cheese  ',
                 'description' => 'Sauce ketchup-moutarde, oignons, double steak haché et double cheddar.',
-                'poster_url' => 'Double_cheese.jpg',
+                'poster_url' => 'Doublechees.png',
                 'price' => 7.95,
                 'category_id' => 1,
                 'status' => 1,
@@ -60,8 +60,8 @@ class ProductSeeder extends Seeder
             [
 
                 'name' => 'Chicken burger  ',
-                'description' => 'Sauce ketchup-moutarde, oignons, cornichons, double steak haché et double cheddar.',
-                'poster_url' => 'Chicken burger.jpg',
+                'description' =>'Sauce ketchup-moutarde, oignons, cornichons, double steak haché et cheddar.',
+                'poster_url' => 'Chicken.png',
                 'price' => 7.95,
                 'category_id' => 1,
                 'status' => 1,
@@ -72,7 +72,7 @@ class ProductSeeder extends Seeder
 
                 'name' => 'Fish burger  ',
                 'description' => 'Sauce mayonnaise, salade, tomate et steak de poulet.',
-                'poster_url' => 'Fish burger.jpg',
+                'poster_url' => 'Chicken.png',
                 'price' => 7.95,
                 'category_id' => 1,
                 'status' => 1,
@@ -164,7 +164,7 @@ class ProductSeeder extends Seeder
             [
 
                 'name' => 'pizza American  ',
-                'description' => 'Sauce tomate, mozzarella & pepperoni.',
+                'description' => 'Sauce tomate, mozzarella extra mozzarella & pepperoni.',
                 'poster_url' => 'american.jpg',
                 'price' => 8.95,
                 'category_id' => 2,
@@ -229,7 +229,7 @@ class ProductSeeder extends Seeder
 
                 'name' => 'Wrap Poulet Croustillant BBQ',
                 'description' => 'Wrap avec poitrine de poulet croustillante, laitue, tomate et sauce BBQ.',
-                'poster_url' => 'wrap2.jpg',
+                'poster_url' => 'wrapCrous.png',
                 'price' => 6.95,
                 'category_id' => 3,
                 'status' => 1,
@@ -239,7 +239,7 @@ class ProductSeeder extends Seeder
 
                 'name' => 'Wrap Moutarde',
                 'description' => 'Wrap avec poitrine de poulet croustillante, laitue, tomate et sauce moutarde.',
-                'poster_url' => 'wrap3.jpg',
+                'poster_url' => 'wrapMoutarde.png',
                 'price' => 6.95,
                 'category_id' => 3,
                 'status' => 1,
@@ -247,9 +247,9 @@ class ProductSeeder extends Seeder
 
             ],  [
 
-                'name' => 'Wrap Poulet PIRI PIRI',
-                'description' => 'Wrap avec poitrine de poulet croustillante, laitue, tomate et sauce PIRI PIRI.',
-                'poster_url' => 'wrap5.jpg',
+                'name' => 'Wrap Poulet ',
+                'description' => 'Wrap avec poitrine de poulet croustillante, laitue, tomate et sauce suu.',
+                'poster_url' => 'wrapSu.png',
                 'price' => 6.95,
                 'category_id' => 3,
                 'status' => 1,
@@ -273,7 +273,7 @@ class ProductSeeder extends Seeder
             [
 
                 'name' => 'Menu enfant classique ',
-                'description' => 'Petit burger classique de 60 grammes avec laitue et tomate, une portion de frites, une boisson et une surprise.',
+                'description' => 'Petit burger classique avec laitue et tomate, une portion de frites, une boisson et une surprise.',
                 'poster_url' => 'kid1.png',
                 'price' => 7.95,
                 'category_id' => 4,
@@ -284,7 +284,7 @@ class ProductSeeder extends Seeder
             [
 
                 'name' => 'Menu enfant délice ',
-                'description' => 'Petit burger classique de 60 grammes avec laitue et tomate, une portion de frites, une boisson et une surprise.',
+                'description' => 'Petit burger classique avec laitue et tomate, une portion de frites, une boisson et une surprise.',
                 'poster_url' => 'kid1.png',
                 'price' => 7.95,
                 'category_id' => 4,
@@ -295,7 +295,7 @@ class ProductSeeder extends Seeder
              [
 
                 'name' => 'Menu enfant classique au fromage ',
-                'description' => 'Petit cheese burger classique de 60 grammes avec cheddar, laitue et tomate, une portion de frites, une boisson et une surprise. ',
+                'description' => 'Petit cheese burger classique avec cheddar, laitue et tomate, une portion de frites, une boisson et une surprise. ',
                 'poster_url' => 'kid2.png',
                 'price' => 7.95,
                 'category_id' => 4,
@@ -326,8 +326,8 @@ class ProductSeeder extends Seeder
             ],
             [
 
-                'name' => 'Menu pour enfants cuisse de poulet ',
-                'description' => '3 tendres doigts de poulet avec une portion de frites , une boisson et une surprise dans une box enfant. ',
+                'name' => 'Menu enfants cuisse de poulet ',
+                'description' =>'3 tendres doigts de poulet avec une portion de frites, une boisson et une surprise.',
                 'poster_url' => 'kid3.png',
                 'price' => 7.95,
                 'category_id' => 4,
@@ -343,7 +343,7 @@ class ProductSeeder extends Seeder
 
                 'name' => 'Ailes de poulet 4',
                 'description' => '4 ailes de poulet croustillantes avec sauce au choix. ',
-                'poster_url' => 'wings1.jpg',
+                'poster_url' => 'wings3.png',
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
@@ -353,7 +353,7 @@ class ProductSeeder extends Seeder
 
                 'name' => 'Ailes de poulet 8 pièces ',
                 'description' => '8 Ailes de Poulet croustillantes avec sauce au choix.',
-                'poster_url' => 'wings2.jpg',
+                'poster_url' => 'wings4.png',
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
@@ -363,7 +363,7 @@ class ProductSeeder extends Seeder
 
                 'name' => 'Filets de poulet 4 pièces ',
                 'description' => '8 Chicken Tenders, tendres morceaux de poulet désossé avec une sauce au choix. ',
-                'poster_url' => 'wings3.jpg',
+                'poster_url' => 'wings1.png',
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
@@ -375,7 +375,7 @@ class ProductSeeder extends Seeder
 
                 'name' => 'Filets de poulet 8 pièces ',
                 'description' => '8 Chicken Tenders, tendres morceaux de poulet désossé avec une sauce au choix. ',
-                'poster_url' => 'wings4.jpg',
+                'poster_url' => 'wings2.png',
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
@@ -385,9 +385,9 @@ class ProductSeeder extends Seeder
 
 
             [
-                'name' => 'frite',
+                'name' => 'Épluchures pommes de terre ',
                 'description' => "(400 grammes) Frites  avec une couche savoureuse",
-                'poster_url' => 'frites1.jpg',
+                'poster_url' => 'potatoes.png',
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
@@ -407,7 +407,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Frites de patates douces ',
                 'description' => "(400 grammes) Frites de patates douces avec une couche savoureuse",
-                'poster_url' => 'potato1.jpg',
+                'poster_url' => 'potatoes2.png',
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,
@@ -417,7 +417,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Frites de patates douces ',
                 'description' => "(400 grammes) Frites de patates douces avec une couche savoureuse",
-                'poster_url' => 'potato1.jpg',
+                'poster_url' => 'potato2.jpg',
                 'price' => 3.95,
                 'category_id' => 5,
                 'status' => 1,

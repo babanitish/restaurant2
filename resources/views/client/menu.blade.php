@@ -21,14 +21,15 @@
 
             <ul class="filters_menu  category">
                 <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{ url('/menu') }}">Tout</a></li>
-             
+
                 @foreach ($categories as $category)
-               
-                <input type="hidden" value="{{$category->id}}" class="cat">
-                    <li class="{{ request()->is('select_par_category/' . $category->name) ? 'active' : ''}} catId" value="{{$category->id}}"> 
-                        <a href="{{ url('/select_par_category', $category->id) }}"  value="{{$category->id}}">
+                    <input type="hidden" value="{{ $category->id }}" id="cat">
+                    <li class="{{ request()->is('select_par_category/' . $category->id) ? 'active' : '' }}"
+                        value="{{ $category->id }}">
+                        <a href="{{ url('/select_par_category', $category->id) }}" id="catId"
+                            value="{{ $category->id }}">
                             {{ $category->name }}
-                        </a> 
+                        </a>
                     </li>
                 @endforeach
             </ul>
@@ -91,5 +92,8 @@
             </div> --}}
         </div>
     </section>
+    <button type="button" class="btn btn-warning btn-floating btn-lg" id="btn-back-to-top" style="position: fixed;bottom:20px;right:20px;display:none;">
+        Haut
+    </button>
     <!-- end food section -->
 @endsection

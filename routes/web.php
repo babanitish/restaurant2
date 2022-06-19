@@ -37,6 +37,10 @@ Route::get('/book', [Clientcontroller::class, 'book']);
 Route::get('/Mentions-légales', [Clientcontroller::class, 'mention'])->name('mention');
 Route::get("/conditions-générales-utilisation", [Clientcontroller::class, 'cgu'])->name('cgu');
 Route::get('/conditions-générales-vente', [Clientcontroller::class, 'cgv'])->name('cgv');
+Route::get('/contact', [Clientcontroller::class, 'contact'])->name('contact');
+Route::post('/save_contact', [Clientcontroller::class, 'saveContact'])->name('save.contact');
+
+
 
 
 //Voir produit en détail
@@ -116,9 +120,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     /////////////////////////////
     Route::get('/user/logout', [ClientController::class, 'UserLogout'])->name('user.logout');
-    Route::get('/user/profil', [ClientController::class, 'UserProfile'])->name('user.profil');
-    Route::put('/profile/update', [Clientcontroller::class, 'profileUpdate'])->name('profile.update');
-    // Route::get('/profile/order', [Clientcontroller::class, 'profileOrder'])->name('user.order');
+    Route::get('/user/mot-de-passe', [ClientController::class, 'UserPassword'])->name('user.mdp');
+    Route::put('/mdp/update', [Clientcontroller::class, 'updateMdp'])->name('mdp.update');
+    Route::get('/user-profil', [Clientcontroller::class, 'UserProfil'])->name('user.profil');
+    Route::put('/profil-update', [Clientcontroller::class, 'UpdateProfil'])->name('profil.update');
+    Route::post('/profil-delete', [Clientcontroller::class, 'unsubscribe'])->name('user.unsubscribe');
+
 
     //CHECKOUT
 

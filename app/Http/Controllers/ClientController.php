@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Product;
 use App\Models\Reservation;
 use App\Models\User;
@@ -14,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Newsletter;
+
 class ClientController extends Controller
 {
 
@@ -102,19 +104,19 @@ class ClientController extends Controller
      * 
      * @return The user is being returned.
      */
-    public function profileUpdate(Request $request)
+    public function updateMdp(Request $request)
     {
         $user = User::find(Auth::id());
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
+            // 'name' => 'required',
+            // 'email' => 'required|email',
             'password' => 'required|confirmed|min:7'
 
         ]);
 
 
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
+        // $user->name = $request->input('name');
+        // $user->email = $request->input('email');
         // auth()->user()->update($request->only('name', 'email'));
         if ($request->input('password')) {
             auth()->user()->update([
@@ -145,16 +147,64 @@ class ClientController extends Controller
      * 
      * @return The user object.
      */
-    public function UserProfile()
+    public function UserPassword()
     {
         $id = Auth::user()->id;
         $user = User::find($id);
-        return view('client.profile.user_profile', [
+        return view('client.profile.user_password', [
+            'user' => $user,
+        ]);
+    }
+
+    public function UserProfil()
+    {
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        return view('client.profile.user_profil', [
             'user' => $user,
         ]);
     }
 
 
+
+    public function UpdateProfil(Request $request)
+    {
+        $user = User::find(Auth::id());
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|numeric',
+            'address' => 'required|',
+
+        ]);
+
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->phone = $request->input('phone');
+        $user->address = $request->input('address');
+
+        // auth()->user()->update($request->only('name', 'email'));
+        $user->update();
+        return redirect()->route('dashboard')->with('status', 'Profile saved successfully');
+    }
+
+    public function unsubscribe()
+    {
+        $user = Auth::user();
+        dd($user);
+        $user->update([
+            'name' => 'name' . $user->id,
+            'email' => 'email' . $user->id,
+            'password' => 'password',
+        ]);
+
+        //logout
+        Auth::guard('web')->logout();
+
+        //redirect to home page
+        return redirect(route('/'));
+    }
 
     /**
      * Je veux vérifier si la date est inférieure à hier, si c'est le cas,la réservation 
@@ -164,7 +214,7 @@ class ClientController extends Controller
      */
     public function tableBook(Request $request)
     {
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'phone' => 'required',
             'email' => 'required|email',
@@ -173,8 +223,8 @@ class ClientController extends Controller
             'date' => 'required|date',
         ]);
 
-        if(!$validator->passes()){
-            return response()->json(['status'=>0, 'error'=>$validator->error()->toArray()]);
+        if (!$validator->passes()) {
+            return response()->json(['status' => 0, 'error' => $validator->error()->toArray()]);
         }
 
         if ($request->input('date') < Carbon::yesterday()) {
@@ -196,32 +246,61 @@ class ClientController extends Controller
 
         return response()->json(['status' => "reservation success"]);
     }
-  /**
-   * It takes the email address from the form, and subscribes the user to the newsletter list
-   * 
-   * @param Request request The request object
-   * 
-   * @return The newsletter method is returning a redirect to the homepage.
-   */
+    /**
+     * It takes the email address from the form, and subscribes the user to the newsletter list
+     * 
+     * @param Request request The request object
+     * 
+     * @return The newsletter method is returning a redirect to the homepage.
+     */
     public function newsletter(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
         ]);
         Newsletter::subscribeOrUpdate($request->input('email'), ['firstname' => 'bob'], 'newsletter');
-        return redirect()->back()->with('status','thank you for your subscribe');
+        return redirect()->back()->with('status', 'thank you for your subscribe');
     }
 
 
-    public function mention(){
+    public function mention()
+    {
         return view('client.info.mention');
     }
 
-    public function cgu(){
+    public function cgu()
+    {
         return view('client.info.cgu');
     }
 
-    public function cgv(){
+    public function cgv()
+    {
         return view('client.info.cgv');
+    }
+    public function contact()
+    {
+        return view('client.info.contact');
+    }
+    public function saveContact(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required'
+        ]);
+
+        if (!$validator->passes()) {
+            return response()->json(['status' => 0, 'error' => $validator->error()->toArray()]);
+        }
+
+        $contact = new contact();
+
+
+        $contact->name = $request->input('name');
+        $contact->email = $request->input('email');
+        $contact->message = $request->input('message');
+        $contact->save();
+
+        return response()->json(['status' => "reservation success"]);
     }
 }

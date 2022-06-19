@@ -121,38 +121,39 @@
             }
         }
     </style>
-    @if (Session::has('status'))
-        <div class="alert alert-success">
-            {{ Session::get('status') }}
-        </div>
-    @endif
-    <div class="row">
+    <section class="food_section layout_padding-bottom">
 
+        <div class="container">
+            @if (Session::has('status'))
+                <div class="alert alert-success">
+                    {{ Session::get('status') }}
+                </div>
+            @endif
+            <div class="row">
 
-
-        <div class="col-75">
-            <div class="container contain mt-3">
-                <form action="{{ route('place-order') }}" method="post" class="needs-validation" id="payment-form"
-                    id="payment-form">
-                    @csrf
-                    <div class="row">
-                        <div class="col-50">
-                            <h3>Adresse de facturation</h3>
-                            <label for="fname"><i class="fa fa-user"></i> Nom</label>
-                            <input type="text" class="form-control" id="firstName" name="name" placeholder=""
-                                value="{{ Auth::user()->name }}" required>
-                            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                            <input type="email" class="form-control" id="email" name="email"
-                                value="{{ Auth::user()->email }}" placeholder="you@example.com">
-                            <label for="adr"><i class="fa fa-address-card-o"></i> Adresse</label>
-                            <input type="text" class="form-control" id="address" name="address"
-                                value="{{ Auth::user()->address }}" placeholder="1234 Main St" required>
-                            <label for="phone"><i class="fa fa-institution"></i> numéro</label>
-                            <input type="number" class="form-control" id="number" name="number"
-                                value="{{ Auth::user()->phone }}" placeholder="04-55-66-77-88" required>
-
+                <div class="col-75">
+                    <div class="container contain mt-3">
+                        <form action="{{ route('place-order') }}" method="post" class="needs-validation" id="payment-form"
+                            id="payment-form">
+                            @csrf
                             <div class="row">
-                                {{-- <div class="col-50">
+                                <div class="col-50">
+                                    <h3>Adresse de facturation</h3>
+                                    <label for="fname"><i class="fa fa-user"></i> Nom</label>
+                                    <input type="text" class="form-control" id="firstName" name="name" placeholder=""
+                                        value="{{ Auth::user()->name }}" required>
+                                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        value="{{ Auth::user()->email }}" placeholder="you@example.com">
+                                    <label for="adr"><i class="fa fa-address-card-o"></i> Adresse</label>
+                                    <input type="text" class="form-control" id="address" name="address"
+                                        value="{{ Auth::user()->address }}" placeholder="1234 Main St" required>
+                                    <label for="phone"><i class="fa fa-institution"></i> numéro</label>
+                                    <input type="number" class="form-control" id="number" name="number"
+                                        value="{{ Auth::user()->phone }}" placeholder="04-55-66-77-88" required>
+
+                                    <div class="row">
+                                        {{-- <div class="col-50">
                                     <label for="state">State</label>
                                     <input type="text" id="state" name="state" placeholder="NY">
                                 </div>
@@ -160,100 +161,101 @@
                                     <label for="zip">Zip</label>
                                     <input type="text" id="zip" name="zip" placeholder="10001">
                                 </div> --}}
+                                    </div>
+
+                                </div>
+
+                                <div class="col-50">
+                                    <div class="container contain mt-3">
+
+                                        <table class="table table-dark">
+                                            <thead>
+                                                <tr>
+                                                    <th>nom</th>
+                                                    <th>quantité</th>
+                                                    <th>prix</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @foreach (Cart::content() as $product)
+                                                    <tr>
+                                                        <td>{{ $product->name }}</td>
+                                                        <td>{{ $product->qty }}</td>
+                                                        <td>{{ $product->price }}</td>
+
+                                                    </tr>
+                                                @endforeach
+
+                                            </tbody>
+                                        </table>
+                                        @if (session::has('coupon'))
+                                            <p> coupon<span class="price"
+                                                    style="color:black"><b>{{ session()->get('coupon')['discount'] }}%</b></span>
+                                            </p>
+                                            <p>Total <span class="price" style="color:black"><b>€
+                                                        {{ Cart::total() - (Cart::total() * session()->get('coupon')['discount']) / 100 }}</b></span>
+                                            </p>
+                                        @else
+                                            {{ cart::total() }}
+                                        @endif
+
+                                    </div>
+
+                                    <h3 class="mt-2">Paiement</h3>
+                                    <label for="fname">Mode de paiement</label>
+                                    <div class="icon-container">
+                                        <p>Stripe <i class="fa fa-cc-visa" style="color:navy;"></i></p>
+                                        {{-- <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                                        <i class="fa fa-cc-discover" style="color:orange;"></i> --}}
+                                    </div>
+                                    
+                                    <div id="payment_method" name="payment_method" type="hidden">
+                                        <!-- A Stripe Element will be inserted here. -->
+                                    </div>
+
+                                    <div id="card-element">
+                                        <!-- A Stripe Element will be inserted here. -->
+                                    </div>
+                                    <!-- Used to display form errors. -->
+                                    <div id="card-errors" role="alert"></div>
+                                    {{-- </div> --}}
+                                </div>
+
                             </div>
 
-                        </div>
-
-                        <div class="col-50">
-                            <div class="container contain mt-3">
-
-                                <table class="table table-dark">
-                                    <thead>
-                                        <tr>
-                                            <th>nom</th>
-                                            <th>quantité</th>
-                                            <th>prix</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        @foreach (Cart::content() as $product)
-                                            <tr>
-                                                <td>{{ $product->name }}</td>
-                                                <td>{{ $product->qty }}</td>
-                                                <td>{{ $product->price }}</td>
-
-                                            </tr>
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
-                                @if (session::has('coupon'))
-                                <p> coupon<span class="price" style="color:black"><b>{{session()->get('coupon')['discount']}}%</b></span></p>
-                                    <p>Total <span class="price" style="color:black"><b>€
-                                                {{ Cart::total() - (Cart::total() * session()->get('coupon')['discount']) / 100 }}</b></span></p>
-                                @else
-                                    {{ cart::total() }}
-                                @endif
-
-                            </div>
-
-                            <h3 class="mt-2">Paiement</h3>
-                            <label for="fname">Mode de paiement</label>
-                            <div class="icon-container">
-                                <i class="fa fa-cc-visa" style="color:navy;"></i>
-                                <i class="fa fa-cc-amex" style="color:blue;"></i>
-                                <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                                <i class="fa fa-cc-discover" style="color:orange;"></i>
-                            </div>
-                            {{-- <label for="cname">Name on Card</label>
-                            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-                            <label for="ccnum">Credit card number</label>
-                            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-                            <label for="expmonth">Exp Month</label>
-                            <input type="text" id="expmonth" name="expmonth" placeholder="September"> --}}
-
-                            <div id="payment_method" name="payment_method" type="hidden">
-                                <!-- A Stripe Element will be inserted here. -->
-                            </div>
-
-                            <div id="card-element">
-                                <!-- A Stripe Element will be inserted here. -->
-                            </div>
-                            <!-- Used to display form errors. -->
-                            <div id="card-errors" role="alert"></div>
-                            {{-- </div> --}}
-                        </div>
-
+                            <label>
+                                <input type="checkbox" name="check" value="check"> Enregistrer ces informations pour
+                                faciliter mes
+                                prochaines réservations.
+                            </label>
+                            <label>
+                                <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                                <input type="checkbox" name="checkCondition" class="zen-icon_ic_open-in-new" value="check"
+                                    required>
+                                <a href="http://" target="_blank" rel="noopener noreferrer">
+                                    J'accepte les conditions générales d'utilisation du service </a>
+                                <span style="color:  rgba(235,81,96,0.8)">&nbsp;*</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" name="check" value="check"> Je souhaite recevoir les actualités et
+                                programmation du restaurant par email.
+                            </label>
+                            <button id="submit-btn" type="submit" value="proceder au payer"
+                                class="btn">payer</button>
+                        </form>
                     </div>
+                </div>
 
-                    <label>
-                        <input type="checkbox" name="check" value="check"> Enregistrer ces informations pour faciliter mes
-                        prochaines réservations.
-                    </label>
-                    <label>
-                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-                        <input type="checkbox" name="checkCondition" class="zen-icon_ic_open-in-new" value="check" required>
-                        <a href="http://" target="_blank" rel="noopener noreferrer">
-                            J'accepte les conditions générales d'utilisation du service </a>
-                        <span style="color:  rgba(235,81,96,0.8)">&nbsp;*</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="check" value="check"> Je souhaite recevoir les actualités et
-                        programmation du restaurant par email.
-                    </label>
-                    <button id="submit-btn" type="submit" value="proceder au payer" class="btn">payer</button>
-                </form>
+                {{-- <div class="col-25">
+            
+                </div> --}}
+
             </div>
         </div>
-
-        {{-- <div class="col-25">
-            
-        </div> --}}
-
-    </div>
-
+    </section>
     {{-- WITH CHARGE --}}
 
 

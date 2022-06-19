@@ -37,7 +37,7 @@ class CategorySeeder extends Seeder
         ],
         [
             'id' => '4',
-            'name'=>'kids',
+            'name'=>'Enfant',
         ],
         [
             'id' => '5',

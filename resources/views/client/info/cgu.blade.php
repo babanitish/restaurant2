@@ -32,7 +32,7 @@
 
             <h2>Propriété intellectuelle</h2>
             <p>Le site web ainsi que son contenu est protégé au titre des droits de propriété intellectuelle au profit de la
-                société JURIDIQUEMENT WEB. Il est interdit de copier, reproduire, extraire, diffuser, tout ou partie, du
+                société AT-consulting. Il est interdit de copier, reproduire, extraire, diffuser, tout ou partie, du
                 site ou de ses éléments, sur quelque support que ce soit sans l’accord écrit et préalable de l’éditeur du
                 site. Le non-respect de ces droits peut engager les responsabilités civile et pénale du contrevenant.</p>
 

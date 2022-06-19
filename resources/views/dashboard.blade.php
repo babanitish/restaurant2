@@ -1,7 +1,5 @@
 @extends('client_layout.head_foot')
-{{-- @section('title')
-menu
-@endsection --}}
+
 @section('content')
     <h2 class="d-flex justify-content-center">Bienvenue {{ Auth::user()->name }}</h2>
     @if (Session::has('status'))
@@ -30,24 +28,31 @@ menu
                         <div class="card-body p-0">
                             <ul class="list-group list-group-flush rounded-3">
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fas fa-globe fa-lg text-warning"></i>
-                                    <a href="" class="mb-0">Accueil</p>
+                                    <a href="" class="mb-0">Accueil</a>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-github fa-lg" style="color: #333333;"></i>
                                     <a href="{{ route('my_order') }}" class="mb-0">vos commandes</a>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                                    <a href="{{ route('user.mdp') }}" class="mb-0">Mettre à jour son
+                                        mot de passe</a>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <a href="{{ route('user.profil') }}" class="mb-0">Mettre à jour ses
                                         données</a>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
                                     <a href="{{ route('user.logout') }}" class="mb-0">Se déconnecter</a>
                                 </li>
-
+                                
+                                
                             </ul>
+                            {{-- <form action="{{ route('user.unsubscribe') }}" method="post">
+                                @csrf
+                            <button type="submit" class="btn btn-danger btnDesin" class="mb-0">Se désinscrire</button>
+                                
+                            </form> --}}
+
                         </div>
                     </div>
                 </div>
@@ -56,7 +61,7 @@ menu
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Full Name</p>
+                                    <p class="mb-0">Nom</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ Auth::user()->name }}</p>
@@ -65,7 +70,7 @@ menu
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Email</p>
+                                    <p class="mb-0">E-mail</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ Auth::user()->email }}</p>
@@ -74,7 +79,7 @@ menu
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Phone</p>
+                                    <p class="mb-0">Tél</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">
@@ -83,10 +88,9 @@ menu
                             </div>
                             <hr>
 
-                            <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Address</p>
+                                    <p class="mb-0">Adresse</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">
@@ -95,7 +99,7 @@ menu
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-md-6">
                             <div class="card mb-4 mb-md-0">
                                 <div class="card-body">
@@ -164,7 +168,7 @@ menu
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

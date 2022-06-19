@@ -289,47 +289,52 @@ $('.btnCoupon').click(function (e) {
 });
 
 
+// form contact
 
-// $('.cate').click(function (e) {
-//     e.preventDefault();
-//     var name = $('.cate').val();
-//     alert(name);
-//     // var email = $('.email').val();
-//     // var phone = $('.phone').val();
-//     // var guest = $('.guest').val();
-//     // var time = $('.time').val();
-//     // var date = $('.date').val();
-//     // var message = $('.message').val();
+$('#contact').on('submit', function (e) {
+    e.preventDefault();
+
+
+    var name = $('.name').val();
+    var email = $('.email').val();
+    var message = $('.message').val();
 
 
 
-//     // $.ajaxSetup({
-//     //     headers: {
-//     //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//     //     }
-//     // });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
-//     // $.ajax({
-//     //     type: "POST",
-//     //     url: "/table_book",
-//     //     data: {
-//     //         'name': name,
-//     //         'email': email,
-//     //         'phone': phone,
-//     //         'guest': guest,
-//     //         'time': time,
-//     //         'date': date,
-//     //         'message': message
-//     //     },
-//     //     success: function (response) {
-//     //         alert(response.status);
-//     //         // window.location.reload();
-//     //         // if (response.redirect_url) {
-//     //         //     window.location = data.redirect_url; // or {{url('login')}}
-//     //         // }
-//     //     }
-//     // });
-// });
+    $.ajax({
+        type: "POST",
+        url: "/save_contact",
+        data: {
+            'name': name,
+            'email': email,
+            'message': message
+        },
+        beforeSend: function () {
+            $(document).find('span.error-text').text('');
+        },
+        success: function (response) {
+            // alert(response.status);
+            if (response.status == 0) {
+                $each(response.error, function (prefix, val) {
+                    $('span.' + prefix + '_error').text(val[0]);
+                });
+            } else {
+                $('#contact')[0].reset();
+                Swal.fire({
+                    title: 'Succès',
+                    text: 'message envoyé',
+                    icon: 'success'
+                })
+            }
 
+        }
+    });
+});
 
 // });

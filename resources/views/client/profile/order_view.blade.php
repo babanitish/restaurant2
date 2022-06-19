@@ -30,23 +30,23 @@ menu
                         <div class="card-body p-0">
                             <ul class="list-group list-group-flush rounded-3">
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fas fa-globe fa-lg text-warning"></i>
-                                    <a href="{{ route('dashboard') }}" class="mb-0">Accueil</p>
+                                    <a href="{{ route('dashboard') }}" class="mb-0">Accueil</a>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-github fa-lg" style="color: #333333;"></i>
                                     <a href="{{ route('my_order') }}" class="mb-0">vos commandes</a>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-github fa-lg" style="color: #333333;"></i>
+                                    <a href="{{ route('user.mdp') }}" class="mb-0">Mettre à jour son
+                                        mot de passe</a>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <a href="{{ route('user.profil') }}" class="mb-0">Mettre à jour ses
                                         données</a>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
                                     <a href="{{ route('user.logout') }}" class="mb-0">Se déconnecter</a>
                                 </li>
-
+     
                             </ul>
                         </div>
                     </div>
