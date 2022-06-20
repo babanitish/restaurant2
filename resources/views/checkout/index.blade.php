@@ -235,7 +235,7 @@
                                 <x-auth-validation-errors class="mb-4" :errors="$errors" />
                                 <input type="checkbox" name="checkCondition" class="zen-icon_ic_open-in-new" value="check"
                                     required>
-                                <a href="http://" target="_blank" rel="noopener noreferrer">
+                                <a href="{{route('cgu')}}"  rel="noopener noreferrer">
                                     J'accepte les conditions générales d'utilisation du service </a>
                                 <span style="color:  rgba(235,81,96,0.8)">&nbsp;*</span>
                             </label>
