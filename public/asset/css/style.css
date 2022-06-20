@@ -493,7 +493,7 @@ a:focus {
 
 .food_section .filters_menu li a{
   color: #000000;
-  padding: 7px 25px;
+  padding: 4px 12px;
   cursor: pointer;
   border-radius: 25px;
 }

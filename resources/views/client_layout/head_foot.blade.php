@@ -249,6 +249,16 @@
                                 </span>
                             </a>
                         </div>
+                        <div class="footer_social">
+                            <a href="">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+
+                            <a href="">
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3 footer-col">
@@ -267,20 +277,12 @@
                                     name="btnNews"
                                     style="border-top-right-radius: 28px;border-bottom-right-radius: 28px;">
                                     Souscrire</button>
+                                    <p class="mt-3">Votre adresse e-mail est uniquement utilisée pour vous envoyer notre newsletter ainsi que les informations relatives à notre entreprise. Vous pouvez vous désinscrire à tout moment. </p>
 
                             </div>
                         </form>
 
-                        <div class="footer_social">
-                            <a href="">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
-
-                            <a href="">
-                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                            </a>
-
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="col-md-3 footer-col">
@@ -342,33 +344,7 @@
         </script>
     @endif
 
-    <script>
-        //Get the button
-        let mybutton = document.getElementById("btn-back-to-top");
-
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {
-            scrollFunction();
-        };
-
-        function scrollFunction() {
-            if (
-                document.body.scrollTop > 20 ||
-                document.documentElement.scrollTop > 1000
-            ) {
-                mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
-        }
-        // When the user clicks on the button, scroll to the top of the document
-        mybutton.addEventListener("click", backToTop);
-
-        function backToTop() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 300;
-        }
-    </script>
+   
 </body>
 
 </html>

@@ -74,6 +74,9 @@ padding-left: 0;
     margin-right: 0;
     margin-bottom: 15px;
   }
+  /* #btn-back-to-top{
+    display: none;
+  } */
 }
 
 @media (max-width: 376px) {
